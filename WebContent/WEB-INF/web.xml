@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>ChunkMan</display-name>
+	<listener>
+		<listener-class>org.rpl.infinimapper.DBResourceManager</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.rpl.infinimapper.VisitorTallySystem</listener-class>
+	</listener>
+	<servlet>
+		<description>
+		Creates a portal to the world data.</description>
+		<display-name>WorldDB</display-name>
+		<servlet-name>WorldDB</servlet-name>
+		<servlet-class>org.rpl.infinimapper.WorldDB</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Grabs the tile informationa as a PNG and retrieves it from the server.</description>
+		<display-name>FetchTiles</display-name>
+		<servlet-name>FetchTiles</servlet-name>
+		<servlet-class>org.rpl.infinimapper.FetchTiles</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Recieves images via the upload system.</description>
+		<display-name>ImageUpload</display-name>
+		<servlet-name>ImageUpload</servlet-name>
+		<servlet-class>org.rpl.infinimapper.ImageUpload</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Manages the creation, editing, and deletion of realms.</description>
+		<display-name>RealmManager</display-name>
+		<servlet-name>RealmManager</servlet-name>
+		<servlet-class>org.rpl.infinimapper.RealmManager</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Exports realm data to a downloadable format.</description>
+		<display-name>ExportRealm</display-name>
+		<servlet-name>ExportRealm</servlet-name>
+		<servlet-class>org.rpl.infinimapper.ExportRealm</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		The login credential manager. Supports Basic authorization.</description>
+		<display-name>LoginMan</display-name>
+		<servlet-name>LoginMan</servlet-name>
+		<servlet-class>org.rpl.infinimapper.LoginMan</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Allows objects to be added, edited, and even removed. Requires authorization.</description>
+		<display-name>ObjTypeManager</display-name>
+		<servlet-name>ObjTypeManager</servlet-name>
+		<servlet-class>org.rpl.infinimapper.ObjTypeManager</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Accepts user input to register a new user.</description>
+		<display-name>RegisterMan</display-name>
+		<servlet-name>RegisterMan</servlet-name>
+		<servlet-class>org.rpl.infinimapper.security.RegisterMan</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Helps to manage instances of objects. Performs basic checks for security and allows editing of existin gones.</description>
+		<display-name>ObjInstManager</display-name>
+		<servlet-name>ObjInstManager</servlet-name>
+		<servlet-class>org.rpl.infinimapper.ObjInstManager</servlet-class>
+	</servlet>
+    <servlet>
+        <description>Constructs a new map based on a specific template</description>
+        <display-name>RealmFromTemplate</display-name>
+        <servlet-name>RealmFromTemplate</servlet-name>
+        <servlet-class>org.rpl.infinimapper.RealmFromTemplate</servlet-class>
+    </servlet>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+	<servlet-mapping>
+		<servlet-name>WorldDB</servlet-name>
+		<url-pattern>/WorldDB</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FetchTiles</servlet-name>
+		<url-pattern>/FetchTiles</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ImageUpload</servlet-name>
+		<url-pattern>/ImageUpload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RealmManager</servlet-name>
+		<url-pattern>/RealmManager</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ExportRealm</servlet-name>
+		<url-pattern>/ExportRealm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LoginMan</servlet-name>
+		<url-pattern>/LoginMan</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ObjTypeManager</servlet-name>
+		<url-pattern>/ObjTypeManager</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RegisterMan</servlet-name>
+		<url-pattern>/RegisterMan</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ObjInstManager</servlet-name>
+		<url-pattern>/ObjInstManager</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealmFromTemplate</servlet-name>
+        <url-pattern>/MakeMap</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+  <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/imchunks</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+  </resource-ref>
+</web-app>

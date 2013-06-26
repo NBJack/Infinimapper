@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="TiledLib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../TiledLib.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../TiledLib.jar!/" />
+    </SOURCES>
+  </library>
+</component>

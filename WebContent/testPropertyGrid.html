@@ -1,0 +1,47 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js"></script>
+<link href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojox/grid/resources/claroGrid.css" rel="stylesheet" type="text/css" />
+<script>
+dojo.require("dojox.grid.DataGrid");
+dojo.require("dojo.data.ItemFileWriteStore");
+
+
+dojo.ready(function () {
+	
+	var attributes = {
+		identifier: "name",
+		items: []
+	};
+	
+	attributes.items.push({ name: "active", value: "true" });
+	attributes.items.push({ name: "hitpoints", value: "20" });
+	attributes.items.push({ name: "weapon", value:"fireball2"});
+
+	var attributeStore = new dojo.data.ItemFileWriteStore({
+		identifier: "name",
+		data: attributes.items
+		
+	});
+	
+	var attributeLayout = [
+	    { field: "name", name: "Attribute", width: "100px"},
+	    { field: "value", name: "Value", width: "auto"}
+	];
+	
+	var attributeGrid = new dojox.grid.DataGrid({
+		query: { Title: '*' },
+		store: attributeStore,
+		structure: attributeLayout
+	});
+	
+	dojo.byId("attributeGrid").appendChild(attributeGrid.domNode);
+	
+	attributeGrid.startup();
+});
+</script>
+</head>
+<body>
+<div style="width: 500px; height: 200px;" id="attributeGrid"></div>
+</body>
+</html>

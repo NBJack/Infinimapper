@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context  path="/ChunkMan" docBase="ChunkMan"
+        reloadable="true" crossContext="true">
+    <!-- Specify a JDBC datasource -->
+</Context>

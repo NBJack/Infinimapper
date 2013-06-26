@@ -1,0 +1,32 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ChunkMan:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ChunkMan_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ChunkMan/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ChunkMan" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="commons-codec:commons-codec:1.6" />
+          <element id="library" level="application" name="commons-io:commons-io:2.3" />
+          <element id="library" level="application" name="org.apache.commons:commons-lang3:3.1" />
+          <element id="library" level="application" name="commons-validator:commons-validator:1.4.0" />
+          <element id="library" level="application" name="com.google.code.gson:gson:1.7.1" />
+          <element id="library" level="application" name="com.fasterxml.jackson.core:jackson-core:2.0.5" />
+          <element id="library" level="application" name="com.fasterxml.jackson.core:jackson-annotations:2.0.5" />
+          <element id="library" level="application" name="c3p0:c3p0:0.9.1.2" />
+          <element id="library" level="application" name="mysql:mysql-connector-java:5.1.20" />
+          <element id="library" level="application" name="org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" />
+          <element id="library" level="application" name="commons-fileupload:commons-fileupload:1.2.2" />
+          <element id="library" level="project" name="org.springframework:org.springframework.aop:3.0.2.RELEASE" />
+          <element id="library" level="project" name="org.springframework:org.springframework.web.servlet:3.0.2.RELEASE" />
+          <element id="library" level="project" name="TiledLib" />
+          <element id="library" level="project" name="com.j256.ormlite:ormlite-core:4.5" />
+          <element id="library" level="project" name="com.j256.ormlite:ormlite-jdbc:4.5" />
+          <element id="library" level="project" name="jstl:jstl:1.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

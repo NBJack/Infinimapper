@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Turn on the annotation scanning -->
+    <context:annotation-config />
+
+    <!-- Accelerated realm storage -->
+    <bean class="org.rpl.infinimapper.data.management.RealmDataProvider" name="RealmProvider" scope="singleton"/>
+
+    <bean class="org.rpl.infinimapper.data.management.RealmCache" name="RealmCache" scope="singleton">
+        <constructor-arg name="provider" ref="RealmProvider"/>
+        <constructor-arg name="startBackgroundFlush" value="true"/>
+    </bean>
+
+    <bean class="java.util.HashMap" name="TemplateMap">
+         <constructor-arg>
+             <map>
+                     <entry key="melonJs-alex" value="WEB-INF/templates/melonJs-alex/tinyTest.tmx" />
+             </map>
+         </constructor-arg>
+    </bean>
+
+    <!-- Accelerated chunk storage and retrieval -->
+    <bean class="org.rpl.infinimapper.data.management.ChunkDataProvider" name="ChunkProvider" scope="singleton"/>
+
+    <bean class="org.rpl.infinimapper.data.management.ChunkCache" name="ChunkCache" scope="singleton">
+        <constructor-arg name="cache" ref="RealmCache"/>
+        <constructor-arg name="provider" ref="ChunkProvider"/>
+        <constructor-arg name="startBackgroundFlush" value="true"/>
+    </bean>
+
+    <!-- E>se the appropriate pieces to the JSP files -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="exposeContextBeansAsAttributes" value="true"/>
+    </bean>
+
+
+    <!-- For fun, unleash an agent that writes tiles in a randomized path -->
+    <!--<bean class="org.rpl.infinimapper.data.Realm" name="ScratchRealm">-->
+        <!--<property name="id" value="34"/>-->
+    <!--</bean>-->
+
+         <!--
+    <bean class="org.rpl.infinimapper.agents.MapPathBuilder">
+        <constructor-arg name="chunkCache" ref="ChunkCache"/>
+        <constructor-arg name="tileToUse" value="12"/>
+        <constructor-arg name="realm" ref="ScratchRealm"/>
+    </bean>
+    <bean class="org.rpl.infinimapper.agents.MapPathBuilder">
+        <constructor-arg name="chunkCache" ref="ChunkCache"/>
+        <constructor-arg name="tileToUse" value="30"/>
+        <constructor-arg name="realm" ref="ScratchRealm"/>
+    </bean>
+    <bean class="org.rpl.infinimapper.agents.MapPathBuilder">
+        <constructor-arg name="chunkCache" ref="ChunkCache"/>
+        <constructor-arg name="tileToUse" value="31"/>
+        <constructor-arg name="realm" ref="ScratchRealm"/>
+    </bean>
+    <bean class="org.rpl.infinimapper.agents.MapPathBuilder">
+        <constructor-arg name="chunkCache" ref="ChunkCache"/>
+        <constructor-arg name="tileToUse" value="106"/>
+        <constructor-arg name="realm" ref="ScratchRealm"/>
+    </bean>
+    <bean class="org.rpl.infinimapper.agents.MapPathBuilder">
+        <constructor-arg name="chunkCache" ref="ChunkCache"/>
+        <constructor-arg name="tileToUse" value="77"/>
+        <constructor-arg name="realm" ref="ScratchRealm"/>
+    </bean>
+           -->
+</beans>

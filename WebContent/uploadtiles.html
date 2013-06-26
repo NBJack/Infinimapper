@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>Image Uploader</title>
+  <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
+  <link href="default.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="text-align:center;margin-left:auto;margin-right:auto;">
+<h1>Image Upload System</h1>
+
+<form name="tileinfo" method="post" action="ImageUpload"
+enctype="multipart/form-data">
+
+  <table style="width:600px;margin-left:auto;margin-right:auto;" border="0">
+    <col />
+    <tbody>
+      <tr>
+        <td style="width:300px;" class="cellhead">Title </td>
+        <td style="width:500px;" class="cellbody"><input type="text" name="title"
+          style="width:200px" /></td>
+      </tr>
+      <tr>
+        <td class="cellhead">Description </td>
+        <td class="cellbody"><textarea rows="5" cols="40" name="desc"></textarea></td>
+      </tr>
+      <tr>
+        <td class="cellhead">Author </td>
+        <td class="cellbody">Unknown </td>
+      </tr>
+      <tr>
+        <td class="cellhead">Source Image </td>
+        <td class="cellbody"><input type="file" name="tilesimage" style="width:400px" /><br />
+          <i>Maximum size: 1MB</i></td>
+      </tr>
+      <tr>
+        <td class="cellhead">Tile Width </td>
+        <td class="cellbody"><input type="text" name="tilewidth" /><br />
+          <i>Size can be between 16 and 96</i></td>
+      </tr>
+      <tr>
+        <td class="cellhead">Public </td>
+        <td class="cellbody"><input type="checkbox" name="publicflag" /></td>
+      </tr>
+      <tr>
+        <td class="cellhead">Render Background when Shown</td>
+        <td class="cellbody"><input type="checkbox" name="backgroundflag" checked="checked" /></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+	  <p></p>
+          <input type="submit" value="Upload" /> </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+</body>
+</html>

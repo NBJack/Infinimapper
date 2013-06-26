@@ -1,0 +1,1 @@
+/** Generated Resources */var g_resources = [{"name":"arg","type":"txt","src":"data\\secret.txt"}];

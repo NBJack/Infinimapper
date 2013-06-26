@@ -1,0 +1,5 @@
+[
+  {name: "someImage", type: "PNG", src: "some\\path\\image.png"},
+  {name: "player", type: "PNG", src: "data\\player.png"},
+  {name: "music1", type: "MP3", src: "music\\greatTrack.mp3", channel: 1}
+]
