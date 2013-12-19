@@ -76,6 +76,12 @@
         <servlet-name>RealmFromTemplate</servlet-name>
         <servlet-class>org.rpl.infinimapper.RealmFromTemplate</servlet-class>
     </servlet>
+    <servlet>
+        <description>Builds resources into a deployable module</description>
+        <display-name>BuildAndPlay</display-name>
+        <servlet-name>BuildAndPlay</servlet-name>
+        <servlet-class>org.rpl.infinimapper.BuildAndPlay</servlet-class>
+    </servlet>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
@@ -83,6 +89,10 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <servlet-mapping>
+        <servlet-name>BuildAndPlay</servlet-name>
+        <url-pattern>/BuildAndPlay</url-pattern>
+    </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>WorldDB</servlet-name>
 		<url-pattern>/WorldDB</url-pattern>

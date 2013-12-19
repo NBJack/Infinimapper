@@ -54,7 +54,7 @@ public class WorldDB extends HttpServlet {
 
 
 
-	static final String WDB_GET_OBJLIB = "SELECT id, NAME, tilesrc, imgXOff, imgYOff, imgWidth, imgHeight FROM objlib";
+	static final String WDB_GET_OBJLIB = "SELECT id, NAME, tilesrc, imgXOff, imgYOff, imgWidth, imgHeight FROM objlib WHERE id > 0";
 	static final String WDB_OBJ_INSERT_QUERY = "INSERT INTO objects VALUE (NULL, ?, ?, ?, ?, ?, ?, NULL, CURRENT_TIMESTAMP, FALSE, ?, ?)";
 	static final String WDB_OBJ_UPDATEPOS_QUERY = "UPDATE objects SET tilerealm=?,tilexcoord=?,tileycoord=?,offsetx=?,offsety=?,lastupdate=CURRENT_TIMESTAMP WHERE id=?";
 	static final String WDB_OBJ_UPDATEDATA_QUERY = "UPDATE objects SET custom=?,lastupdate=CURRENT_TIMESTAMP WHERE id=?";

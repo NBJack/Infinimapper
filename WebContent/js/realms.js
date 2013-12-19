@@ -104,14 +104,14 @@ function constructImageSets ()
 		for ( i = 0; i < imageInfo.supplement.length; i++ )
 		{
 			imageSet[i] = new Image();
-			imageSet[i].src = "FetchTiles?id=" + imageInfo.supplement[i];
+			imageSet[i].src = "FetchTiles?ref=realmFetch&id=" + imageInfo.supplement[i];
 			imageSet[i].onload = deferredStart;
 			imageSet[i].tileSetIndex = i;
 		}
 		
 	} else {
         imageSet[0] = new Image();
-        imageSet[0].src = "FetchTiles?id=" + realmInfo.tileset;
+        imageSet[0].src = "FetchTiles?ref=realmFetch&id=" + realmInfo.tileset;
         imageSet[0].onload = deferredStart;
         imageSet[0].tileSetIndex = 0;
     }

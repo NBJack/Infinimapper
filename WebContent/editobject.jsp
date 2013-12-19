@@ -146,7 +146,7 @@ function changeTilesetPreview () {
 	//	Change the canvas image
 	
 	currentTilesetImage = new Image();
-	currentTilesetImage.src = "FetchTiles?id=" + tilesetSelector.value;
+	currentTilesetImage.src = "FetchTiles?ref=tileChange&id=" + tilesetSelector.value;
 	
 	//	When loaded, setup the render preview 
 	
@@ -161,7 +161,7 @@ function changeTilesetPreview () {
 function renderPreview ()
 {
 	//	Setup width and height 
-	
+
 	tilesetDisplay.width = currentTilesetImage.width;
 	tilesetDisplay.height = currentTilesetImage.height;
 

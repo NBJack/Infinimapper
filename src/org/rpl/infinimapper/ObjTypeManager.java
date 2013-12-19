@@ -103,7 +103,7 @@ public class ObjTypeManager extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	public static final String OBJTYPE_INSERT = "INSERT INTO objlib(name, tilesrc, imgXOff, imgYOff, imgWidth, imgHeight, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    public static final String OBJTYPE_LIST_JSON = "SELECT * FROM objlib LIMIT ?, ?";
+    public static final String OBJTYPE_LIST_JSON = "SELECT * FROM objlib WHERE id > 0 LIMIT ?, ?";
     /**
      * @see HttpServlet#HttpServlet()
      */

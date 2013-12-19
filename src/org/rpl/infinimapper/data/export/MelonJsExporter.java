@@ -17,6 +17,7 @@ import org.apache.commons.lang3.Validate;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Exports data with regards to melonJS.

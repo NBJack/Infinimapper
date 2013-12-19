@@ -16,6 +16,6 @@ public class EventSocket extends WebSocketServlet {
 
     @Override
     protected StreamInbound createWebSocketInbound(String s, HttpServletRequest httpServletRequest) {
-
+        return null;
     }
 }

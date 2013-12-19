@@ -57,8 +57,8 @@ initialY	 = 0;
 <meta name="viewport"
     content="user-scalable=no, width=device-width" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script> 
-<!-- <script src="js/dojo18/dojo/dojo.js" djConfig="parseOnLoad: true"></script>--> 
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
+<!-- <script src="js/dojo/dojo.uncompressed.js" djConfig="parseOnLoad: true"></script> -->
 <title>Infinimapper v0.75alpha</title>
 <body onload="setup()" style="background-color:#000000; margin: 0px;" oncontextmenu="return false;" ontouchmove="blockEvent();" >
 <table id='menubar' width=200 height=36>

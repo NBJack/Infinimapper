@@ -190,7 +190,11 @@ function decodeObjectTypeFromString (rawdata)
 	//	How to decode pieces[2]? Check the global pool first, then create a new Image object if needed.
 	
 	imgDat = new Image();
-	imgDat.src = "FetchTiles?id=" + pieces[2];
+    if ( pieces[2] == 0 || !pieces[2] ) {
+        alert("WTF: " + rawdata );
+    }
+	imgDat.src = "FetchTiles?ref=objFetch&id=" + pieces[2];
+    console.info("Fetching tileset ID " + pieces[2] + " for " + rawdata);
 	
 	
 	return createNewObjectType(pieces[0], pieces[1], imgDat, pieces[3], pieces[4], pieces[5], pieces[6]);

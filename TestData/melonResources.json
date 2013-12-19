@@ -1,5 +1,5 @@
 [
-  {name: "someImage", type: "PNG", src: "some\\path\\image.png"},
-  {name: "player", type: "PNG", src: "data\\player.png"},
-  {name: "music1", type: "MP3", src: "music\\greatTrack.mp3", channel: 1}
+  {name: "someImage", type: "image", src: "data/sprites/image.png"},
+  {name: "player", type: "image", src: "data/sprites/arrowguy.png"},
+  {name: "DST-GameForest", type: "audio", src: "data/audio/", channel: 1}
 ]

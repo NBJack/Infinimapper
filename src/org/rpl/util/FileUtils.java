@@ -27,14 +27,24 @@ public class FileUtils {
 		stream.flush();
 	}
 
+    /**
+     * Return a new temporary directory location. Does not actually create the
+     * directory. Uses the provided directory as the root.
+     * @param dir
+     * @return
+     */
+    public static File generateTempDir ( File dir ) {
+        return new File(dir, System.nanoTime() + "_" + Math.random());
+    }
+
 	/**
 	 * Return a new temporary directory location. Does not actually create the
-	 * directory.
+	 * directory. Uses the system default as the root.
 	 * 
 	 * @return
 	 */
 	public static File generateTempDirLocation() {
-		return new File(TMP_DIR, System.nanoTime() + "_" + Math.random());
+		return generateTempDir(TMP_DIR);
 	}
 
 }

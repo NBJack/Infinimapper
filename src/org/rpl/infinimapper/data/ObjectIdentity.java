@@ -15,7 +15,7 @@ public class ObjectIdentity implements Identable<Integer> {
     public static Integer EMPTY_ID = new Integer(-1);
 
     @DatabaseField( generatedId=true )
-	private Integer id;
+	private int id;
     @DatabaseField
 	private String name;
     @DatabaseField

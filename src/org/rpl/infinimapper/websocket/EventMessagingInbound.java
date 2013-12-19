@@ -10,17 +10,18 @@ import java.nio.CharBuffer;
  * User: Ryan
  * Date: 6/26/13 - 3:11 PM
  */
-public class EventMessagingInbound extends MessageInbound {
+public class EventMessagingInbound {
 
+    public EventMessagingInbound() {
+        super();
+    }
 
-
-    @Override
     protected void onBinaryMessage(ByteBuffer byteBuffer) throws IOException {
         // Ignore
     }
 
-    @Override
     protected void onTextMessage(CharBuffer charBuffer) throws IOException {
-
+        // Check to see what kind of data is inbound
+        // Route it
     }
 }
