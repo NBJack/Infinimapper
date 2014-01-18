@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.rpl.infinimapper.WorldDB.QuickCon;
 
 import com.google.gson.stream.JsonWriter;
+import org.rpl.infinimapper.data.management.ObjectInstanceProvider;
 
 /**
  * Servlet implementation class ObjInstManager
@@ -68,7 +69,7 @@ public class ObjInstManager extends HttpServlet {
 
 			// TODO: Validate the data body as a 'legit' set of properties.
 
-			connection = new QuickCon(WorldDB.WDB_OBJ_UPDATEDATA_QUERY);
+			connection = new QuickCon(ObjectInstanceProvider.WDB_OBJ_UPDATEDATA_QUERY);
 			connection.getStmt().setString(1, dataBody);
 			connection.getStmt().setInt(2, Integer.parseInt(request.getParameter("dataID")));
 
@@ -117,7 +118,7 @@ public class ObjInstManager extends HttpServlet {
 
 			c = DBResourceManager.getConnection();
 
-			st = c.prepareStatement(WorldDB.WDB_OBJ_SINGLE_RETRIEVE_QUERY);
+			st = c.prepareStatement(ObjectInstanceProvider.WDB_OBJ_SINGLE_RETRIEVE_QUERY);
 			st.setInt(1, objid);
 
 			set = st.executeQuery();

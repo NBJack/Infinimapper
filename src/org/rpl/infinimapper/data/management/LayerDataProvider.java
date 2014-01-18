@@ -19,15 +19,19 @@ import java.sql.SQLException;
  * User: Ryan
  * Date: 2/1/13 - 6:59 PM
  */
-public class LayerDataProvider extends DataProvider<Integer, Layer>{
+public class LayerDataProvider extends DaoDataProvider<Integer, Layer>{
 
 
+    public static final String WDB_LAYERS_LIST = "SELECT realmid FROM layerdata WHERE masterrealmid=? ORDER BY ordernum";
     private Dao<Layer, Integer> dao;
 
     public LayerDataProvider() throws SQLException {
-        dao = BaseDaoImpl.createDao(DBResourceManager.getConnectionSource(), Layer.class);
+        super(Layer.class);
+        //dao = BaseDaoImpl.createDao(DBResourceManager.getConnectionSource(), Layer.class);
     }
 
+
+    /**
     @Override
     public Layer getValue(Integer integer) {
 
@@ -57,5 +61,5 @@ public class LayerDataProvider extends DataProvider<Integer, Layer>{
         } catch ( SQLException ex ) {
             ex.printStackTrace();
         }
-    }
+    }  **/
 }

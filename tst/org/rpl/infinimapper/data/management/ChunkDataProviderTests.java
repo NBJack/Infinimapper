@@ -37,7 +37,7 @@ public class ChunkDataProviderTests {
     }
 
     @Before
-    public void setupProvider() {
+    public void setupProvider() throws SQLException {
         // Setup what we need for the chunk
         this.provider = new ChunkDataProvider();
     }

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletConfig;
@@ -18,13 +19,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.rpl.infinimapper.data.Chunk;
-import org.rpl.infinimapper.data.ChunkDelta;
-import org.rpl.infinimapper.data.ChunkKey;
-import org.rpl.infinimapper.data.Realm;
+import org.rpl.infinimapper.data.*;
 import org.rpl.infinimapper.data.export.TilesetExport;
-import org.rpl.infinimapper.data.management.ChunkCache;
-import org.rpl.infinimapper.data.management.RealmCache;
+import org.rpl.infinimapper.data.management.*;
 import org.rpl.infinimapper.security.AuthMan;
 
 import com.google.gson.stream.JsonWriter;
@@ -53,18 +50,6 @@ public class WorldDB extends HttpServlet {
 	//
 
 
-
-	static final String WDB_GET_OBJLIB = "SELECT id, NAME, tilesrc, imgXOff, imgYOff, imgWidth, imgHeight FROM objlib WHERE id > 0";
-	static final String WDB_OBJ_INSERT_QUERY = "INSERT INTO objects VALUE (NULL, ?, ?, ?, ?, ?, ?, NULL, CURRENT_TIMESTAMP, FALSE, ?, ?)";
-	static final String WDB_OBJ_UPDATEPOS_QUERY = "UPDATE objects SET tilerealm=?,tilexcoord=?,tileycoord=?,offsetx=?,offsety=?,lastupdate=CURRENT_TIMESTAMP WHERE id=?";
-	static final String WDB_OBJ_UPDATEDATA_QUERY = "UPDATE objects SET custom=?,lastupdate=CURRENT_TIMESTAMP WHERE id=?";
-	static final String WDB_OBJ_RETRIEVE_QUERY = "SELECT id, definition, offsetx, offsety, tilexcoord, tileycoord, deleted, width, height FROM objects WHERE tilerealm=? AND tilexcoord=? AND tileycoord=?";
-	static final String WDB_OBJ_SINGLE_RETRIEVE_QUERY = "SELECT definition, offsetx, offsety, tilexcoord, tileycoord, deleted, custom, width, height FROM objects WHERE id=?";
-	static final String WDB_OBJ_INCRETRIEVE_QUERY = "SELECT id, definition, offsetx, offsety FROM objects WHERE tilerealm=? AND tilexcoord=? AND tileycoord=? AND lastupdate<?";
-	static final String WDB_OBJ_DELETE = "UPDATE objects SET deleted=TRUE,lastupdate=CURRENT_TIMESTAMP WHERE id=?";
-	static final String WDB_TILESET_LIST = "SELECT NAME, id FROM tilelib";
-	static final String WDB_LAYERS_LIST = "SELECT realmid FROM layerdata WHERE masterrealmid=? ORDER BY ordernum";
-
     public ChunkCache getChunkCache() {
         return chunkCache;
     }
@@ -85,7 +70,12 @@ public class WorldDB extends HttpServlet {
     private ChunkCache chunkCache;
     @Autowired
     private RealmCache realmCache;
-
+    @Autowired
+    private LayerDataProvider layerProvider;
+    @Autowired
+    private ObjectProvider objectDefProvider;
+    @Autowired
+    private ObjectInstanceProvider objectProvider;
 
 	public enum QCommand {
 
@@ -135,10 +125,8 @@ public class WorldDB extends HttpServlet {
 		PrintWriter respOut;
 		Connection c;
 		ResultSet set;
-		PreparedStatement st;
-		int tileScale;
 		String userIDToken;
-		int userID;
+        PreparedStatement st;
 
 		// NOTE: In the future, all references to realm data should be cached
 		// globally and retrievable when desired.
@@ -154,10 +142,9 @@ public class WorldDB extends HttpServlet {
 
 		// Grab the user's ID (if available)
 
+        int userID = -1;
 		if (request.getSession().getAttribute("userid") != null) {
 			userID = (Integer) request.getSession().getAttribute("userid");
-		} else {
-			userID = -1;
 		}
 
 		// Setup our data connection.
@@ -234,224 +221,23 @@ public class WorldDB extends HttpServlet {
 				switch (cmd) {
 				case RETRIEVE:
 
-					//
-					// Retrieve a chunk
-					//
-
-					if (RealmManager.isRealmPublic(key.getRealmid())
-							|| AuthMan.getRealmPermissionsForUser(userID, key.getRealmid()).canRead()) {
-
-						// Grab the chunk information
-						Chunk chunk = chunkCache.getValue(key);
-
-						if (chunk != null) {
-
-							respOut.print("CHUNK!!!");
-							respOut.print(entries[1]);
-							respOut.print("!!!");
-							respOut.print(0);
-							respOut.print("!!!");
-							respOut.print(chunk.getData());
-							respOut.print("!!!");
-							respOut.print("0,0");
-							respOut.print("!!!");
-							respOut.print(chunk.getLastUpdate());
-							respOut.print("!!!");
-							respOut.println();
-
-						} else {
-							// No chunk was found.
-							respOut.print("BLANK!!!");
-							respOut.print(entries[1]);
-							respOut.print("!!!");
-							respOut.println();
-						}
-
-					} else {
-
-						// Note authorization failure
-
-						respOut.print("BADAUTH!!!RETRIEVE!!!");
-						respOut.print(entries[1]);
-						respOut.print("!!!");
-						respOut.println();
-
-                        log.fine("Not auth: " + userID);
-					}
-
-					break;
+                    retrieveChunk(entries, respOut, userID, key);
+                    break;
 
 				case REFRESH:
 
-					//
-					// See if a chunk has been changed
-					//
-
-					log.finest("Timestamp: " + entries[2]);
-					long timestamp = Long.parseLong(entries[2]);
-
-					// Get the chunk at the specified key. If null, that means
-					// nothing was there for the refresh.
-					Chunk chunk = chunkCache.getValue(key);
-					if (chunk != null && chunk.getLastUpdate() > timestamp) {
-						respOut.print("REFRESHAVAIL!!!");
-						respOut.print(entries[1]);
-						respOut.print("!!!");
-						respOut.print("0");
-						respOut.print("!!!");
-						respOut.print(chunk.getData());
-						respOut.print("!!!");
-						respOut.print("0,0");
-						respOut.print("!!!");
-						respOut.print(chunk.getLastUpdate());
-						respOut.print("!!!");
-						respOut.print(entries[3]);
-						respOut.print("!!!");
-					} else {
-						respOut.print("NOUPDATE!!!");
-						respOut.print(entries[1]);
-						respOut.print("!!!");
-						respOut.println();
-					}
-					break;
+                    refreshChunk(entries, respOut, key);
+                    break;
 
 				case UPDATE:
 
-					//
-					// Update an existing chunk
-					//
-
-					// Do we have appropriate permissions?
-					if (RealmManager.isRealmPublic(Integer.parseInt(idSet[2]))
-							|| AuthMan.getRealmPermissionsForUser(userID, Integer.parseInt(idSet[2])).canWrite()) {
-
-						// Construct a delta and apply it to the store
-						ChunkDelta delta = new ChunkDelta(userID, entries[3]);
-						chunkCache.updateValue(key, delta);
-					} else {
-
-						// The user wasn't authorized
-						respOut.print("BADAUTH!!!INSERT!!!");
-						respOut.print(entries[1]);
-						respOut.print("!!!");
-						respOut.print(entries[5]);
-						respOut.print("!!!");
-						respOut.println();
-					}
-
-					break;
+                    updateChunk(entries, idSet[2], respOut, userID, key);
+                    break;
 
 				case OBJINSERT:
 
-					//
-					// Insert or update a new object
-					//
-
-					int rawX,
-					rawY,
-					tRealm;
-					int tX,
-					tY;
-					int oldID,
-					newID;
-					int chunkRealWidth,
-					chunkRealHeight,
-					chunkWidth,
-					chunkHeight;
-					int offX,
-					offY;
-					int instWidth,
-					instHeight;
-
-					// Replace these with realm queries
-
-					chunkRealWidth = ChunkData.TILES_WIDTH_IN_CHUNK * 32;
-					chunkRealHeight = ChunkData.TILES_HEIGHT_IN_CHUNK * 32;
-
-					// Format of command:
-					// OBJINSERT!!!XxYxRealmID!!!originalID!!!ObjTypeDefinition!!!instWidth!!!instHeight
-
-					// Calculate the tile and coordinates
-
-					oldID = Integer.parseInt(entries[2]);
-
-					rawX = Integer.parseInt(idSet[0]);
-					rawY = Integer.parseInt(idSet[1]);
-					tRealm = Integer.parseInt(idSet[2]);
-
-					tX = (int) Math.floor(rawX / (double) chunkRealWidth) * ChunkData.TILES_WIDTH_IN_CHUNK;
-					tY = (int) Math.floor(rawY / (double) chunkRealHeight) * ChunkData.TILES_HEIGHT_IN_CHUNK;
-					offX = ((rawX % chunkRealWidth) + chunkRealWidth) % chunkRealWidth;
-					offY = ((rawY % chunkRealHeight) + chunkRealHeight) % chunkRealHeight;
-					instWidth = Integer.parseInt(entries[4]);
-					instHeight = Integer.parseInt(entries[5]);
-
-					log.finest("Raw coord: " + rawX + "," + rawY + " vs. Tile: " + tX + "," + tY);
-
-					// TODO: Verify coordinates fall within the appropriate
-					// area, and that we have authorization to access it.
-
-					// Insert a new object or retrieve an existing one.
-
-					if (oldID < 0) {
-						// Insert a new object
-
-						st = c.prepareStatement(WDB_OBJ_INSERT_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
-
-						// TODO: Ugh. I'm looking forward to using Hibernate. :/
-						st.setInt(1, tRealm);
-						st.setInt(2, tX);
-						st.setInt(3, tY);
-						st.setInt(4, offX);
-						st.setInt(5, offY);
-						st.setInt(6, Integer.parseInt(entries[3]));
-						st.setInt(7, instWidth);
-						st.setInt(8, instHeight);
-
-						st.execute();
-
-						set = st.getGeneratedKeys();
-
-						log.finer("DEBUG: raw: (" + rawX + "," + rawY + ")  official:"
-								+ (tX * currentRealm.getTileWidth() + offX) + "," + (tY * currentRealm.getTileHeight() + offY));
-
-						// Respond with an ID update if successful; otherwise,
-						// respond negatively.
-
-						if (set.next()) {
-							log.finest("Autogenerated object ID: " + set.getInt(1));
-
-							respOut.println("OK_OBJ!!!IDUP!!!" + entries[2] + "!!!" + set.getInt(1) + "!!!");
-
-						} else {
-
-							respOut.println("BAD_OBJ!!!" + entries[2] + "!!!");
-
-						}
-
-					} else {
-
-						// Update the object definition
-
-						st = c.prepareStatement(WDB_OBJ_UPDATEPOS_QUERY);
-
-						st.setInt(1, tRealm);
-						st.setInt(2, tX);
-						st.setInt(3, tY);
-						st.setInt(4, offX);
-						st.setInt(5, offY);
-
-						st.setInt(6, oldID);
-
-						st.execute();
-
-						// Send a simple update response
-
-						respOut.println("OK_OBJ_UP!!!" + entries[2] + "!!!");
-
-					}
-
-					break;
+                    addOrUpdateObject(entries, idSet, respOut, currentRealm);
+                    break;
 
 				case OBJRETRIEVE:
 
@@ -461,32 +247,33 @@ public class WorldDB extends HttpServlet {
 					// specific timestamp.
 					//
 
-					st = c.prepareStatement(WDB_OBJ_RETRIEVE_QUERY);
-
-					st.setInt(1, Integer.parseInt(idSet[2]));
-					st.setInt(2, Integer.parseInt(idSet[0]));
-					st.setInt(3, Integer.parseInt(idSet[1]));
-
+                    int objRealmID = Integer.parseInt(idSet[2]);
+                    int tileX = Integer.parseInt(idSet[0]);
+                    int tileY = Integer.parseInt(idSet[1]);
 					log.finest("Getting all objects from realm " + idSet[2]);
 
-					set = st.executeQuery();
+					//set = st.executeQuery();
+                    Realm objRealm = realmCache.getValue(Integer.parseInt(idSet[2]));
+                    List<ObjectInstance> objects = objectProvider.getObjectsOnChunk(objRealm, tileX, tileY);
+
 
 					respOut.print("OBJDATA!!!");
 
-					while (set.next()) {
-						respOut.print(set.getInt(1));
-						respOut.print(",");
-						respOut.print(set.getInt(2));
-						respOut.print(",");
-						respOut.print(set.getInt(3) + set.getInt(5) * currentRealm.getTileWidth());
-						respOut.print(",");
-						respOut.print(set.getInt(4) + set.getInt(6) * currentRealm.getTileHeight());
-						respOut.print(",");
-						respOut.print(set.getInt(7));
-						respOut.print(",");
-						respOut.print(set.getInt(8));
-						respOut.print(",");
-						respOut.print(set.getInt(9));
+                    for ( ObjectInstance obj : objects )
+                    {
+                        respOut.print(obj.getId());
+                        respOut.print(",");
+                        respOut.print(obj.getDefinition());
+                        respOut.print(",");
+                        respOut.print(obj.getOffsetX() + obj.getTileXCoord() * currentRealm.getTileWidth());
+                        respOut.print(",");
+                        respOut.print(obj.getOffsetY() + obj.getTileYCoord() * currentRealm.getTileHeight());
+                        respOut.print(",");
+                        respOut.print(obj.isDeleted() ? 1:0);
+                        respOut.print(",");
+                        respOut.print(obj.getWidth());
+                        respOut.print(",");
+                        respOut.print(obj.getHeight());
 
 						respOut.print("###");
 					}
@@ -498,37 +285,31 @@ public class WorldDB extends HttpServlet {
 				case OBJLIBRETRIEVE:
 
 					// Retrieve the object library
-
-					st = c.prepareStatement(WDB_GET_OBJLIB);
-
-					set = st.executeQuery();
+                    List<ObjectIdentity> definitions = objectDefProvider.getAllDefinitions();
 
 					// Print the response
-
 					respOut.print("OBJLIB!!!");
 
-					while (set.next()) {
-						respOut.print(set.getInt(1));
-						respOut.print("###");
-						respOut.print(set.getString(2));
-						respOut.print("###");
-						respOut.print(set.getInt(3));
-						respOut.print("###");
-						respOut.print(set.getInt(4));
-						respOut.print("###");
-						respOut.print(set.getInt(5));
-						respOut.print("###");
-						respOut.print(set.getInt(6));
-						respOut.print("###");
-						respOut.print(set.getInt(7));
+                    for ( ObjectIdentity definition : definitions ) {
+
+                        respOut.print(definition.getId());
+                        respOut.print("###");
+                        respOut.print(definition.getName());
+                        respOut.print("###");
+                        respOut.print(definition.getTilesrc());
+                        respOut.print("###");
+                        respOut.print(definition.getImgXOff());
+                        respOut.print("###");
+                        respOut.print(definition.getImgYOff());
+                        respOut.print("###");
+                        respOut.print(definition.getImgWidth());
+                        respOut.print("###");
+                        respOut.print(definition.getImgHeight());
+
 						respOut.print("!!!");
 					}
 
 					// Terminate the response string
-
-					set.close();
-					st.close();
-
 					respOut.println();
 
 					break;
@@ -543,13 +324,10 @@ public class WorldDB extends HttpServlet {
 
 					// Execute query
 
-					st = c.prepareStatement(WDB_OBJ_DELETE);
+                    int objID = Integer.parseInt(entries[2]);
+                    objectProvider.deleteValue(objID);
 
-					st.setInt(1, Integer.parseInt(entries[2]));
-
-					st.execute();
-
-					log.finer("DETELED: " + entries[2]);
+					log.finer("DETELED: " + objID);
 
 					// Print a response
 
@@ -590,7 +368,207 @@ public class WorldDB extends HttpServlet {
 
 	}
 
-	/**
+    private void updateChunk(String[] entries, String s, PrintWriter respOut, int userID, ChunkKey key) throws SQLException {
+        //
+        // Update an existing chunk
+        //
+
+        // Do we have appropriate permissions?
+        if (RealmManager.isRealmPublic(Integer.parseInt(s))
+                || AuthMan.getRealmPermissionsForUser(userID, Integer.parseInt(s)).canWrite()) {
+
+            // Construct a delta and apply it to the store
+            ChunkDelta delta = new ChunkDelta(userID, entries[3]);
+            chunkCache.updateValue(key, delta);
+        } else {
+
+            // The user wasn't authorized
+            respOut.print("BADAUTH!!!INSERT!!!");
+            respOut.print(entries[1]);
+            respOut.print("!!!");
+            respOut.print(entries[5]);
+            respOut.print("!!!");
+            respOut.println();
+        }
+    }
+
+    private void refreshChunk(String[] entries, PrintWriter respOut, ChunkKey key) {
+        //
+        // See if a chunk has been changed
+        //
+
+        log.finest("Timestamp: " + entries[2]);
+        long timestamp = Long.parseLong(entries[2]);
+
+        // Get the chunk at the specified key. If null, that means
+        // nothing was there for the refresh.
+        Chunk chunk = chunkCache.getValue(key);
+        if (chunk != null && chunk.getLastUpdate() > timestamp) {
+            respOut.print("REFRESHAVAIL!!!");
+            respOut.print(entries[1]);
+            respOut.print("!!!");
+            respOut.print("0");
+            respOut.print("!!!");
+            respOut.print(chunk.getData());
+            respOut.print("!!!");
+            respOut.print("0,0");
+            respOut.print("!!!");
+            respOut.print(chunk.getLastUpdate());
+            respOut.print("!!!");
+            respOut.print(entries[3]);
+            respOut.print("!!!");
+        } else {
+            respOut.print("NOUPDATE!!!");
+            respOut.print(entries[1]);
+            respOut.print("!!!");
+            respOut.println();
+        }
+    }
+
+    private void retrieveChunk(String[] entries, PrintWriter respOut, int userID, ChunkKey key) throws SQLException {
+        //
+        // Retrieve a chunk
+        //
+
+        if (RealmManager.isRealmPublic(key.getRealmid())
+                || AuthMan.getRealmPermissionsForUser(userID, key.getRealmid()).canRead()) {
+
+            // Grab the chunk information
+            Chunk chunk = chunkCache.getValue(key);
+
+            if (chunk != null) {
+
+                respOut.print("CHUNK!!!");
+                respOut.print(entries[1]);
+                respOut.print("!!!");
+                respOut.print(0);
+                respOut.print("!!!");
+                respOut.print(chunk.getData());
+                respOut.print("!!!");
+                respOut.print("0,0");
+                respOut.print("!!!");
+                respOut.print(chunk.getLastUpdate());
+                respOut.print("!!!");
+                respOut.println();
+
+            } else {
+                // No chunk was found.
+                respOut.print("BLANK!!!");
+                respOut.print(entries[1]);
+                respOut.print("!!!");
+                respOut.println();
+            }
+
+        } else {
+
+            // Note authorization failure
+
+            respOut.print("BADAUTH!!!RETRIEVE!!!");
+            respOut.print(entries[1]);
+            respOut.print("!!!");
+            respOut.println();
+
+log.fine("Not auth: " + userID);
+        }
+    }
+
+    /**
+     * Add or update an object as provided in the entries.
+     *
+     * @param entries
+     * @param idSet
+     * @param respOut
+     * @param c
+     * @param set
+     * @param currentRealm
+     * @return
+     * @throws SQLException
+     */
+    private int addOrUpdateObject(String[] entries, String[] idSet, PrintWriter respOut, Realm currentRealm) throws SQLException {
+
+        // Format of command:
+        // OBJINSERT!!!XxYxRealmID!!!originalID!!!ObjTypeDefinition!!!instWidth!!!instHeight
+
+        // Calculate the tile and coordinates
+
+        int oldID = Integer.parseInt(entries[2]);
+
+        int rawX = Integer.parseInt(idSet[0]);
+        int rawY = Integer.parseInt(idSet[1]);
+        int tRealm = Integer.parseInt(idSet[2]);
+
+        int tX = (int) Math.floor(rawX / (double) currentRealm.getChunkWidthInPixels()) * ChunkData.TILES_WIDTH_IN_CHUNK;
+        int tY = (int) Math.floor(rawY / (double) currentRealm.getChunkHeightInPixels()) * ChunkData.TILES_HEIGHT_IN_CHUNK;
+        int offX = ((rawX % currentRealm.getChunkWidthInPixels()) + currentRealm.getChunkWidthInPixels()) % currentRealm.getChunkWidthInPixels();
+        int offY = ((rawY % currentRealm.getChunkHeightInPixels()) + currentRealm.getChunkHeightInPixels()) % currentRealm.getChunkHeightInPixels();
+        int instWidth = Integer.parseInt(entries[4]);
+        int instHeight = Integer.parseInt(entries[5]);
+
+        int instanceId = Integer.parseInt(entries[3]);
+
+        log.finest("Raw coord: " + rawX + "," + rawY + " vs. Tile: " + tX + "," + tY);
+
+        // TODO: Verify coordinates fall within the appropriate
+        // area, and that we have authorization to access it.
+
+        // Insert a new object or retrieve an existing one.
+        if (oldID < 0) {
+            // Insert a new object
+
+            ObjectInstance obj = new ObjectInstance();
+            obj.setDefinition(instanceId);
+            obj.setOffsetX(offX);
+            obj.setOffsetY(offY);
+            obj.setTileRealm(tRealm);
+            obj.setTileXCoord(tX);
+            obj.setTileYCoord(tY);
+            obj.setWidth(instWidth);
+            obj.setHeight(instHeight);
+
+            objectProvider.addValue(obj);
+
+
+            log.finer("DEBUG: raw: (" + rawX + "," + rawY + ")  official:"
+                    + (tX * currentRealm.getTileWidth() + offX) + "," + (tY * currentRealm.getTileHeight() + offY));
+
+            // Respond with an ID update if successful; otherwise,
+            // respond negatively.
+
+            if (obj.hasId()) {
+                int givenID = obj.getId();
+
+                log.finest("Autogenerated object ID: " + givenID);
+                respOut.println("OK_OBJ!!!IDUP!!!" + entries[2] + "!!!" + givenID + "!!!");
+
+            } else {
+
+                respOut.println("BAD_OBJ!!!" + entries[2] + "!!!");
+
+            }
+
+            return obj.getId();
+
+        } else {
+
+            // Update the object definition
+
+            ObjectInstance obj = this.objectProvider.getValue(oldID);
+            obj.setTileXCoord(tX);
+            obj.setTileYCoord(tY);
+            obj.setTileRealm(tRealm);
+            obj.setOffsetX(offX);
+            obj.setOffsetY(offY);
+
+
+            // Send a simple update response
+            respOut.println("OK_OBJ_UP!!!" + entries[2] + "!!!");
+
+            return obj.getID();
+        }
+
+    }
+
+    /**
 	 * An expensive operation to retrieve all of the tile sets by names and IDs.
 	 * Ideally, this will be replaced by a 'get just n entries'.
 	 * 
@@ -613,7 +591,7 @@ public class WorldDB extends HttpServlet {
 			c = DBResourceManager.getConnection();
 
 			st = c.createStatement();
-			set = st.executeQuery(WDB_TILESET_LIST);
+			set = st.executeQuery(TilesetProvider.WDB_TILESET_LIST);
 
 			while (set.next()) {
 				String[] r;
@@ -649,7 +627,7 @@ public class WorldDB extends HttpServlet {
 	 */
 	public static Collection<Integer> getLayersForRealm(int realmid) throws SQLException {
 		Collection<Integer> list = new LinkedList<Integer>();
-		QuickCon con = new QuickCon(WDB_LAYERS_LIST);
+		QuickCon con = new QuickCon(LayerDataProvider.WDB_LAYERS_LIST);
 
 		try {
 			// Setup the statement

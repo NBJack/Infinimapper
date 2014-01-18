@@ -1,7 +1,6 @@
 package org.rpl.infinimapper.data;
 
 import com.google.gson.*;
-import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import org.apache.commons.lang3.Validate;
@@ -18,8 +17,10 @@ public class ObjectInstance implements Identable<Integer> {
 
     public static final int MISSING_ID = -1;
 
-    public static final String PROPERTY_NAME_KEY = "name";
-    public static final String PROPERTY_VALUE_KEY = "value";
+    public static final String JSON_PROPERTY_NAME = "name";
+    public static final String PROPERTY_NAME_KEY = JSON_PROPERTY_NAME;
+    public static final String JSON_PROPERTY_VALUE = "value";
+    public static final String PROPERTY_VALUE_KEY = JSON_PROPERTY_VALUE;
 
     @DatabaseField( generatedId=true )
     private int id;
@@ -31,6 +32,7 @@ public class ObjectInstance implements Identable<Integer> {
     @DatabaseField private int definition;
     @DatabaseField private int width;
     @DatabaseField private int height;
+    @DatabaseField private boolean deleted;
     private JsonArray realProperties;
     @DatabaseField(columnName = "custom", useGetSet=true) private String properties;
 
@@ -38,6 +40,7 @@ public class ObjectInstance implements Identable<Integer> {
     public ObjectInstance () {
         this.realProperties = new JsonArray();
         this.id = MISSING_ID;
+        this.deleted = false;
     }
 
     public int getId() {
@@ -112,6 +115,18 @@ public class ObjectInstance implements Identable<Integer> {
         this.height = height;
     }
 
+    /**
+     * Is this object considered deleted?
+     * @return true if it has been deleted, false if it is still active.
+     */
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
     public String getProperties() {
         // Build the object
         if ( realProperties != null ) {
@@ -126,7 +141,18 @@ public class ObjectInstance implements Identable<Integer> {
         return realProperties;
     }
 
+    /**
+     * Sets the properties of an instance. Since this is used to initialize from a database, null is
+     * an acceptable input and means no properties exist.
+     * @param properties the properties.
+     */
     public void setProperties(String properties) {
+
+        // Null means we have an empty property set.
+        if ( properties == null ) {
+            this.realProperties = new JsonArray();
+            return;
+        }
         // TODO: Add a simple check on size here.
         JsonParser reader = new JsonParser();
 
@@ -136,8 +162,8 @@ public class ObjectInstance implements Identable<Integer> {
             if ( !element.isJsonArray() ) {
                 result = new JsonArray();
                 JsonObject obj = new JsonObject();
-                obj.addProperty("name", "value");
-                obj.addProperty("value", properties);
+                obj.addProperty(JSON_PROPERTY_NAME, JSON_PROPERTY_VALUE);
+                obj.addProperty(JSON_PROPERTY_VALUE, properties);
                 result.add(obj);
             } else {
                 result = element.getAsJsonArray();
@@ -146,8 +172,8 @@ public class ObjectInstance implements Identable<Integer> {
             // Fallback to just creating a new object and storing the value as a single property.
             result = new JsonArray();
             JsonObject obj = new JsonObject();
-            obj.addProperty("name", "value");
-            obj.addProperty("value", properties);
+            obj.addProperty(JSON_PROPERTY_NAME, JSON_PROPERTY_VALUE);
+            obj.addProperty(JSON_PROPERTY_VALUE, properties);
             result.add(obj);
         }
         this.realProperties = result;
@@ -160,22 +186,22 @@ public class ObjectInstance implements Identable<Integer> {
      */
     public void addProperty ( String name, String value ) {
         JsonObject obj = new JsonObject();
-        obj.addProperty("name", name);
-        obj.addProperty("value", value);
+        obj.addProperty(JSON_PROPERTY_NAME, name);
+        obj.addProperty(JSON_PROPERTY_VALUE, value);
         realProperties.add(obj);
     }
 
     public void addProperty ( String name, boolean value ) {
         JsonObject obj = new JsonObject();
-        obj.addProperty("name", name);
-        obj.addProperty("value", value);
+        obj.addProperty(JSON_PROPERTY_NAME, name);
+        obj.addProperty(JSON_PROPERTY_VALUE, value);
         realProperties.add(obj);
     }
 
     public void addProperty ( String name, int value ) {
         JsonObject obj = new JsonObject();
-        obj.addProperty("name", name);
-        obj.addProperty("value", value);
+        obj.addProperty(JSON_PROPERTY_NAME, name);
+        obj.addProperty(JSON_PROPERTY_VALUE, value);
         realProperties.add(obj);
     }
 
@@ -221,4 +247,5 @@ public class ObjectInstance implements Identable<Integer> {
         this.setOffsetX(worldX % realm.getChunkWidthInPixels());
         this.setOffsetY(worldY % realm.getChunkHeightInPixels());
     }
+
 }

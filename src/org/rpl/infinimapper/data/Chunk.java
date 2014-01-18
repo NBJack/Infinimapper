@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.j256.ormlite.field.DatabaseField;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.rpl.infinimapper.data.management.Incrementable;
@@ -15,11 +16,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "chunks")
 public class Chunk implements Incrementable<Chunk, ChunkDelta>, Identable<ChunkKey> {
-	private String[] data;
-	private int userid;
-	private long lastUpdate;
+    private String[] data;
+    @DatabaseField private int userid;
+    @DatabaseField private long lastUpdate;
 
-	private ChunkKey id;
+    @DatabaseField private ChunkKey id;
 
 	/**
 	 * Default constructor. Creates a new identity-less Chunk.
@@ -79,7 +80,7 @@ public class Chunk implements Incrementable<Chunk, ChunkDelta>, Identable<ChunkK
 		this.data = parsedData;
 	}
 
-	@Column(name = "data")
+    @Column(name = "data")
 	public String getData() {
 		return StringUtils.join(data, ',');
 	}

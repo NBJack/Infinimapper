@@ -7,7 +7,7 @@ import com.j256.ormlite.table.DatabaseTable;
  * Represents a layer within a map.
  */
 @DatabaseTable(tableName="layerdata")
-public class Layer {
+public class Layer implements Identable<Integer> {
 
     public static final int UNASSIGNED_ID = -1;
 
@@ -80,5 +80,13 @@ public class Layer {
     }
 
 
+    @Override
+    public Integer getID() {
+        return id;
+    }
 
+    @Override
+    public boolean hasId() {
+        return id != UNASSIGNED_ID;
+    }
 }

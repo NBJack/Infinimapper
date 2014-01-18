@@ -1,13 +1,17 @@
 package org.rpl.infinimapper.data.management;
 
-import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
+
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.QueryBuilder;
 import org.apache.commons.lang3.Validate;
 import org.rpl.infinimapper.DBResourceManager;
 import org.rpl.infinimapper.data.Identable;
 
 import java.sql.SQLException;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * A generic Dao-backed data provider.
@@ -22,7 +26,7 @@ public class DaoDataProvider<Key, Value extends Identable<Key>>  extends DataPro
     private Dao<Value, Key> dao;
 
     public DaoDataProvider(Class clazz) throws SQLException {
-        dao = BaseDaoImpl.createDao(DBResourceManager.getConnectionSource(), clazz);
+        dao = DaoManager.createDao(DBResourceManager.getConnectionSource(), clazz);
     }
 
     /**
@@ -71,5 +75,24 @@ public class DaoDataProvider<Key, Value extends Identable<Key>>  extends DataPro
         }
     }
 
+
+    /**
+     * Grabs a new {@link QueryBuilder} to perform advanced queries for information beyond keys.
+     * @return the appropriately typed Builder object.
+     */
+    public QueryBuilder<Value, Key> getQueryBuilder() {
+        return dao.queryBuilder();
+    }
+
+    /**
+     * Runs a prepared query against the database.
+     * @param query the query to actually run. Must not be null.
+     * @return a list of results
+     * @throws SQLException if the SQL provided couldn't be executed.
+     */
+    public List<Value> runQuery(PreparedQuery<Value> query) throws SQLException {
+        Validate.notNull(query);
+        return dao.query(query);
+    }
 
 }

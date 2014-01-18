@@ -7,9 +7,12 @@ import java.sql.Timestamp;
 import org.rpl.infinimapper.WorldDB.QuickCon;
 import org.rpl.infinimapper.data.Chunk;
 import org.rpl.infinimapper.data.ChunkKey;
+import org.rpl.infinimapper.data.TilesetData;
 
 /**
- * Retrieves and pushes chunks to the database.
+ * Retrieves and pushes chunks to the database. Right now, due to some limitations with
+ * ORMLite, we must do this via SQL manually. ORMLite sadly cannot deal with complex
+ * primary keys spanning more than one field.
  * 
  * @author Ryan
  * 
@@ -19,6 +22,13 @@ public class ChunkDataProvider extends DataProvider<ChunkKey, Chunk> {
 	static final String CHUNK_RETRIEVE_QUERY = "select data, lastupdate, userid FROM chunks WHERE xcoord = ? AND ycoord = ? AND realmid = ? LIMIT 1";
 	static final String CHUNK_UPDATE_QUERY = "UPDATE chunks set data=?,lastupdate=?,userid=? WHERE xcoord = ? AND ycoord = ? AND realmid = ?";
 	static final String CHUNK_INSERT_QUERY = "INSERT INTO chunks(xcoord, ycoord, realmid, data, lastupdate, userid) VALUES (?, ?, ?, ?, ?, ?)";
+
+
+
+    public ChunkDataProvider() throws SQLException {
+        //super(Chunk.class);
+    }
+
 
 	@Override
 	public Chunk getValue(ChunkKey key) {
@@ -39,7 +49,6 @@ public class ChunkDataProvider extends DataProvider<ChunkKey, Chunk> {
 				chunk = new Chunk(key.getRealmid(), key.getXcoord(), key.getYcoord());
 				chunk.setData(results.getString(1));
 				chunk.setLastUpdate(results.getTimestamp(2).getTime());
-				System.out.println("Last time: " + chunk.getLastUpdate());
 			}
 
 		} catch (SQLException exception) {

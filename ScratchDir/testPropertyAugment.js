@@ -3,8 +3,8 @@ var g_ressources =
 [
   {
     "name": "someImage",
-    "type": "PNG",
-    "src": "some\\path\\image.png"
+    "type": "image",
+    "src": "data/sprites/image.png"
   },
   {
     "name": "player",
@@ -12,9 +12,9 @@ var g_ressources =
     "type": "png"
   },
   {
-    "name": "music1",
-    "type": "MP3",
-    "src": "music\\greatTrack.mp3",
+    "name": "DST-GameForest",
+    "type": "audio",
+    "src": "data/audio/",
     "channel": "1"
   },
   {

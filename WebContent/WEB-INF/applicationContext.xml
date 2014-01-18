@@ -35,10 +35,15 @@
         <constructor-arg name="startBackgroundFlush" value="true"/>
     </bean>
 
-    <!-- E>se the appropriate pieces to the JSP files -->
+    <!-- Else the appropriate pieces to the JSP files -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
+
+    <bean class="org.rpl.infinimapper.data.management.LayerDataProvider" name="LayerProvider" scope="singleton" />
+    <bean class="org.rpl.infinimapper.data.management.ObjectInstanceProvider" name="ObjectProvider" scope="singleton" />
+    <bean class="org.rpl.infinimapper.data.management.ObjectProvider" name="ObjectDefinitionProvider" scope="singleton" />
+
 
 
     <!-- For fun, unleash an agent that writes tiles in a randomized path -->

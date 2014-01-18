@@ -16,13 +16,22 @@ import java.util.List;
  * Time: 8:45 PM
  * To change this template use File | Settings | File Templates.
  */
-public class RealmDataProvider extends DataProvider<Integer, Realm> {
+public class RealmDataProvider extends DaoDataProvider<Integer, Realm> {
+
+    /**
+     * Initialize the provider.
+     * @throws SQLException
+     */
+    public RealmDataProvider() throws SQLException {
+        super(Realm.class);
+    }
 
     static final String REALM_RETRIEVE_QUERY = "SELECT * FROM realms WHERE id = ? LIMIT 1";
     static final String REALM_UPDATE_QUERY = "UPDATE realms SET name=?, description=?, defaulttile=?, ownerid=?, publicflag=?, sublayer=?, tileWidth=?, tileHeight=? WHERE id=?";
     static final String REALM_CREATE_QUERY = "INSERT INTO realms(name, description, defaulttile, ownerid, publicflag, sublayer, tileWidth, tileHeight, tileset) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     static final String REALM_DELETE_QUERY = "DELETE FROM realms WHERE id = ? LIMIT 1";
 
+    /*
     @Override
     public Realm getValue(Integer integer) {
         Realm realm = null;
@@ -52,7 +61,7 @@ public class RealmDataProvider extends DataProvider<Integer, Realm> {
 
         // Either not available or something went wrong. Return null.
         return null;
-    }
+    }*/
 
     /**
      * Adds or updates a realm. For now, this is a no-op.

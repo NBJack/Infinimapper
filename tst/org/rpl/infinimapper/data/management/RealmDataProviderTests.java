@@ -29,7 +29,7 @@ public class RealmDataProviderTests {
     }
 
     @Before
-    public void setup() {
+    public void setup() throws SQLException {
         realmProvider = new RealmDataProvider();
     }
 
