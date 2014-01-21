@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.Validate;
+import org.rpl.infinimapper.ImageUpload;
 import org.rpl.infinimapper.data.*;
 import org.rpl.infinimapper.data.management.ChunkCache;
 import org.rpl.infinimapper.data.management.meta.MapDataProviders;
@@ -12,6 +13,7 @@ import tiled.core.Map;
 import tiled.io.xml.XMLMapTransformer;
 
 import java.awt.*;
+import java.io.File;
 import java.util.*;
 import java.util.List;
 
@@ -31,10 +33,12 @@ public class TMXMapImporter {
     private ArrayList<Realm> realms;
     private ArrayList<Layer> layers;
     private ArrayList<TilesetAssignment> tilesetAssignments;
+    private File originPath;
 
 
     public TMXMapImporter( String filename, Point offset, MapDataProviders mapDataProviders) throws Exception {
         this.mapTransformer = new XMLMapTransformer();
+        this.originPath = new File(filename);
         this.map = mapTransformer.readMap(filename);
 
         this.mapDataProviders = mapDataProviders;
@@ -51,7 +55,7 @@ public class TMXMapImporter {
     public void processMap(boolean makePublic, int owner) throws MapProcessingException {
         processLayers(makePublic, owner);
         writeObjectsToLayer(getRealms().get(0), getObjects());
-        processTilesets(false);
+        processTilesets(true);
     }
 
     protected void processLayers(boolean makePublic, int owner) {
@@ -77,6 +81,7 @@ public class TMXMapImporter {
             realm.setPublic(makePublic);
             realm.setOwnerid(owner);
             realm.setDescription(name);
+            // NOTE: At this time, tilesets here do not matter.
             realm.setTileset(7);
             realm.setSublayer(!isFirstLayer);
             // Add it to the existing data
@@ -96,6 +101,7 @@ public class TMXMapImporter {
             // A layer will default to the visibility specified in the file
             realmLayer.setDefaultvisibility(layer.isVisible());
             layers.add(realmLayer);
+            System.out.println("Putting layer " + realmLayer.getID() + ", Realm " + realmLayer.getRealmid() + ", " + realmLayer.getName());
             mapDataProviders.layers().putValue(null, realmLayer);
             // Now, write to that layer
             writeLayerToRealm((TileLayer) layer, realm);
@@ -115,24 +121,45 @@ public class TMXMapImporter {
         processTilesets(addIfNotPresent, this.realms.get(0).getId());
     }
 
+    /**
+     * Process the tileset information available from the TMX file.
+     * @param addIfNotPresent
+     * @param assignToRealm
+     * @throws TilesetNotFoundException
+     */
     protected void processTilesets(boolean addIfNotPresent, int assignToRealm) throws TilesetNotFoundException {
         // Try to cross-reference every tileset against an equivalent
         ArrayList<TilesetData> chosenTilesets = new ArrayList<TilesetData>();
         tilesetAssignments = new ArrayList<TilesetAssignment>();
         for ( TileSet tileset : map.getTilesets() ) {
             String name = tileset.getName();
+            String fileName = tileset.getTilebmpFile();
             TilesetData usedTileset = null;
 
             if ( name.startsWith("tileset")) {
                 // Good chance this is a tileset we've worked with already.
                 String tilesetId = name.substring("tileset".length());
                 int id = Integer.parseInt(tilesetId);
-                // Query for the tileset data and use it
+                // Query for the tileset data and use it (if it exists)
                 usedTileset = mapDataProviders.tilesets().getValue(id);
+            };
 
+            // If there still isn't a tileset we can use, and we were told to do so, it's time to import.
+            // TODO: Detect an existing version of the same file (if possible) to prevent duplicates
+            if (usedTileset == null && addIfNotPresent) {
+                // Load-up the tileset
+                // Only relative names are supported.
+                File tilesetSource = new File(fileName);
+                // Assign that to our map
+                int tileID = -1;
+                try {
+                    tileID = ImageUpload.storeImage(name, "Automatically imported tileset", tileset.getTileWidth(), 1, tilesetSource);
+                } catch (Exception ex) {
+                    throw new TilesetNotFoundException(name, ex);
+                }
+                // Now, get the results
+                usedTileset = mapDataProviders.tilesets().getValue(tileID);
             }
-
-            // TODO: Load that tileset
 
             // Did we find everything successfully?
             if (usedTileset == null) {
@@ -155,6 +182,10 @@ public class TMXMapImporter {
     }
 
 
+    /**
+     * Retrieve all of the layers assigned to this map.
+     * @return
+     */
     public List<MapLayer> getLayers() {
 
         List<MapLayer> layers = new ArrayList<MapLayer>(map.getTotalLayers());

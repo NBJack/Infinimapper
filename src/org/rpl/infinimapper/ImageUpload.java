@@ -15,12 +15,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.lang.IllegalArgumentException;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.rpl.infinimapper.security.AuthMan;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.List;
 
@@ -67,8 +72,6 @@ public class ImageUpload extends HttpServlet
 		String				imgDescription;
 		int					tileWidth;
 		int					tileCount;
-		Connection			conn;
-		PreparedStatement	prep;
 		DiskFileItemFactory		fileFactory;
 		ServletFileUpload	upldHandler;
 		List<FileItem>		reqList;
@@ -82,8 +85,6 @@ public class ImageUpload extends HttpServlet
 		
 		//	Initialize our variables
 		
-		conn 		= null;
-		prep 		= null;
 		imgName		= null;
 		imgDescription = null;
 		tileWidth	= -1;
@@ -110,7 +111,7 @@ public class ImageUpload extends HttpServlet
 		}
 		
 		//	Check for a valid user ID and check for the right to add images
-		
+		/*
 		if ( userid == null || !AuthMan.doesUserHaveRight(userid, AuthMan.Rights.AddImages) )
 		{
 			response.sendError(401, "You are not authorized to add images.");			
@@ -118,7 +119,7 @@ public class ImageUpload extends HttpServlet
 			
 			return;
 		}
-		
+		*/
 		
 		
 		System.out.println("New request.");
@@ -180,43 +181,8 @@ public class ImageUpload extends HttpServlet
 			System.out.println("All parameters read.");
 			
 			//System.out.println("Temp file: " + tempTileFile.getName());
-			
-			//	Is the image OK?
-				
-			imgDim = validateImageAndFindDimensions(rawBytes);
-			
-			//	Is everything we need available?
-			
-			if ( imgName == null 
-			|| 	tileWidth == -1 
-			||	tileCount == -1
-			|| 	rawBytes == null )
-				throw new Exception("Insufficient parameters were provided. (" + imgName + ", " + tileWidth + "," + tileCount + "," + tempTileFile + ")");
-						
-			System.out.println("Parameters needed were found.");
-						
-			//	We'll need a connection 
-	
-			conn = DBResourceManager.getConnection();
-			
-			prep = conn.prepareStatement(DB_IMG_UPLOAD);			
-			
-			//	Prepare the statement
-			
-			prep.setString( 1, 	imgName);
-			prep.setBytes(2, 	rawBytes);
-			prep.setInt( 3,		tileCount);
-			prep.setInt( 4, 	tileWidth);
-			prep.setString( 5, 	imgDescription);
-			prep.setInt( 6, imgDim.width);
-			prep.setInt( 7, imgDim.height);
-			//	Execute
-			
-			prep.execute();
-			
-			
-			System.out.println("Images uploaded!");
-						
+
+            storeImage(imgName, imgDescription, tileWidth, tileCount, rawBytes);
 			
 			//	Close any active streams
 			
@@ -238,32 +204,101 @@ public class ImageUpload extends HttpServlet
 		{
 			ex.printStackTrace();			
 			response.sendError(200, "The image was not uploaded successfully: " + ex.toString());		
-		}
+		} finally {
+
+            try {
+                if ( tempTileFile != null )
+                    tempTileFile.delete();
+            } catch (Exception ex) {}
+        }
 		
 		//
 		//	Clean up resources safely; ignore any problems beyond this point.
 		//
 		
-		try{
-			if ( prep != null )
-				prep.close();
-		} catch ( SQLException sqex ) {};
-		
-		try{
-			if ( conn != null )
-				conn.close();
-		} catch ( SQLException sqex ) {};
-		
-		try {
-			if ( tempTileFile != null )
-				tempTileFile.delete();
-		} catch (Exception ex) {}			
 	}
 
-	
-	
-	
-	/**
+    /**
+     * Store a file already on disk.
+     * @param imgName
+     * @param imgDescription
+     * @param tileWidth
+     * @param tileCount
+     * @param sourceFile
+     * @throws Exception
+     */
+    public static int storeImage( String imgName, String imgDescription, int tileWidth, int tileCount, File sourceFile) throws Exception
+    {
+        // Stream the file into a byte stream
+        byte [] rawBytes = Files.readAllBytes(Paths.get(sourceFile.getAbsolutePath()));
+
+        return storeImage(imgName, imgDescription, tileWidth, tileCount, rawBytes);
+    }
+
+    /**
+     * Store an image, provided as a raw series of bytes in its original format, to the data store.
+     * @param imgName
+     * @param imgDescription
+     * @param tileWidth
+     * @param tileCount
+     * @param rawBytes
+     * @throws Exception
+     */
+    public static int storeImage(String imgName, String imgDescription, int tileWidth, int tileCount,  byte[] rawBytes) throws Exception {
+        Dimension imgDim;WorldDB.QuickCon conn = null;
+
+        try {
+
+            //	Is the image OK?
+            imgDim = validateImageAndFindDimensions(rawBytes);
+
+            //	Is everything we need available?
+
+            if ( imgName == null
+            || 	tileWidth == -1
+            ||	tileCount == -1
+            || 	rawBytes == null )
+                throw new IllegalArgumentException("Insufficient parameters were provided. (" + imgName + ", " + tileWidth + "," + tileCount + ")");
+
+            System.out.println("Parameters needed were found.");
+
+            //	We'll need a connection
+            conn = new WorldDB.QuickCon(DB_IMG_UPLOAD);
+
+            //	Prepare the statement
+            PreparedStatement prep = conn.getStmt();
+            prep.setString( 1,	imgName);
+            prep.setBytes(2, rawBytes);
+            prep.setInt( 3,	tileCount);
+            prep.setInt( 4, tileWidth);
+            prep.setString( 5, imgDescription);
+            prep.setInt( 6, imgDim.width);
+            prep.setInt( 7, imgDim.height);
+
+            //	Execute
+            prep.execute();
+
+            // Get the generate keys
+            int assignedID = -1;
+            ResultSet genKeys = prep.getGeneratedKeys();
+            if ( genKeys.next() ) {
+                assignedID = genKeys.getInt(1);
+            } else {
+                throw new Exception("There was a problem retrieving the generated keys after insertion!");
+            }
+            System.out.println("Images uploaded! Assigned ID: " + assignedID);
+
+            return assignedID;
+
+        } finally {
+            if ( conn != null ) {
+                conn.release();
+            }
+        }
+    }
+
+
+    /**
 	 * Write-out a stream to disk.
 	 * 
 	 * @param is
@@ -328,40 +363,31 @@ public class ImageUpload extends HttpServlet
 	/**
 	 * Determines the dimensions of an image on disk.
 	 * 
-	 * @param imgLoc
+	 * @param rawData The raw information about the image.
 	 * @return
 	 * @throws IOException
 	 */
-	Dimension validateImageAndFindDimensions ( byte [] rawData ) throws IOException
+	private static Dimension validateImageAndFindDimensions ( byte [] rawData ) throws IOException
 	{
 		Dimension		result;
 		BufferedImage	bImg;
 		ByteArrayInputStream	bArr;
-		
-		
-		
+
 		//	Create the byte buffer
-		
 		bArr = new ByteArrayInputStream(rawData);
-		
 		//	Read the image
-		
-		bImg = ImageIO.read(bArr);			
+		bImg = ImageIO.read(bArr);
 		
 		//	TODO: Validate this is a PNG file.
-		
 		//	Calculate the dimensions
-		
 		result = new Dimension(bImg.getWidth(), bImg.getHeight());
 		
 		//	Cleanup and try to help the GC 
-		
 		bArr.close();
 		bArr = null;
 		bImg = null;
 		
 		//	Return the result
-		
 		return result;
 	}
 }

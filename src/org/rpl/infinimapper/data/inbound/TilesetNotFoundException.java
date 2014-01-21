@@ -12,4 +12,8 @@ public class TilesetNotFoundException extends MapProcessingException {
         super("Could not find tileset '" + name  + "'");
     }
 
+    public TilesetNotFoundException(String name, Exception origin) {
+        super("Could not find tileset '" + name + "'", origin);
+    }
+
 }

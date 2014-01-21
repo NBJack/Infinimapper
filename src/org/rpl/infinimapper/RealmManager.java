@@ -80,7 +80,7 @@ public class RealmManager extends HttpServlet {
 		}
 		
 		//	Check for a valid user ID and check for the right to add realms
-		
+	/**
 		if ( userid == null || !AuthMan.doesUserHaveRight(userid, AuthMan.Rights.AddRealms) )
 		{
 			response.sendError(401, "You are not authorized to add realms.");			
@@ -88,7 +88,7 @@ public class RealmManager extends HttpServlet {
 			
 			return;
 		}
-		
+    */
 		//	Init the DB parameters
 		
 		c   = null;

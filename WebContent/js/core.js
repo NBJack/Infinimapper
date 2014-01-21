@@ -1466,6 +1466,13 @@ http://www.ryanlayfield.com/
         if ( sessionStorage ) {
             sessionStorage.setItem("mouseX", mouseX);
             sessionStorage.setItem("mouseY", mouseY);
+            if ( isNaN(mouseX) ) {
+                mouseX = 0;
+            }
+            if ( isNaN(mouseY) ) {
+                mouseY = 0;
+            }
+
         }
 
 		offsetX = mouseX;

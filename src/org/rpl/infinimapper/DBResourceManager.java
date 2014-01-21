@@ -101,6 +101,7 @@ public class DBResourceManager implements ServletContextListener {
 		commPool.setPassword(dbConfig.getProperty("db.password"));
 		commPool.setMaxIdleTime(Integer.parseInt(dbConfig.getProperty("db.maxIdleTime", "180")));
 
+
 		AuthMan.setSalt(dbConfig.getProperty("pw.finalsalt"));
 
 		// Test the database

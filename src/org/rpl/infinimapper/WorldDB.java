@@ -252,7 +252,6 @@ public class WorldDB extends HttpServlet {
                     int tileY = Integer.parseInt(idSet[1]);
 					log.finest("Getting all objects from realm " + idSet[2]);
 
-					//set = st.executeQuery();
                     Realm objRealm = realmCache.getValue(Integer.parseInt(idSet[2]));
                     List<ObjectInstance> objects = objectProvider.getObjectsOnChunk(objRealm, tileX, tileY);
 
