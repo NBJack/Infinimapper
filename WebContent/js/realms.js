@@ -22,7 +22,6 @@ http://www.ryanlayfield.com/
 **********************************************************************************/
 
 
-var oldTilesetID;			// Stores our prior tileset; if it's a match in the new realm, don't bother reloading graphics.
 var pauseEditing;			// When true, pause editing while the realm loads
 var resourceCountdown;		// Keeps track of the number of resources we want present before we continue
 
@@ -38,8 +37,6 @@ function changeRealm ( rid, clearPosition )
 	// Note: Some error checking should be performed on ID's
 	// existance!
 	
-	oldTilesetID = realmInfo.tileset;
-
 	pauseEditing = true;
 	
 	loadJS("js/realmInfo.jsp?id=" + rid, realmDataLoaded );
@@ -63,23 +60,12 @@ function changeRealm ( rid, clearPosition )
 
 /**
  * Phase 2 of the loading; script is done, we have our information
- * on the realm. If the tileset has changed, change the graphics.
+ * on the realm. The tileset should always be reloaded.
  */
 function realmDataLoaded ()
 {
-	// Check; do we need to do anything else?
-	
-	if ( realmInfo.tileset == oldTilesetID )
-	{
-		// Skip to the last step.
-		
-		finishSetup();
-
-	} else {		
-	
-		constructImageSets();
-	}
-	
+    // Always construct the image sets
+    constructImageSets();
 }
 
 function constructImageSets ()
@@ -90,7 +76,7 @@ function constructImageSets ()
 	if ( imageInfo.supplement ) {
 		resourceCountdown = imageInfo.supplement.length;
 	} else {
-        resourceCountdown = 1;
+        alert("I don't know how many tilesets to look for.")
     }
 			
 	
@@ -110,10 +96,7 @@ function constructImageSets ()
 		}
 		
 	} else {
-        imageSet[0] = new Image();
-        imageSet[0].src = "FetchTiles?ref=realmFetch&id=" + realmInfo.tileset;
-        imageSet[0].onload = deferredStart;
-        imageSet[0].tileSetIndex = 0;
+        alert("Supplemental image information was NOT available. I can't load the tilesets!");
     }
 }
 

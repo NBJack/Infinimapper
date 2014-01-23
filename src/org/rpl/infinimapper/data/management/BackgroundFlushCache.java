@@ -126,7 +126,7 @@ public class BackgroundFlushCache<Key, T extends Incrementable<T, Delta> & Ident
 			// Apply the delta and update the wrapper.
 			T oldValue = wrapper.getValue();
 			if (oldValue == null) {
-				// We need somethign to write to.
+				// We need something to write to.
 				oldValue = handleEmptyWrite(key);
 			}
 			T newValue = oldValue.applyDelta(delta);

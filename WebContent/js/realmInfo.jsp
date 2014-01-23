@@ -1,59 +1,35 @@
 <%@page import="org.rpl.infinimapper.*, java.sql.*, java.util.*"%>
 <%@page import="org.rpl.infinimapper.data.export.*"%>
         <%@ page import="org.springframework.web.context.support.*"%>
-        <%@ page import="org.springframework.web.context.WebApplicationContext"%><%@ page import="org.rpl.infinimapper.data.management.RealmCache"%><%@ page import="org.rpl.infinimapper.data.Realm"%>
+        <%@ page import="org.springframework.web.context.WebApplicationContext"%><%@ page import="org.rpl.infinimapper.data.management.RealmCache"%><%@ page import="org.rpl.infinimapper.data.Realm"%><%@ page import="org.rpl.infinimapper.data.TilesetData"%><%@ page import="org.rpl.infinimapper.data.management.TilesetProvider"%><%@ page import="org.rpl.infinimapper.data.management.TilesetAssignmentProvider"%><%@ page import="org.rpl.infinimapper.data.TilesetAssignment"%>
         <%@ page language="java" contentType="text/javascript; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%
-        WebApplicationContext appCon = WebApplicationContextUtils.getWebApplicationContext(application);
- Enumeration e = application.getAttributeNames();
+WebApplicationContext appCon = WebApplicationContextUtils.getWebApplicationContext(application);
 
-%>
-<% 
-String				realmID;
-Connection			c;
-PreparedStatement	prepSt;
-ResultSet			set;
+//	Retrieve the realm information request. Not how I like to do it, but necessary until I
+//  get Spring hosting this information.
 
-
-
-c = null; 
-prepSt = null;
-set = null;
-
-
-//	Retrieve the realm information request
-
-realmID = request.getParameter("id");
+String realmID = request.getParameter("id");
 RealmCache realmCache = (RealmCache) appCon.getBean("RealmCache");
 Realm realm = realmCache.getValue(Integer.parseInt(realmID));
 
-if ( realmID == null )
-{
-%>
+if ( realm == null ) {
 
-var realmLoadError = 'Could not retrieve the requested tile sets information';
+    %> alert("Could not locate the specified realm!"); <%
+}
 
-<%	
-} else {
+// Retrieve the tileset information from the first tileset present
+TilesetAssignmentProvider tileAssignProvider = (TilesetAssignmentProvider) appCon.getBean("TilesetAssignmentProvider");
+TilesetProvider tilesetProvider = (TilesetProvider) appCon.getBean("TilesetProvider");
+List<TilesetAssignment> assignments = tileAssignProvider.getAllTilesetsForRealm(realm);
+TilesetData tileset = tilesetProvider.getValue(assignments.get(0).getTilesetId());
 
-c = DBResourceManager.getConnection();
-
-//	Ask about the realm information and tile information in a single query.
-
-prepSt = c.prepareStatement("SELECT rlm.name,rlm.description,rlm.tileset,rlm.defaulttile,tile.name,tile.tilecount,tile.tilewidth,tile.defaulttile,tile.usebackground,tile.description,tile.border,tile.spacing FROM realms as rlm, tilelib as tile WHERE rlm.id=? AND tile.id=rlm.tileset;");
-
-prepSt.setInt(1, Integer.parseInt(realmID));
-
-set = prepSt.executeQuery();
+// Prepare the way by assigning the major data points to the request, allowing use of EL (which is how Spring will deliver in the future).
+request.setAttribute("realm", realm);
+request.setAttribute("tilesetInfo", tileset);
 
 
-if (!set.next())
-{
-	%>
-	var realmLoadError = 'Could not retrieve the requested tile sets information';
-	<%
-} else {
 
 	// Fill-out the javascript template.
 %>
@@ -69,53 +45,30 @@ var tileScale;
 
 realmInfo            = new Object();
 
-realmInfo.id          = <%= realmID %>;                          // <%= realm.getId() %>
-realmInfo.name        = "<%= set.getString(1) %>";               // <%= realm.getName() %>
-realmInfo.description = "<%= DataTools.prepStringForJavascript(set.getString(2)) %>"; // <%= realm.getDescription() %>
-realmInfo.tileset     = <%= set.getInt(3) %>;
-realmInfo.tiledefault = <%= set.getInt(4) %>;                    // <%= realm.getDefaulttile()%>
-realmInfo.layers = <%= RealmManager.getLayerDataObject(Integer.parseInt(realmID)) %>;
+realmInfo.id          = ${realm.id};
+realmInfo.name        = "${realm.name}";
+realmInfo.description = "<%= DataTools.prepStringForJavascript(realm.getDescription()) %>";
+realmInfo.tiledefault = ${realm.defaulttile};
+realmInfo.layers = <%= RealmManager.getLayerDataObject(realm.getId()) %>;
 
 // The tileset data
-
+// TODO: Get the information on the first tileset from a provider.
 imageInfo           = new Object();
 
-imageInfo.id        = <%= set.getInt(3) %>;
-imageInfo.name      = "<%= set.getString(5)%>;";
-imageInfo.tilecount = <%=set.getInt(6)%>;
-imageInfo.tilewidth = <%=set.getInt(7)%>;                        // <%= realm.getTileWidth() %>
-imageInfo.tileheight= <%=set.getInt(7)%>;                        // <%= realm.getTileHeight() %>
+imageInfo.id        = ${tilesetInfo.id};
+imageInfo.name      = "${tilesetInfo.name}";
+imageInfo.tilecount = 1;
+imageInfo.tilewidth = ${realm.tileWidth};
+imageInfo.tileheight= ${realm.tileHeight};
 imageInfo.tilesPerRow = 3;
-imageInfo.tiledefault= <%=set.getInt(8)%>;                       // <%= realm.getDefaulttile() %>
+imageInfo.tiledefault= ${realm.defaulttile};
 imageInfo.useBackground = true;
-imageInfo.description = "<%=DataTools.prepStringForJavascript(set.getString(10))%>";
+imageInfo.description = "<%=DataTools.prepStringForJavascript(realm.getDescription())%>";
 
-imageInfo.supplement = <%= Arrays.toString(TilesetExport.getSupplementalTilesetsForRealm(Integer.parseInt(realmID)).toArray()) %>;
+imageInfo.supplement = <%= Arrays.toString(TilesetExport.getSupplementalTilesetsForRealm(realm.getId()).toArray()) %>;
 
-imageInfo.border      = <%=set.getInt(11)%>;
-imageInfo.gap         = <%=set.getInt(12)%>;
+imageInfo.border      = ${tilesetInfo.border};
+imageInfo.gap         = ${tilesetInfo.spacing};
 
-tileScale = <%=set.getInt(7)%>;
+tileScale = ${tilesetInfo.tileWidth};
 
-<%
-
-}
-}
-
-// Free up resources
-
-try {
-	
-	c.close();
-	
-	if ( set != null )
-		set.close();
-	
-	if ( prepSt != null )
-		prepSt.close();
-	
-} catch ( Exception ex )
-{
-
-}
-%>

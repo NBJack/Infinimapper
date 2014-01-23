@@ -16,6 +16,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "chunks")
 public class Chunk implements Incrementable<Chunk, ChunkDelta>, Identable<ChunkKey> {
+
+    public static final int EMPTY_TILE = -1;
+
     private String[] data;
     @DatabaseField private int userid;
     @DatabaseField private long lastUpdate;

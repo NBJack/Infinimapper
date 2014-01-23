@@ -26,10 +26,8 @@ public class TilesetProvider extends DaoDataProvider<Integer, TilesetData> {
      * @throws SQLException
      */
     public List<TilesetData> getListOfTilesets() throws SQLException {
-        QueryBuilder<TilesetData, Integer> query = this.getQueryBuilder();
-
-        PreparedQuery<TilesetData> preparedQuery = query.prepare();
-        return runQuery(preparedQuery);
-
+        return this.getQueryBuilder().query();
     }
+
+
 }

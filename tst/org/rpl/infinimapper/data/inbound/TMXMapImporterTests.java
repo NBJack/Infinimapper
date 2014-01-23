@@ -27,6 +27,8 @@ public class TMXMapImporterTests {
 
     private static final String GOOD_FILE_NAME = "TestData\\map7.tmx";
     private static final String TINY_FILE_NAME = "TestData\\tinyTest.tmx";
+    private static final String BLANK_FILE_NAME = "TestData\\emptyTest.tmx";
+    private static final String SETUP_FILE_NAME = "Setup\\coreMap\\TinyIsle.tmx";
     private Point ROOT_ORIGIN = new Point(0,0);
     private MapDataProviders providers;
 
@@ -72,5 +74,29 @@ public class TMXMapImporterTests {
         providers.realms().flushCacheChanges();
         providers.chunks().flushCacheChanges();
     }
+
+    @Test
+    public void testImporterCore() throws Exception, MapProcessingException {
+        TMXMapImporter importer = new TMXMapImporter(SETUP_FILE_NAME, ROOT_ORIGIN, providers);
+
+        importer.setName("TestImport Core - " + new Date());
+        importer.processMap(true, -1);
+
+        providers.realms().flushCacheChanges();
+        providers.chunks().flushCacheChanges();
+    }
+
+    @Test
+    public void testImporterBlank() throws Exception, MapProcessingException {
+        TMXMapImporter importer = new TMXMapImporter(BLANK_FILE_NAME, ROOT_ORIGIN, providers);
+
+        importer.setName("TestImport Blank - " + new Date());
+        importer.processMap(true, -1);
+
+        providers.realms().flushCacheChanges();
+        providers.chunks().flushCacheChanges();
+    }
+
+
 
 }

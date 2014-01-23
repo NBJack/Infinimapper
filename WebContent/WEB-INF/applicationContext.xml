@@ -43,6 +43,8 @@
     <bean class="org.rpl.infinimapper.data.management.LayerDataProvider" name="LayerProvider" scope="singleton" />
     <bean class="org.rpl.infinimapper.data.management.ObjectInstanceProvider" name="ObjectProvider" scope="singleton" />
     <bean class="org.rpl.infinimapper.data.management.ObjectProvider" name="ObjectDefinitionProvider" scope="singleton" />
+    <bean class="org.rpl.infinimapper.data.management.TilesetAssignmentProvider" name="TilesetAssignmentProvider" scope="singleton" />
+    <bean class="org.rpl.infinimapper.data.management.TilesetProvider" name="TilesetProvider" scope="singleton" />
 
 
 

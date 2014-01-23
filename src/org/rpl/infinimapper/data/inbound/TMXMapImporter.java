@@ -83,6 +83,7 @@ public class TMXMapImporter {
             realm.setDescription(name);
             // NOTE: At this time, tilesets here do not matter.
             realm.setTileset(7);
+            realm.setDefaulttile(Chunk.EMPTY_TILE);
             realm.setSublayer(!isFirstLayer);
             // Add it to the existing data
             mapDataProviders.realms().addEntry(realm);

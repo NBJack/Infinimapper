@@ -147,8 +147,12 @@ http://www.ryanlayfield.com/
 			//	Export current realm (TODO: Offer an advanced dialog)
 			
 			window.open("ExportRealm?realmid=" + realmInfo.id);
-			window.open("FetchTiles?id=" + realmInfo.tileset + "&download=true");
-			
+
+            // TODO: This isn't enough. I need to download ALL tilesets
+            if (imageInfo.supplement) {
+                window.open("FetchTiles?id=" + imageInfo.supplement[0] + "&download=true");
+            }
+
 		} else if ( src.id == "toolAbout")
 		{
 			//	Display a quick pop-up about the current realm. TODO: Make this an iframe!

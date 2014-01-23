@@ -21,6 +21,7 @@ public class TilesetData implements Identable<Integer> {
     @DatabaseField(columnName="fullheight") private int height;
     @DatabaseField private int border;
     @DatabaseField private int spacing;
+    @DatabaseField private String name;
 
     public String getDescription() {
         return description;
@@ -79,6 +80,10 @@ public class TilesetData implements Identable<Integer> {
 		this.width = width;
 	}
 
+    /**
+     * Gets the overall width of the image holding the tiles.
+     * @return the image width.
+     */
 	public int getWidth() {
 		return width;
 	}
@@ -87,6 +92,10 @@ public class TilesetData implements Identable<Integer> {
 		this.height = height;
 	}
 
+    /**
+     * Gets the overall height of the image holding the tiles.
+     * @return the image height.
+     */
 	public int getHeight() {
 		return height;
 	}
@@ -95,6 +104,10 @@ public class TilesetData implements Identable<Integer> {
 		this.border = border;
 	}
 
+    /**
+     * Gets the border in pixels surrounding the tiles.
+     * @return
+     */
 	public int getBorder() {
 		return border;
 	}
@@ -103,19 +116,45 @@ public class TilesetData implements Identable<Integer> {
 		this.spacing = spacing;
 	}
 
+    /**
+     * Gets the spacing between the tiles.
+     * @return tile spacing.
+     */
 	public int getSpacing() {
 		return spacing;
 	}
 
+    /**
+     * Gets the uniform width of each tile.
+     * @return each tile's width.
+     */
 	public int getTileWidth() {
 		return DEFAULT_TILE_WIDTH;
 	}
 
+    /**
+     * Gets the uniform height of each tile.
+     * @return each tile's height.
+     */
 	public int getTileHeight() {
 		return DEFAULT_TILE_HEIGHT;
 	}
 
-	/**
+    /**
+     * Gets the name of the tileset.
+     * @return the tileset name.
+     */
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    /**
 	 * Based on the given tile dimensions, calculate the total number of tiles
 	 * in the set. This is a convenience function useful to help figure out GIDs
 	 * in a set. The border and spacing are taken into account.
