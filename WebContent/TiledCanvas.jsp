@@ -57,8 +57,8 @@ initialY	 = 0;
 <meta name="viewport"
     content="user-scalable=no, width=device-width" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
-<!-- <script src="js/dojo/dojo.uncompressed.js" djConfig="parseOnLoad: true"></script> -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script> -->
+<script src="js/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
 <title>Infinimapper v0.80alpha</title>
 <body onload="setup()" style="background-color:#000000; margin: 0px;" oncontextmenu="return false;" ontouchmove="blockEvent();" >
 <table id='menubar' width=200 height=36>
@@ -143,7 +143,7 @@ initialY	 = 0;
         <c:set var="initialRealm" value="${param.realm}" />
     </c:when>
     <c:otherwise>
-        <c:set var="initialRealm" value="40" />
+        <c:set var="initialRealm" value="33" />
     </c:otherwise>
 
 </c:choose>

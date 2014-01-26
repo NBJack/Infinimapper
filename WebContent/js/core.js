@@ -675,9 +675,10 @@ http://www.ryanlayfield.com/
 		dy = Math.floor(realY / tileScale);
 
 		//updateStatus.innerHTML = dx + "," + dy + "(" + realY + ") " + mouseY;
-		
+        updateStatus.innerHTML = "Tile: " + dx + "," + dy
 
-		// Find the chunk
+
+        // Find the chunk
 
 		drawingChunk = findChunkByTile(dx, dy, editorState.draw.currentLayer.realmid);
 		
@@ -966,8 +967,7 @@ http://www.ryanlayfield.com/
 		mouseOldX   = pX;
 		mouseOldY   = pY;
 
-		updateStatus.innerHTML = "M: " + mouseX + "," + mouseY
-		
+
 		//console.log("Click event type: " + type);
 
 		if ( type == 2 || editorState.draw.paintMode == -1 )

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
+  <image source="grass.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="19" name="water" tilewidth="32" tileheight="32">
+  <image source="water.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="37" name="hole" tilewidth="32" tileheight="32">
+  <image source="hole.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="55" name="waterfall" tilewidth="32" tileheight="32">
+  <image source="waterfall.png" width="96" height="160"/>
+ </tileset>
+ <tileset firstgid="70" name="rock" tilewidth="32" tileheight="32">
+  <image source="rock.png" width="64" height="32"/>
+ </tileset>
+ <tileset firstgid="72" name="trunk" tilewidth="32" tileheight="32">
+  <image source="trunk.png" width="192" height="96"/>
+ </tileset>
+ <tileset firstgid="90" name="treetop" tilewidth="32" tileheight="32">
+  <image source="treetop.png" width="192" height="224"/>
+ </tileset>
+ <tileset firstgid="132" name="mountains" tilewidth="32" tileheight="32">
+  <image source="mountains.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="240" name="house" tilewidth="32" tileheight="32">
+  <image source="house.png" width="288" height="224"/>
+ </tileset>
+ <tileset firstgid="303" name="cabinets" tilewidth="32" tileheight="32">
+  <image source="cabinets.png" width="192" height="416"/>
+ </tileset>
+ <tileset firstgid="381" name="kitchen" tilewidth="32" tileheight="32">
+  <image source="kitchen.png" width="64" height="128"/>
+ </tileset>
+ <tileset firstgid="389" name="stairs" tilewidth="32" tileheight="32">
+  <image source="stairs.png" width="256" height="448"/>
+ </tileset>
+ <tileset firstgid="501" name="chests" tilewidth="32" tileheight="32">
+  <image source="chests.png" width="64" height="96"/>
+ </tileset>
+ <tileset firstgid="507" name="barrel" tilewidth="32" tileheight="32">
+  <image source="barrel.png" width="128" height="64"/>
+ </tileset>
+ <tileset firstgid="515" name="victoria" tilewidth="32" tileheight="32">
+  <image source="victoria.png" width="352" height="160"/>
+ </tileset>
+ <tileset firstgid="570" name="country" tilewidth="32" tileheight="32">
+  <image source="country.png" width="160" height="128"/>
+ </tileset>
+ <tileset firstgid="590" name="shadow" tilewidth="32" tileheight="32">
+  <image source="shadow.png" width="160" height="64"/>
+ </tileset>
+ <layer name="master" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2KsOAjEURdEO4EAS3Az//3c8FGCoQNQNQdDTZIklm7TdormdSykzQztOpRyq09R/L1S1w1Kd9ejv02LR5C/2Ky7VtXH7Yk3vM41s7W4f1bPx0qNbi7bHXY+IHpv6Xmwbu0mPnj1+0ftco9Ijix5Z9MikRx498uiRR48s7hsAAEhhPslhPs+iRxY9svhTzKJHFj2y6JFFjyx6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAY3hSwYTU=
+  </data>
+ </layer>
+ <layer name="decoration" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1btOwzAYBtBkRkyUawHBzB3eAdQFGIABGIAn4cEZ+KumQ60kgE2FUM+RPqmO4yrKJ8dVxX+yk2Spnp1frvvv35n/Iy60QfL+1+rJO3+MPEWeq9kO9PE3XiKvkbeWOZ3kG0T2etJmOjdquX+10keJ3YK1o2S8EtlufjtLfm68N/Yz115HbiK3yfW0D518X9veuOq49yMZ30XuIw/JdX3kK/lWddFHvtw+3uvuOedHvpw+0u/ZQeQwctSM9ZFvPbIVGUYuM//jOHISOW3G+ig37mWYubatD2dHub5O+vZO1/6gXM4+OYucRy6asT5+11dn/GY1OXO6sjHXp1s80zPe+wYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoM0nq98Utg==
+  </data>
+ </layer>
+ <layer name="overlay" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0cEJgDAQBMCLFWoTav+I+NP4MzZwhMzAsfdc2Ah6d2YXoHFnF4COLFPEWnOrt2eXGdD1y3cP8pTSpj3yHZ9/tgcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzlAavGB14=
+  </data>
+ </layer>
+ <layer name="collision" width="100" height="100" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T+1lC6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAbnEAAAQ==
+  </data>
+ </layer>
+</map>
