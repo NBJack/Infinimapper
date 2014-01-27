@@ -153,7 +153,12 @@ http://www.ryanlayfield.com/
 			console.log(txt);
 	}
 	
+    function updateMapStatus()
+    {
+        // Show the coordinates of the current tile (in the upper-left corner)
+        mapStatusBar.innerHTML = "T:" + Math.floor(mouseX / tileScale) + "," + Math.floor(mouseY / tileScale);
 
+    }
 
 	function buildAndShowBookmark ()
 	{
@@ -923,8 +928,7 @@ http://www.ryanlayfield.com/
 		var	dx, dy;
 		var 	drawingChunk;
 
-
-		
+        updateMapStatus();
 
 		//	Adjust offsets
 
@@ -1339,6 +1343,7 @@ http://www.ryanlayfield.com/
 		updateStatus = document.getElementById('updateStatus');
 		mainscreen = document.getElementById('mainscreen');
 		currentPaintPreview = document.getElementById('currentPaintPreview');
+        mapStatusBar = document.getElementById('mapStatus');
 
 		// Setup graphics on our canvas
 
@@ -1431,24 +1436,28 @@ http://www.ryanlayfield.com/
 		var baseSpeed = 1;
 		if ( isKeyDown(KEY_SHIFT))
 		{
-			baseSpeed = 3;
+			baseSpeed = 4;
 		}
 
 		if ( isKeyDown(KEY_LEFT) )
 		{
 			mouseX -= 500 * secPassed * baseSpeed;
+            updateMapStatus();
 		} else if ( isKeyDown(KEY_RIGHT) )
 		{
 			mouseX += 500 * secPassed * baseSpeed;
-		} 
+            updateMapStatus();
+		}
 		
 		if ( isKeyDown(KEY_UP) )
 		{
 			mouseY -= 500 * secPassed * baseSpeed;
+            updateMapStatus();
 		} else if ( isKeyDown(KEY_DOWN) )
 		{
 			mouseY += 500 * secPassed * baseSpeed;
-		} 
+            updateMapStatus();
+		}
 
 		//
 		// Refresh our chunks periodically

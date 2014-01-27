@@ -104,8 +104,9 @@ initialY	 = 0;
 
 	if ( userName == null )
 		userName = "<a href='login.jsp'>Login</a>";
-	%>
-	<span style="color:#FFFFFF;height:34px;float: right;font-size:31px;" id="loginStatus"><%= userName %></span>-->
+	%>  -->
+	<span style="color:#FFFFFF;height:34px;float: right;font-size:31px;" id="mapStatus">0,0</span>
+
 	</div>
 </td></tr>
 </tbody>
