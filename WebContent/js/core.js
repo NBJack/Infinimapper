@@ -1333,6 +1333,8 @@ http://www.ryanlayfield.com/
 		return false;
 	}
 
+    var liveSocket;
+
 	function setup ()
 	{
 		// Grab our basic elements of interest
@@ -1389,6 +1391,17 @@ http://www.ryanlayfield.com/
 		mainscreen.ontouchmove= touchCap;
 		mainscreen.ontouchend  =touchEnd;
 		mainscreen.ontouchabort=touchEnd;
+
+        // Attempt to establish a websocket link
+        liveSocket = new WebSocket('ws://localhost:8080/UpdateSocket')
+
+        if ( liveSocket != null ) {
+            liveSocket.send("I'm ALLIIIVVEE!");
+        }
+
+        liveSocket.onmessage = new function(msg) {
+            alert(msg);
+        }
 
 		//	Start timer
 

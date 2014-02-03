@@ -82,6 +82,12 @@
         <servlet-name>BuildAndPlay</servlet-name>
         <servlet-class>org.rpl.infinimapper.BuildAndPlay</servlet-class>
     </servlet>
+    <servlet>
+        <description>Allows clients to create socket connections via WebSockets</description>
+        <display-name>UpdateSocket</display-name>
+        <servlet-name>UpdateSocket</servlet-name>
+        <servlet-class>org.rpl.infinimapper.websocket.EventSocket</servlet-class>
+    </servlet>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>
@@ -132,6 +138,10 @@
     <servlet-mapping>
         <servlet-name>RealmFromTemplate</servlet-name>
         <url-pattern>/MakeMap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSocket</servlet-name>
+        <url-pattern>/UpdateSocket</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
 		<welcome-file>index.html</welcome-file>

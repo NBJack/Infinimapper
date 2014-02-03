@@ -16,6 +16,7 @@ public class EventSocket extends WebSocketServlet {
 
     @Override
     protected StreamInbound createWebSocketInbound(String s, HttpServletRequest httpServletRequest) {
-        return null;
+        System.out.println("ATTEMPED CONNECTION: " );
+        return new EventMessagingInbound();
     }
 }
