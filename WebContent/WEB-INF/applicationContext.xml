@@ -46,7 +46,11 @@
     <bean class="org.rpl.infinimapper.data.management.TilesetAssignmentProvider" name="TilesetAssignmentProvider" scope="singleton" />
     <bean class="org.rpl.infinimapper.data.management.TilesetProvider" name="TilesetProvider" scope="singleton" />
 
-
+    <!-- WebSocket eventing system -->
+    <bean class="org.rpl.infinimapper.eventing.UpdateCollector" name="UpdateHandler" scope="singleton" />
+    <bean class="org.rpl.infinimapper.eventing.PeriodicUpdatePusher" name="ActiveUpdatePusher" scope="singleton">
+        <constructor-arg name="updateCollector" ref="UpdateHandler" />
+    </bean>
 
     <!-- For fun, unleash an agent that writes tiles in a randomized path -->
     <!--<bean class="org.rpl.infinimapper.data.Realm" name="ScratchRealm">-->

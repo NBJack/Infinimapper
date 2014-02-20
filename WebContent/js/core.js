@@ -1396,11 +1396,15 @@ http://www.ryanlayfield.com/
         liveSocket = new WebSocket('ws://localhost:8080/UpdateSocket')
 
         if ( liveSocket != null ) {
-            liveSocket.send("I'm ALLIIIVVEE!");
-        }
 
-        liveSocket.onmessage = new function(msg) {
-            alert(msg);
+            liveSocket.onopen = function () {
+                liveSocket.send("I'm ALLIIIVVEE!");
+            }
+
+            liveSocket.onmessage = function(msg) {
+                updateStatus.innerHTML = msg.data;
+            }
+
         }
 
 		//	Start timer
