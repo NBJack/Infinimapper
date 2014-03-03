@@ -96,4 +96,27 @@ public class ChunkKey implements Serializable {
 	}
 
 
+    public String generateID () {
+        return xcoord + "x" + ycoord + "x" + realmid;
+    }
+
+    /**
+     * Generate a new {@link ChunkKey} based on the established format
+     * expected of AxBxC, where A is the x-coordinate, B is the y-coordinate
+     * and C is the realm identifier.
+     * @param identifier The realm identifier. Must be of the for AxBxC.
+     * @return A new key based on the inputs.
+     */
+    public static ChunkKey fromID(String identifier) {
+        Validate.notEmpty(identifier);
+        String [] components = identifier.split("x");
+        Validate.isTrue(components.length == 3, "There must be only three components in the identifier.");
+        // Perform a very simple parsing of the data.
+        return new ChunkKey(
+                Integer.parseInt(components[0]),
+                Integer.parseInt(components[1]),
+                Integer.parseInt(components[2])
+        );
+    }
+
 }

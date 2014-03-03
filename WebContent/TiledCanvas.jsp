@@ -57,10 +57,10 @@ initialY	 = 0;
 <meta name="viewport"
     content="user-scalable=no, width=device-width" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
-<!-- <script src="js/dojo/dojo.js" djConfig="parseOnLoad: true"></script> -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script> -->
+<script src="js/dojo/dojo.js.uncompressed.js" djConfig="parseOnLoad: true"></script>
 <title>Infinimapper v0.80alpha</title>
-<body onload="setup()" style="background-color:#000000; margin: 0px;" oncontextmenu="return false;" ontouchmove="blockEvent();" >
+<body onload="setup()" oncontextmenu="return false;" ontouchmove="blockEvent();" >
 <table id='menubar' width=200 height=36>
 <tbody>
 <tr><td>
@@ -80,9 +80,6 @@ initialY	 = 0;
 	<img alt="Save" id="toolSave" src="toolbar/disk.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">-->	
 	<!--<img alt="Claim Tile" id="toolClaim" src="toolbar/flag_2.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
 	<img alt="Lock/Unlock Chunk" id="toolLock" src="toolbar/key.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">-->
-	<!--<img alt="Draw Overlay" id="toolOverlay" src="toolbar/layer_edit.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
-	  <div class="subribbon" id="overlayribbon" style="display:none;"> 
-		<img alt="Erase Overlay" id="toolErase" src="toolbar/layer_delete.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">-->
 	<!-- </div> -->
 	<!-- </div> -->
 	<img alt="Bookmark" id="toolBookmark" src="toolbar/asterisk_orange.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
@@ -94,7 +91,7 @@ initialY	 = 0;
 	<img alt="About" id="toolAbout" src="toolbar/ask_and_answer.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
 
 
-	<span style="color:#FFFFFF;height:34px;vertical-align:top;font-size:31px;padding-left:30px;"  id="statusToolText">...</span>
+	<span  id="statusToolText">...</span>
 	<!--
 	<%
 	String		userName;
@@ -105,7 +102,7 @@ initialY	 = 0;
 	if ( userName == null )
 		userName = "<a href='login.jsp'>Login</a>";
 	%>  -->
-	<span style="color:#FFFFFF;height:34px;float: right;font-size:31px;" id="mapStatus">0,0</span>
+	<span id="mapStatus">0,0</span>
 
 	</div>
 </td></tr>
@@ -124,7 +121,7 @@ initialY	 = 0;
 		</tr>
 		<tr>
 		<td style="padding:0px;vertical-align:top;">
-		<div id="paintPalette" style="overflow: auto; width:300px; height:500px; background-color:darkgray;">
+		<div id="paintPalette">
 			<!-- Our palette -->
 		</div>
 		</td></tr><tr><td width=120px>
@@ -139,22 +136,26 @@ initialY	 = 0;
 	</tr>
 </table>
 
+
 <c:choose>
     <c:when test="${not empty param.realm}">
         <c:set var="initialRealm" value="${param.realm}" />
+        <c:set var="realmOverride" value="true" />
     </c:when>
     <c:otherwise>
         <c:set var="initialRealm" value="1" />
+        <c:set var="realmOverride" value="false" />
     </c:otherwise>
 
 </c:choose>
+
 <script type='text/javascript' id='realmdatascript' src='js/realmInfo.jsp?id=${initialRealm}'></script>
 <script type='text/javascript' src='js/dynamic.js'></script>
 <script type='text/javascript' src='js/realms.js'></script>	
 <script type='text/javascript' src='js/toolbar.js'></script>	
 <script type='text/javascript' src='js/ajax.js'></script>	
 <script type='text/javascript' src='js/chunks.js'></script>	
-<script type='text/javascript' src='js/objects.js'></script>	
+<script type='text/javascript' src='js/objects.js'></script>
 <script type='text/javascript' src='js/layers.js'></script>	
 <script type='text/javascript' src='js/render/tiles_render.js'></script>	
 <script type='text/javascript'>
@@ -182,13 +183,16 @@ initialY	 = 0;
 <div id='realmselect'  style="display:none;position:absolute;width:300px;height:120px;left:250px;top:40px;color:white;background-color:#000000;"><iframe width="300px" height="120px" style="border: single;border:0px;" src="ui/pickrealm.jsp"></iframe></div>
 <div id='objectselect' style="display:none;position:absolute;width:300px;height:120px;left:100px;top:40px;color:white;background-color:#000000;"><iframe width="300px" height="120px" style="border: single;border:0px;" src="ui/pickobject.jsp"></iframe></div>
 
-<script type="text/javascript">
-    var currentRealm = sessionStorage.getItem("currentRealm");
-    if ( currentRealm ) {
-        // Switch to the stored realm
-        changeRealm(currentRealm);
-    }
-</script>
+<c:if test="realmOverride">
+    <script type="text/javascript">
+
+        var currentRealm = sessionStorage.getItem("currentRealm");
+        if ( currentRealm ) {
+            // Switch to the stored realm
+            changeRealm(currentRealm);
+        }
+    </script>
+</c:if>
 
 </body>
 </html>

@@ -8,7 +8,9 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Periodically pushes out updates to all the {@link UpdateListener}s
- * registered to it.  The interval needs to be specified.
+ * registered to it.  The interval needs to be specified. since updates
+ * may or may not be the same type as the originals, make room for
+ * transformations.
  *
  * Created with IntelliJ IDEA.
  * User: Ryan
@@ -16,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  * Time: 5:43 PM
  * To change this template use File | Settings | File Templates.
  */
-public class PeriodicUpdatePusher<Key, T> extends Thread {
+public abstract class PeriodicUpdatePusher<Key, T, Out> extends Thread {
 
     /**
      * The default number of milliseconds to wait between updates
@@ -26,7 +28,7 @@ public class PeriodicUpdatePusher<Key, T> extends Thread {
     private final UpdateCollector<T> updateCollector;
     private final boolean keepWorking = true;
     private final long updateInterval;
-    private final ConcurrentHashMap<Key, UpdateListener<Key, List<T>>> listeners;
+    private final ConcurrentHashMap<Key, UpdateListener<Key, List<Out>>> listeners;
 
     /**
      * Create a new threaded observer of the provided pusher. The thread will start once
@@ -54,17 +56,25 @@ public class PeriodicUpdatePusher<Key, T> extends Thread {
     }
 
     /**
+     * Generate output based on the available updates.
+     * @param in
+     * @return
+     */
+    protected abstract List<Out> generateOutput (List<T> in);
+
+    /**
      * Sends out the updates found in the attached {@link UpdateCollector}. Normally
      * invoked by the internal thread system.
      */
     public void sendOutUpdates() {
         // Get the latest changes
-        List<T> changes = updateCollector.grabChanges();
+        List<Out> changes = generateOutput(updateCollector.grabChanges());
         if ( changes.size() > 0 ) {
             // Notify each listener
-            for ( UpdateListener<Key, List<T>> listener : listeners.values() ) {
+            for ( UpdateListener<Key, List<Out>> listener : listeners.values() ) {
                 listener.updateArrived(changes);
             }
+            System.out.println("Pushed " + changes.size() + " updates.");
         }
     }
 
@@ -73,18 +83,22 @@ public class PeriodicUpdatePusher<Key, T> extends Thread {
      * of an old one if the keys match, return what was replaced.
      * @param listener the listener to add. Cannot be null.
      */
-    public UpdateListener<Key, List<T>> addListener(UpdateListener<Key, List<T>> listener) {
+    public UpdateListener<Key, List<Out>> addListener(UpdateListener<Key, List<Out>> listener) {
         Validate.notNull(listener);
         return listeners.put(listener.getID(), listener);
     }
 
 
-    public UpdateListener<Key, List<T>> removeListener(Key listenerKey) {
+    public UpdateListener<Key, List<Out>> removeListener(Key listenerKey) {
         Validate.notNull(listenerKey);
         return listeners.remove(listenerKey);
     }
 
 
+    /**
+     * Our main event pushing loop. At the specified interval, updates
+     * collected will be pushed out to all listeners.
+     */
     @Override
     public void run() {
 
@@ -96,7 +110,12 @@ public class PeriodicUpdatePusher<Key, T> extends Thread {
             }
 
             // Push the updates
-            sendOutUpdates();
+            try {
+                sendOutUpdates();
+            } finally {
+                // Notify parent of problems
+                //System.err.println("There was a serious problem in the update event loop.");
+            }
         }
 
     }

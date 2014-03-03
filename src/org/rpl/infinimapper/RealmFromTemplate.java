@@ -34,6 +34,7 @@ public class RealmFromTemplate extends HttpServlet {
             }
 
             importer.setName(filename);
+
             importer.processMap(true, -1);
             providers.flushAll();
 

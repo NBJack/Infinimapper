@@ -1,82 +1,103 @@
-	img.ToolUnselected{	
-		border-style: solid;
-		border-width: 0px;
-		border-color: black;
-		padding: 2px;
-	}
+img.ToolUnselected {
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    padding: 2px;
+}
 
-	img.ToolSelected{
-		background-color: lightblue;
-		border-style: solid;
-		border-width: 2px;
-		border-color: lightblue;
-	}
+img.ToolSelected {
+    background-color: lightblue;
+    border-style: solid;
+    border-width: 2px;
+    border-color: lightblue;
+}
 
-	div.toolribbon {
-		height: 36px;
-		background-image:url('Images/ToolbarBack2.png');
-		font-family: sans-serif;
-	}
+div.toolribbon {
+    height: 36px;
+    background-image: url('Images/ToolbarBack2.png');
+    font-family: sans-serif;
+}
 
-	td {
-		padding: 0px;
-	}
-	
-	div.statusBox {
-		color:  rgb(0,255,0);
-		width:  150px;
-		height: 32px;
-		font-family: sans-serif;
-	}
-	
-	div.tileName {
-		font-size: 16px;
-		font-weight: bold;
-		background-color: darkblue;
-		width: 100%;
-		padding: 2px;
-	}
-	
-	span.layerTitle {
-		font-size: 32px;
-		color: rgb(160,160,220);
-	}
-	
-	div.layerUnselected {
-		color: rgb(170, 170, 170);
-		cursor: pointer;
-	}
+td {
+    padding: 0px;
+}
 
-	div.layerSelected {
-		color: rgb(255, 255, 170);
-		font-weight: bold;
-		cursor: pointer;
-	}
-	
-	div.tileSelectCursor {
-		width: 28px;
-		height: 28px;
-		border-width: 2px;
-		border-color: white;
-		border-style: solid;
-		position: relative;
-		background-color: cyan;
-		opacity:0.5;
-		display: block;
-	}
+div.statusBox {
+    color: rgb(0, 255, 0);
+    width: 150px;
+    height: 32px;
+    font-family: sans-serif;
+}
 
-	a:Link {
-		color:  rgb(120, 150, 255);
-	}
-	
-	
-	a:Visited {
-		color:  rgb(120, 255, 255);
-	}	
-	
-	body {
-		color: white;
-		font-family: sans-serif;		
-	}
-	
-	
+div.tileName {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: darkblue;
+    width: 100%;
+    padding: 2px;
+}
+
+span.layerTitle {
+    font-size: 32px;
+    color: rgb(160, 160, 220);
+}
+
+div.layerUnselected {
+    color: rgb(170, 170, 170);
+    cursor: pointer;
+}
+
+div.layerSelected {
+    color: rgb(255, 255, 170);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div.tileSelectCursor {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+    border-color: white;
+    border-style: solid;
+    position: relative;
+    background-color: cyan;
+    opacity: 0.5;
+    display: block;
+}
+
+a:Link {
+    color: rgb(120, 150, 255);
+}
+
+a:Visited {
+    color: rgb(120, 255, 255);
+}
+
+body {
+    background-color: #000000;
+    margin: 0px;
+    color: white;
+    font-family: sans-serif;
+}
+
+#statusToolText {
+    color: #FFFFFF;
+    height: 34px;
+    vertical-align: top;
+    font-size: 31px;
+    padding-left: 30px;
+}
+
+#mapStatus {
+    color: #FFFFFF;
+    height: 34px;
+    float: right;
+    font-size: 31px;
+}
+
+#paintPalette {
+    overflow: auto;
+    width: 300px;
+    height: 500px;
+    background-color: darkgray;
+}

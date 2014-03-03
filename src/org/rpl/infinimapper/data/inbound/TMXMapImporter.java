@@ -35,6 +35,7 @@ public class TMXMapImporter {
     private ArrayList<TilesetAssignment> tilesetAssignments;
     private File originPath;
 
+    private boolean forceImageImport = false;
 
     public TMXMapImporter( String filename, Point offset, MapDataProviders mapDataProviders) throws Exception {
         this.mapTransformer = new XMLMapTransformer();
@@ -137,7 +138,8 @@ public class TMXMapImporter {
             String fileName = tileset.getTilebmpFile();
             TilesetData usedTileset = null;
 
-            if ( name.startsWith("tileset")) {
+            // We look for things in the resources that may already have been loaded.
+            if ( name.startsWith("tileset") && !forceImageImport ) {
                 // Good chance this is a tileset we've worked with already.
                 String tilesetId = name.substring("tileset".length());
                 int id = Integer.parseInt(tilesetId);
@@ -278,5 +280,21 @@ public class TMXMapImporter {
     public void setName( String name ) {
         Validate.notNull(name);
         this.name = name;
+    }
+
+    /**
+     * Reports whether the images found in a map will always be imported.
+     * @return True if they will be, false otherwise.
+     */
+    public boolean isForceImageImport() {
+        return forceImageImport;
+    }
+
+    /**
+     * Sets whether or not images will always be imported.
+     * @param forceImageImport if true, all images found will be imported.
+     */
+    public void setForceImageImport(boolean forceImageImport) {
+        this.forceImageImport = forceImageImport;
     }
 }

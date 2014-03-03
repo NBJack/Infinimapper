@@ -221,7 +221,7 @@ public class WorldDB extends HttpServlet {
 				switch (cmd) {
 				case RETRIEVE:
 
-                    retrieveChunk(entries, respOut, userID, key);
+                    retrieveChunk(respOut, userID, key);
                     break;
 
 				case REFRESH:
@@ -404,7 +404,7 @@ public class WorldDB extends HttpServlet {
         Chunk chunk = chunkCache.getValue(key);
         if (chunk != null && chunk.getLastUpdate() > timestamp) {
             respOut.print("REFRESHAVAIL!!!");
-            respOut.print(entries[1]);
+            respOut.print(key.generateID());
             respOut.print("!!!");
             respOut.print("0");
             respOut.print("!!!");
@@ -418,13 +418,13 @@ public class WorldDB extends HttpServlet {
             respOut.print("!!!");
         } else {
             respOut.print("NOUPDATE!!!");
-            respOut.print(entries[1]);
+            respOut.print(key.generateID());
             respOut.print("!!!");
             respOut.println();
         }
     }
 
-    private void retrieveChunk(String[] entries, PrintWriter respOut, int userID, ChunkKey key) throws SQLException {
+    private void retrieveChunk(PrintWriter respOut, int userID, ChunkKey key) throws SQLException {
         //
         // Retrieve a chunk
         //
@@ -435,40 +435,55 @@ public class WorldDB extends HttpServlet {
             // Grab the chunk information
             Chunk chunk = chunkCache.getValue(key);
 
-            if (chunk != null) {
-
-                respOut.print("CHUNK!!!");
-                respOut.print(entries[1]);
-                respOut.print("!!!");
-                respOut.print(0);
-                respOut.print("!!!");
-                respOut.print(chunk.getData());
-                respOut.print("!!!");
-                respOut.print("0,0");
-                respOut.print("!!!");
-                respOut.print(chunk.getLastUpdate());
-                respOut.print("!!!");
-                respOut.println();
-
-            } else {
-                // No chunk was found.
-                respOut.print("BLANK!!!");
-                respOut.print(entries[1]);
-                respOut.print("!!!");
-                respOut.println();
-            }
+            respOut.println(generateChunkResponse(key, chunk));
 
         } else {
 
             // Note authorization failure
 
             respOut.print("BADAUTH!!!RETRIEVE!!!");
-            respOut.print(entries[1]);
+            respOut.print(key.generateID());
             respOut.print("!!!");
             respOut.println();
 
 log.fine("Not auth: " + userID);
         }
+    }
+
+
+    /**
+     * Generate a response for a given chunk. This eventually needs to be refactored; the l''
+     *
+     * @param key The key we were checking.
+     * @param chunk The chunk we may have found. Can be null; if so, it means the chunk was never found.
+     */
+    public static String generateChunkResponse(ChunkKey key, Chunk chunk) {
+
+        StringBuffer buf = new StringBuffer();
+
+
+        if (chunk != null) {
+
+            buf.append("CHUNK!!!");
+            buf.append(key.generateID());
+            buf.append("!!!");
+            buf.append(0);
+            buf.append("!!!");
+            buf.append(chunk.getData());
+            buf.append("!!!");
+            buf.append("0,0");
+            buf.append("!!!");
+            buf.append(chunk.getLastUpdate());
+            buf.append("!!!");
+
+        } else {
+            // No chunk was found.
+            buf.append("BLANK!!!");
+            buf.append(key.generateID());
+            buf.append("!!!");
+        }
+
+        return buf.toString();
     }
 
     /**
@@ -477,8 +492,6 @@ log.fine("Not auth: " + userID);
      * @param entries
      * @param idSet
      * @param respOut
-     * @param c
-     * @param set
      * @param currentRealm
      * @return
      * @throws SQLException

@@ -2,6 +2,9 @@ package org.rpl.infinimapper.websocket;
 
 import org.apache.catalina.websocket.StreamInbound;
 import org.apache.catalina.websocket.WebSocketServlet;
+import org.rpl.infinimapper.data.Chunk;
+import org.rpl.infinimapper.data.ChunkKey;
+import org.rpl.infinimapper.eventing.ChunkUpdateCollector;
 import org.rpl.infinimapper.eventing.PeriodicUpdatePusher;
 import org.rpl.infinimapper.eventing.UpdateCollector;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 public class EventSocket extends WebSocketServlet {
 
     @Autowired
-    private PeriodicUpdatePusher<String, String> updatePusher;
+    private PeriodicUpdatePusher<String, ChunkKey, Chunk> updatePusher;
     @Autowired
-    private UpdateCollector<String> updateCollector;
+    private ChunkUpdateCollector updateCollector;
 
     /**
      * Manual Spring setup.
@@ -34,6 +37,7 @@ public class EventSocket extends WebSocketServlet {
         super.init(config);
         SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
     }
+
 
 
     @Override

@@ -257,10 +257,38 @@ http://www.ryanlayfield.com/
 		}
 	}
 
-	//
-	// Update the response
-	//
-	function handleDataResponse ()
+function processResponse(nextResponse) {
+
+    if (!nextResponse) {
+        throw "The response was null";
+    }
+    // Grab our next response
+    var responseArr = nextResponse.split("!!!");
+
+    // Figure out how to act
+    if (responseArr[0] == "OK") {
+        // What does the sequence say?
+    } else if (responseArr[0] == "CHUNK") {
+        // Awesome; this is a new chunk.
+        postDataToChunk(responseArr[1], responseArr[2], responseArr[3].split(","), responseArr[4].split(","), responseArr[5]);
+    } else if (responseArr[0] == "BLANK") {
+        postDataToChunk(responseArr[1], null, null, null, 0);
+    } else if (responseArr[0] == "REFRESHAVAIL") {
+        postDataToChunk(responseArr[1], responseArr[2], responseArr[3].split(","), responseArr[4].split(","), responseArr[5], responseArr[6]);
+    } else if (responseArr[0] == "OBJLIB") {
+        decodeObjLibResponse(responseArr);
+    } else if (responseArr[0] == "OK_OBJ") {
+        updateObjectID(responseArr[2], responseArr[3]);
+    } else if (responseArr[0] == "OBJDATA") {
+        updateObjects(responseArr[1]);
+    } else {
+        debugLog("Ignored response: '" + responseArr[0] + "'");
+    }
+    return responseArr;
+}
+
+
+function handleDataResponse ()
 	{
 		var responseArr;
 		var i;
@@ -281,39 +309,11 @@ http://www.ryanlayfield.com/
 
 			for ( i = 0; i < metaResponseArr.length; i++ )
 			{
-
-				// Grab our next response
-	
-				responseArr = metaResponseArr[i].split("!!!");
-	
-				// Figure out how to act
-	
-				if ( responseArr[0] == "OK" )
-				{
-					// What does the sequence say?
-	
-					
-				} else if ( responseArr[0] == "CHUNK" )
-				{
-					// Awesome; this is a new chunk.
-	
-					postDataToChunk(responseArr[1], responseArr[2], responseArr[3].split(","), responseArr[4].split(","), responseArr[5]);
-				} else if ( responseArr[0] == "BLANK" )
-				{
-					postDataToChunk(responseArr[1], null, null, null, 0);
-				} else if (responseArr[0] == "REFRESHAVAIL") {
-					postDataToChunk(responseArr[1], responseArr[2], responseArr[3].split(","), responseArr[4].split(","), responseArr[5], responseArr[6]);
-				} else if ( responseArr[0] == "OBJLIB") {
-					decodeObjLibResponse(responseArr);
-				} else if ( responseArr[0] == "OK_OBJ") {
-					updateObjectID(responseArr[2], responseArr[3]);
-				} else if ( responseArr[0] == "OBJDATA") {
-					updateObjects(responseArr[1]);					
-				} else {
-					debugLog("Ignored response: '" + responseArr[0] + "'");
-				}
-
-			}
+                var nextResponse = metaResponseArr[i];
+                if (nextResponse) {
+                    responseArr = processResponse(nextResponse);
+                }
+            }
 				
 
 			// Clear the request flag
@@ -1398,11 +1398,17 @@ http://www.ryanlayfield.com/
         if ( liveSocket != null ) {
 
             liveSocket.onopen = function () {
-                liveSocket.send("I'm ALLIIIVVEE!");
+                //liveSocket.send("I'm ALLIIIVVEE!");
+                updateStatus.innerHTML = "Socket status: active";
             }
 
             liveSocket.onmessage = function(msg) {
-                updateStatus.innerHTML = msg.data;
+                //updateStatus.innerHTML = msg.data;
+                processResponse(msg.data);
+            }
+
+            liveSocket.onclose = function () {
+                updateStatus.innerHTML = "Socket status: closed";
             }
 
         }

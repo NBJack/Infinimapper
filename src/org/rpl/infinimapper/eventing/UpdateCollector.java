@@ -44,12 +44,15 @@ public class UpdateCollector<T> {
      */
     public List<T> grabChanges() {
         List<T> changes = new ArrayList<T>(updates.keySet());
-
+        Validate.noNullElements(changes);
         // Remove those changes
         for ( T change : changes ) {
             updates.remove(change);
         }
 
+        if ( changes.size() > 0 ) {
+            System.out.println("Changes grabbed: " + changes.size());
+        }
         return changes;
     }
 

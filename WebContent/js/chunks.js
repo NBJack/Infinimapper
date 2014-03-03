@@ -440,7 +440,7 @@ http://www.ryanlayfield.com/
 			return;
 
 		// Add to our queue
-
+        //liveSocket.send(chunk.coordName);
 		updateQueue.push(chunk.coordName);
 
 		chunk.toUpdate = true;
@@ -451,7 +451,7 @@ http://www.ryanlayfield.com/
 		{
 			// Setup the delay for 2 seconds from now
 
-			window.setTimeout(sendAllChunkUpdates, 2000);
+			window.setTimeout(sendAllChunkUpdates, 200);
 
 			updateStatus.innerHTML="Updates detected...";			
 
@@ -507,6 +507,7 @@ http://www.ryanlayfield.com/
 	//
 	function sendChunk ( chunk )
 	{
+        liveSocket.send(chunk.coordName);
 		sendMessage(buildTxtUpdateFromChunk(chunk));
 	}
 
