@@ -104,7 +104,7 @@ public class ChunkKey implements Serializable {
      * Generate a new {@link ChunkKey} based on the established format
      * expected of AxBxC, where A is the x-coordinate, B is the y-coordinate
      * and C is the realm identifier.
-     * @param identifier The realm identifier. Must be of the for AxBxC.
+     * @param identifier The realm identifier. Must be of the form AxBxC.
      * @return A new key based on the inputs.
      */
     public static ChunkKey fromID(String identifier) {
@@ -119,4 +119,8 @@ public class ChunkKey implements Serializable {
         );
     }
 
+    @Override
+    public String toString() {
+        return this.generateID();
+    }
 }

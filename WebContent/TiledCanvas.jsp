@@ -180,8 +180,8 @@ initialY	 = 0;
 
 </script>
 <script type='text/javascript' src='js/core.js'></script>	
-<div id='realmselect'  style="display:none;position:absolute;width:300px;height:120px;left:250px;top:40px;color:white;background-color:#000000;"><iframe width="300px" height="120px" style="border: single;border:0px;" src="ui/pickrealm.jsp"></iframe></div>
-<div id='objectselect' style="display:none;position:absolute;width:300px;height:120px;left:100px;top:40px;color:white;background-color:#000000;"><iframe width="300px" height="120px" style="border: single;border:0px;" src="ui/pickobject.jsp"></iframe></div>
+<div id='realmselect'   class="popWindowSmall"><iframe width="300px" height="120px" style="border: single;border:0px;" src="ui/pickrealm.jsp"></iframe></div>
+<div id='objectselect' class="popWindowSmall"><iframe width="300px" height="120px" style="border: single;border:0px;" src="ui/pickobject.jsp"></iframe></div>
 
 <c:if test="realmOverride">
     <script type="text/javascript">
