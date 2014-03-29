@@ -13,53 +13,39 @@ import com.j256.ormlite.dao.BaseDaoImpl;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
- * A simple data provider for Layers.
+ * A data provider for Layers.
+ *
  * User: Ryan
  * Date: 2/1/13 - 6:59 PM
  */
 public class LayerDataProvider extends DaoDataProvider<Integer, Layer>{
 
 
-    public static final String WDB_LAYERS_LIST = "SELECT realmid FROM layerdata WHERE masterrealmid=? ORDER BY ordernum";
-    private Dao<Layer, Integer> dao;
-
+    /**
+     * Create a new layer data provider.
+     * @throws SQLException if initialization goes awry with the SQL.
+     */
     public LayerDataProvider() throws SQLException {
         super(Layer.class);
-        //dao = BaseDaoImpl.createDao(DBResourceManager.getConnectionSource(), Layer.class);
     }
-
 
     /**
-    @Override
-    public Layer getValue(Integer integer) {
-
-        try {
-            Layer result = dao.queryForId(integer);
-            return result;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        // Nothing to return
-        return null;
+     * Get a comprehensive list of layers for a given realm. Realms will be ordered by their
+     * assigned oder number.
+     *
+     * @param realmid The realm to serch for.
+     * @return A list of realms if found.
+     * @throws SQLException if something goes wrong with the SQL.
+     */
+    public List<Layer> getLayersForRealm(int realmid) throws SQLException {
+        return this.getQueryBuilder()
+                .orderBy("ordernum", false)
+                .where()
+                .eq("masterrealmid", realmid)
+                .query();
     }
 
-    @Override
-    public void putValue(Integer integer, Layer layer) {
-
-        try {
-            if ( layer.getId() == Layer.UNASSIGNED_ID ) {
-                Validate.isTrue(integer == null);
-                dao.create(layer);
-            } else {
-                Validate.isTrue(integer.intValue() == layer.getId());
-                dao.update(layer);
-            }
-        } catch ( SQLException ex ) {
-            ex.printStackTrace();
-        }
-    }  **/
 }

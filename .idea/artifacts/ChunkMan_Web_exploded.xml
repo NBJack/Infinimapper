@@ -17,6 +17,9 @@
           <element id="library" level="module" name="c3p0" module-name="ChunkMan" />
           <element id="dir-copy" path="$PROJECT_DIR$/lib" />
         </element>
+        <element id="directory" name="TestData">
+          <element id="dir-copy" path="$PROJECT_DIR$/TestData" />
+        </element>
       </element>
     </root>
   </artifact>

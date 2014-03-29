@@ -12,6 +12,7 @@ import java.util.zip.ZipOutputStream;
 import org.apache.commons.lang3.Validate;
 import org.rpl.infinimapper.MapDataType;
 import org.rpl.util.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Writes out map and necessary resources to a common destination. Useful for
@@ -21,6 +22,9 @@ import org.rpl.util.FileUtils;
  * 
  */
 public class MapStagingTool {
+
+    @Autowired
+    private MapExport mapExporter;
 
 	private static final String TMX_FILE_EXTENSION = ".tmx";
 	private static final String FILE_EXT = ".png";
@@ -64,7 +68,7 @@ public class MapStagingTool {
 		// Write the map file out
 		File mapFile = new File(destination, mapName);
 		FileOutputStream outStream = new FileOutputStream(mapFile);
-		MapExport.processAndExportMapTMX(realmId, outStream, mapName, imagePrefix, MapDataType.TMX_BASE64);
+        mapExporter.processAndExportMapTMX(realmId, outStream, mapName, imagePrefix, MapDataType.TMX_BASE64);
 		outStream.flush();
 		outStream.close();
 		return mapFile;
@@ -119,4 +123,22 @@ public class MapStagingTool {
 		zipOut.flush();
 		zipOut.close();
 	}
+
+    /**
+     * Gets the internal map export system.
+     * @return
+     */
+    public MapExport getMapExporter() {
+        return mapExporter;
+    }
+
+    /**
+     * Manually override the export system.
+     * @param mapExporter
+     */
+    public void setMapExporter(MapExport mapExporter) {
+        this.mapExporter = mapExporter;
+    }
+
+
 }

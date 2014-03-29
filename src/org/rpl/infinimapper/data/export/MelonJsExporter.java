@@ -36,9 +36,12 @@ public class MelonJsExporter {
 	private static final String IMAGE_PREFIX = "tileset";
 
 	private final File dataDir;
+    private final MapExport mapExporter;
 
-	TypeToken<List<Map<String, String>>> token = new TypeToken<List<Map<String, String>>>() {
+    TypeToken<List<Map<String, String>>> token = new TypeToken<List<Map<String, String>>>() {
 	};
+
+
 
 	/**
 	 * Determines any resources to list.
@@ -46,13 +49,14 @@ public class MelonJsExporter {
 	private ArrayList<HashMap<String, String>> resources;
 	private File destination;
 
-	public MelonJsExporter(File destination) {
+	public MelonJsExporter(File destination, MapExport mapExporter) {
 		Validate.notNull(destination);
 		Validate.isTrue(destination.isDirectory(), "The destination must be a directory.");
 		this.destination = destination;
 		this.resources = new ArrayList<HashMap<String, String>>();
 		this.dataDir = new File(destination, DATA_DIR_NAME);
 		this.dataDir.mkdir();
+        this.mapExporter = mapExporter;
 	}
 
 	/**
@@ -122,6 +126,7 @@ public class MelonJsExporter {
 	public void addMap(int realmId) throws SQLException, IOException {
 		String mapName = "map" + realmId;
 		MapStagingTool mapOut = new MapStagingTool(dataDir, IMAGE_PREFIX);
+        mapOut.setMapExporter(mapExporter);
 		File mapFile = mapOut.writeMap(mapName, realmId);
 
 		// Add to the resources

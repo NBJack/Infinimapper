@@ -53,6 +53,16 @@
         <constructor-arg name="updateInterval" value="100" />
     </bean>
 
+<!--    <bean name="BuiltGameDeployPath" scope="singleton" class="java.io.File">
+        <constructor-arg value="C:\Program Files (x86)\Apache Group\Apache2\htdocs\maps" type="java.lang.String"/>
+    </bean>
+    -->
+    <bean name="BuiltGameHostPath" scope="singleton" class="java.lang.String">
+        <constructor-arg value="http://localhost/maps/" />
+    </bean>
+
+    <bean name="MapExporter" scope="singleton" class="org.rpl.infinimapper.data.export.MapExport" />
+
     <!-- For fun, unleash an agent that writes tiles in a randomized path -->
     <!--<bean class="org.rpl.infinimapper.data.Realm" name="ScratchRealm">-->
         <!--<property name="id" value="34"/>-->

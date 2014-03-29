@@ -175,4 +175,6 @@ public class TilesetData implements Identable<Integer> {
     public boolean hasId() {
         return id != EMPTY_ID;
     }
+
+
 }

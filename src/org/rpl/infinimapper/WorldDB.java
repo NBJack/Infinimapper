@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.rpl.infinimapper.data.*;
 import org.rpl.infinimapper.data.export.TilesetExport;
 import org.rpl.infinimapper.data.management.*;
+import org.rpl.infinimapper.eventing.ChunkUpdateCollector;
 import org.rpl.infinimapper.security.AuthMan;
 
 import com.google.gson.stream.JsonWriter;
@@ -76,6 +77,9 @@ public class WorldDB extends HttpServlet {
     private ObjectProvider objectDefProvider;
     @Autowired
     private ObjectInstanceProvider objectProvider;
+    @Autowired
+    private ChunkUpdateCollector updateCollector;
+
 
 	public enum QCommand {
 
@@ -103,6 +107,11 @@ public class WorldDB extends HttpServlet {
 	}
 
 
+    /**
+     * Initializes the Spring bean system.
+     * @param config The servlet configuration.
+     * @throws ServletException if something went wrong.
+     */
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -141,7 +150,6 @@ public class WorldDB extends HttpServlet {
 		response.setContentType("text/plain");
 
 		// Grab the user's ID (if available)
-
         int userID = -1;
 		if (request.getSession().getAttribute("userid") != null) {
 			userID = (Integer) request.getSession().getAttribute("userid");
@@ -379,6 +387,8 @@ public class WorldDB extends HttpServlet {
             // Construct a delta and apply it to the store
             ChunkDelta delta = new ChunkDelta(userID, entries[3]);
             chunkCache.updateValue(key, delta);
+            // Send out notifications via higher-speed connections
+            updateCollector.pushUpdate(key);
         } else {
 
             // The user wasn't authorized
@@ -637,7 +647,7 @@ log.fine("Not auth: " + userID);
 	 * @return
 	 * @throws SQLException
 	 */
-	public static Collection<Integer> getLayersForRealm(int realmid) throws SQLException {
+/**	public static Collection<Integer> getLayersForRealmOld(int realmid) throws SQLException {
 		Collection<Integer> list = new LinkedList<Integer>();
 		QuickCon con = new QuickCon(LayerDataProvider.WDB_LAYERS_LIST);
 
@@ -651,8 +661,10 @@ log.fine("Not auth: " + userID);
 		} finally {
 			con.release();
 		}
-	}
 
+
+	}
+ **/
 	/**
 	 * A tidy package encapsulating overlapping functionality of pooled data
 	 * connection queries on prepared statements. The general order of

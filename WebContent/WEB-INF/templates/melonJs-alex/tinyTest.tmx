@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="tileset9" tilewidth="32" tileheight="32">
-  <image source="tileset9.png" width="608" height="544"/>
+ <tileset firstgid="1" name="mytileset9" tilewidth="32" tileheight="32">
+  <image source="mytileset9.png" width="608" height="544"/>
  </tileset>
- <tileset firstgid="324" name="tileset26" tilewidth="32" tileheight="32">
-  <image source="tileset26.png" width="160" height="32"/>
+ <tileset firstgid="324" name="mytileset26" tilewidth="32" tileheight="32">
+  <image source="mytileset26.png" width="160" height="32"/>
   <tile id="0">
    <properties>
     <property name="type" value="solid"/>

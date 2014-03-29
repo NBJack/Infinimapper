@@ -69,15 +69,17 @@ initialY	 = 0;
 	<!-- <img alt="Undo" id="toolUndo" src="toolbar/arrow_rotate_anticlockwise.png" width="32" height="32" class="ToolUnselected"  onClick="doToolClick(this);" ontouchstart="doToolClick(this);">-->
 	<img alt="Draw Tile" id="toolDraw" src="toolbar/billiard_marker.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
 	<!-- <div class="subribbon" id="drawribbon" style="display:none;"> -->
-		<img alt="Erase Tile" id="toolDefault" src="toolbar/draw_eraser.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
+    <img alt="Erase Tile" id="toolDefault" src="toolbar/draw_eraser.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
 	<!-- <img alt="Layers" id="toolLayer" src="toolbar/layers.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);"> -->
 	<img alt="Select Tiles" id="toolTileSelect" src="toolbar/select.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
 	<!-- </div> -->
 	<!--<img alt="Properties" id="toolProperties" src="toolbar/book.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">-->
 	<img alt="Export" id="toolExport" src="toolbar/box_down.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
-	<!--  <img alt="Delete" id="toolDelete" src="toolbar/cross.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this); ontouchstart="doToolClick(this);"">
-	<img alt="Copy" id="toolCopy" src="toolbar/cut_red.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
-	<img alt="Save" id="toolSave" src="toolbar/disk.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">-->	
+    <img alt="Play" id="toolPlay" src="toolbar/joystick.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
+
+        <!--  <img alt="Delete" id="toolDelete" src="toolbar/cross.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this); ontouchstart="doToolClick(this);"">
+        <img alt="Copy" id="toolCopy" src="toolbar/cut_red.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
+        <img alt="Save" id="toolSave" src="toolbar/disk.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">-->
 	<!--<img alt="Claim Tile" id="toolClaim" src="toolbar/flag_2.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">
 	<img alt="Lock/Unlock Chunk" id="toolLock" src="toolbar/key.png" width="32" height="32" class="ToolUnselected" onClick="doToolClick(this);" ontouchstart="doToolClick(this);">-->
 	<!-- </div> -->

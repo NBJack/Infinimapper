@@ -7,17 +7,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f021edc0-4879-458a-a35b-4ca5df6d0de7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/ChunkKey.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/ChunkKey.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/TilesetAssignmentTests.java" />
+      <change type="MOVED" beforePath="C:\Git\Infinimapper\WebContent\WEB-INF\templates\melonJs-alex\tileset26.png" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/templates/melonJs-alex/mytileset26.png" />
+      <change type="MOVED" beforePath="C:\Git\Infinimapper\WebContent\WEB-INF\templates\melonJs-alex\tileset9.png" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/templates/melonJs-alex/mytileset9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/BuildAndPlay.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/BuildAndPlay.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/ChunkMan_Web_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/ChunkMan_Web_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/ExportRealm.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/ExportRealm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/LayerDataProvider.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/LayerDataProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/MapExportTests.java" afterPath="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/MapExportTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapStagingTool.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapStagingTool.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MelonJsExporter.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MelonJsExporter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/MelonJsExporterTests.java" afterPath="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/MelonJsExporterTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/RealmTileset.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/RealmTileset.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/TiledCanvas.jsp" afterPath="$PROJECT_DIR$/WebContent/TiledCanvas.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/corestyle.css" afterPath="$PROJECT_DIR$/WebContent/corestyle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/index.jsp" afterPath="$PROJECT_DIR$/WebContent/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetAssignment.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetAssignment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetData.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/WorldDB.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/WorldDB.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/js/chunks.js" afterPath="$PROJECT_DIR$/WebContent/js/chunks.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/js/core.js" afterPath="$PROJECT_DIR$/WebContent/js/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Setup/h2Init.sql" afterPath="$PROJECT_DIR$/Setup/h2Init.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestData/exampleTemplate/index.html" afterPath="$PROJECT_DIR$/TestData/exampleTemplate/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/templates/melonJs-alex/tinyTest.tmx" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/templates/melonJs-alex/tinyTest.tmx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/js/toolbar.js" afterPath="$PROJECT_DIR$/WebContent/js/toolbar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ChunkMan.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/fragment.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393873454932" ignored="false" />
+    <file path="/fragment.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394814159334" ignored="false" />
     <file path="/fragment.js2" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393801486330" ignored="false" />
-    <file path="/MapExport.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1360701732578" ignored="false" />
+    <file path="/MapExport.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1396109778252" ignored="false" />
     <file path="/Layer.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1387782724315" ignored="false" />
     <file path="/VisitorTallySystem.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1356679720618" ignored="false" />
     <file path="/RealmDataProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1387782039465" ignored="false" />
@@ -25,33 +46,33 @@
     <file path="/RealmCache.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1358227051370" ignored="false" />
     <file path="/File Header.txt.ft" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1358110850636" ignored="false" />
     <file path="/Realm.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1387940207156" ignored="false" />
-    <file path="/WorldDB.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393872343526" ignored="false" />
-    <file path="/applicationContext.xml" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393870296146" ignored="false" />
+    <file path="/WorldDB.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394816984068" ignored="false" />
+    <file path="/applicationContext.xml" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394818018875" ignored="false" />
     <file path="/WorldDBJsond.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1387781899145" ignored="false" />
     <file path="/SimpleDeserializer.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359513268966" ignored="false" />
     <file path="/realmInfo.jsp" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390455865918" ignored="false" />
     <file path="/GlobalSettings.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1358799530155" ignored="false" />
-    <file path="/ChunkKey.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393892996103" ignored="false" />
+    <file path="/ChunkKey.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395760236998" ignored="false" />
     <file path="/ChunkData.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1358801628892" ignored="false" />
     <file path="/ChunkDelta.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1358886143446" ignored="false" />
     <file path="/WritableDeltaChunk.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359147904421" ignored="false" />
     <file path="/DeltaCanvas.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359098190979" ignored="false" />
     <file path="/MapDeltaCanvas.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1366944808993" ignored="false" />
     <file path="/a.dummy" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393803050525" ignored="false" />
-    <file path="/Dummy.txt" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393900580781" ignored="false" />
+    <file path="/Dummy.txt" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395812687193" ignored="false" />
     <file path="/MapDeltaCanvastests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359175004295" ignored="false" />
     <file path="/InternalChunkProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359180320007" ignored="false" />
     <file path="/MemoryRealmProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1368981349670" ignored="false" />
     <file path="/MapDeltaCanvasTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359239556197" ignored="false" />
     <file path="/MemoryChunkProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1368981339040" ignored="false" />
     <file path="/MapPathBuilder.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359216824218" ignored="false" />
-    <file path="/TMXMapImporter.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393455073923" ignored="false" />
+    <file path="/TMXMapImporter.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1396110093330" ignored="false" />
     <file path="/XMLMapTransformerTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359246015185" ignored="false" />
     <file path="/ImageUpload.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390270885357" ignored="false" />
     <file path="/ChunkDataProviderTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390198946519" ignored="false" />
     <file path="/TMXMapImporterTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390321227215" ignored="false" />
     <file path="/RealmDataProviderTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1387782147435" ignored="false" />
-    <file path="/LayerDataProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1387782516172" ignored="false" />
+    <file path="/LayerDataProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394817372311" ignored="false" />
     <file path="/DBResourceManager.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390196836458" ignored="false" />
     <file path="$PROJECT_DIR$/../untitled/src/spring-config.xml" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1360123294155" ignored="false" />
     <file path="$PROJECT_DIR$/../untitled/web/index.jsp" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1360213485160" ignored="false" />
@@ -62,7 +83,7 @@
     <file path="$PROJECT_DIR$/../untitled/out/artifacts/ImaxBahamas_Web_exploded/WEB-INF/web.xml" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1360212520375" ignored="false" />
     <file path="/LayerDataProviderTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1360291906478" ignored="false" />
     <file path="/AggregateLayerRealmTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1366473476215" ignored="false" />
-    <file path="/RealmTileset.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1360959319481" ignored="false" />
+    <file path="/RealmTileset.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395778900399" ignored="false" />
     <file path="/DaoDataProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1388901883428" ignored="false" />
     <file path="/Identable.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1360872826192" ignored="false" />
     <file path="/RealmTilesetProviderTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1360959696143" ignored="false" />
@@ -79,46 +100,55 @@
     <file path="/DataProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1369630316098" ignored="false" />
     <file path="/SimpleMemoryMapProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1368980792738" ignored="false" />
     <file path="/ChunkDataProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390026107070" ignored="false" />
-    <file path="/TilesetAssignment.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1369630368629" ignored="false" />
+    <file path="/TilesetAssignment.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1396109055806" ignored="false" />
     <file path="/TilesetAssignmentProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390438800869" ignored="false" />
     <file path="/MapDataProviders.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1369547354557" ignored="false" />
     <file path="/ObjectInstanceProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1388937611839" ignored="false" />
-    <file path="/TilesetData.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390455129313" ignored="false" />
+    <file path="/TilesetData.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395952675787" ignored="false" />
     <file path="/TilesetProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390441531518" ignored="false" />
     <file path="/TilesetNotFoundException.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390266230077" ignored="false" />
     <file path="/MapProcessingException.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1369631640679" ignored="false" />
     <file path="/realms.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390408025985" ignored="false" />
     <file path="/map7.tmx" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1369791141640" ignored="false" />
-    <file path="/TiledCanvas.jsp" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393891110277" ignored="false" />
-    <file path="/core.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393870558861" ignored="false" />
+    <file path="/TiledCanvas.jsp" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394752676881" ignored="false" />
+    <file path="/core.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393908418940" ignored="false" />
     <file path="/__dummy.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1371150824549" ignored="false" />
     <file path="/CreateTemplate.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1371161885213" ignored="false" />
     <file path="/web.xml" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1391391466954" ignored="false" />
     <file path="/a.txt" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1373411847123" ignored="false" />
     <file path="/RealmFromTemplate.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393445170216" ignored="false" />
-    <file path="/tinyTest.tmx" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1371584141260" ignored="false" />
+    <file path="/tinyTest.tmx" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393908753600" ignored="false" />
     <file path="/EventSocket.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393799587431" ignored="false" />
     <file path="/EventMessagingInbound.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393799948346" ignored="false" />
     <file path="$PROJECT_DIR$/../IMAXSpring/src/main/webapp/css/core.css" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1372380878298" ignored="false" />
     <file path="$PROJECT_DIR$/../IMAXSpring/.idea/workspace.xml" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1373409711449" ignored="false" />
-    <file path="/MelonJsExporter.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1373410640482" ignored="false" />
-    <file path="/BuildAndPlay.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1386969114001" ignored="false" />
+    <file path="/MelonJsExporter.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394821659479" ignored="false" />
+    <file path="/BuildAndPlay.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394865585395" ignored="false" />
     <file path="/objects.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1386881705928" ignored="false" />
     <file path="/ObjTypeManager.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1386966722054" ignored="false" />
     <file path="/editobject.jsp" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1386881743005" ignored="false" />
     <file path="/ObjectProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1388278146241" ignored="false" />
     <file path="/setup.properties" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390352404663" ignored="false" />
     <file path="/AuthMan.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390201067906" ignored="false" />
-    <file path="/h2Init.sql" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390277133751" ignored="false" />
-    <file path="/toolbar.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1390407931910" ignored="false" />
+    <file path="/h2Init.sql" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395953653984" ignored="false" />
+    <file path="/toolbar.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394052710923" ignored="false" />
     <file path="/UpdatePusher.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1392860553863" ignored="false" />
     <file path="/UpdateListener.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1392860160930" ignored="false" />
     <file path="/PeriodicUpdatePusher.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393809898405" ignored="false" />
-    <file path="/chunks.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1392955960457" ignored="false" />
+    <file path="/chunks.js" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393908115402" ignored="false" />
     <file path="/ChunkUpdateCollector.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393721623832" ignored="false" />
     <file path="/UpdateCollector.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393870046458" ignored="false" />
     <file path="/PeriodicChunkUpdatePusher.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393872802443" ignored="false" />
     <file path="/corestyle.css" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1393891813940" ignored="false" />
+    <file path="/ExportRealm.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394818112952" ignored="false" />
+    <file path="/MapStagingTool.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394821518129" ignored="false" />
+    <file path="/MapExportTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394818380570" ignored="false" />
+    <file path="/MelonJsExporterTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394822014980" ignored="false" />
+    <file path="/MapStagingToolTest.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1394821611038" ignored="false" />
+    <file path="/index.html" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395002923534" ignored="false" />
+    <file path="/RealmTilesetTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395791532227" ignored="false" />
+    <file path="/TilesetAssignmentTests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395791491107" ignored="false" />
+    <file path="/TileProperty.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1395981847602" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +173,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -179,7 +210,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/WebContent/createrealm.jsp" line="44" class="createrealm.jsp" package="C:\Git\Infinimapper\WebContent">
         <option name="ENABLED" value="true" />
@@ -226,36 +256,6 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/org/rpl/infinimapper/WorldDB.java" line="485" class="org.rpl.infinimapper.WorldDB" package="org.rpl.infinimapper">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/org/rpl/infinimapper/WorldDB.java" line="216" class="org.rpl.infinimapper.WorldDB" package="org.rpl.infinimapper">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
     </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
@@ -266,93 +266,87 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="core.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WebContent/js/core.js">
+      <file leaf-file-name="TilesetAssignment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetAssignment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="18" selection-start="3389" selection-end="3389" vertical-scroll-proportion="0.09751434">
+            <state line="206" column="0" selection-start="5281" selection-end="5281" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorldDB.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/WorldDB.java">
+      <file leaf-file-name="JsonElement.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/gson-1.7.1-sources.jar!/com/google/gson/JsonElement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="464" column="18" selection-start="12318" selection-end="12318" vertical-scroll-proportion="0.0">
+            <state line="173" column="16" selection-start="5956" selection-end="5956" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PeriodicChunkUpdatePusher.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/eventing/PeriodicChunkUpdatePusher.java">
+      <file leaf-file-name="TMXMapImporter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TiledCanvas.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/TiledCanvas.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="0" selection-start="1420" selection-end="1483" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="6" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="corestyle.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/corestyle.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="17" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChunkKey.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/ChunkKey.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="47" selection-start="3395" selection-end="3395" vertical-scroll-proportion="0.0">
+            <state line="181" column="57" selection-start="7674" selection-end="7674" vertical-scroll-proportion="0.47368422">
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="e#5359#5372#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toolbar.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/js/toolbar.js">
+      <file leaf-file-name="TMXMapImporterTests.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tst/org/rpl/infinimapper/data/inbound/TMXMapImporterTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="29" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.0">
+            <state line="60" column="27" selection-start="2000" selection-end="2010" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Logger.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/logging/Logger.java">
+      <file leaf-file-name="h2Init.sql" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Setup/h2Init.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="378" column="25" selection-start="16594" selection-end="16594" vertical-scroll-proportion="0.0">
+            <state line="196" column="19" selection-start="10389" selection-end="10389" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BackgroundFlushCache.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/BackgroundFlushCache.java">
+      <file leaf-file-name="TilesetData.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="13" selection-start="2874" selection-end="2874" vertical-scroll-proportion="0.0">
+            <state line="148" column="116" selection-start="3193" selection-end="3193" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Layer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/Layer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapExport.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="377" column="30" selection-start="12765" selection-end="12765" vertical-scroll-proportion="-43.0">
+              <folding>
+                <element signature="e#15201#15226#0" expanded="true" />
+                <element signature="e#20081#20097#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TilesetAssignmentProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/TilesetAssignmentProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="35" selection-start="846" selection-end="846" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -381,22 +375,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java" />
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/eventing/ChunkUpdateCollector.java" />
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/websocket/EventSocket.java" />
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/websocket/EventMessagingInbound.java" />
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/eventing/PeriodicUpdatePusher.java" />
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/eventing/UpdateCollector.java" />
-        <option value="$PROJECT_DIR$/WebContent/WEB-INF/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/WebContent/js/core.js" />
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/BackgroundFlushCache.java" />
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/WorldDB.java" />
-        <option value="C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/logging/Logger.java" />
-        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/eventing/PeriodicChunkUpdatePusher.java" />
-        <option value="$PROJECT_DIR$/WebContent/TiledCanvas.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/index.jsp" />
-        <option value="$PROJECT_DIR$/WebContent/corestyle.css" />
+        <option value="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/MapStagingToolTest.java" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MelonJsExporter.java" />
+        <option value="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/MelonJsExporterTests.java" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/BuildAndPlay.java" />
+        <option value="$PROJECT_DIR$/TestData/exampleTemplate/index.html" />
         <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/ChunkKey.java" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/ObjectInstance.java" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/RealmTileset.java" />
+        <option value="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/RealmTilesetTests.java" />
+        <option value="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/TilesetAssignmentTests.java" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetData.java" />
+        <option value="$PROJECT_DIR$/Setup/h2Init.sql" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/TileProperty.java" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetAssignment.java" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java" />
       </list>
     </option>
   </component>
@@ -540,6 +534,294 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tst" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="inbound" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="management" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="inbound" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="export" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rpl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane">
@@ -665,7 +947,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TestData" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -707,69 +989,7 @@
       <recent name="C:\Java\workspace\ChunkMan\TestData" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 7.0">
-    <configuration default="false" name="ChunkDataProviderTests.testReadChunk" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.rpl.infinimapper.data.management.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="ChunkMan" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="org.rpl.infinimapper.data.management" />
-      <option name="MAIN_CLASS_NAME" value="org.rpl.infinimapper.data.management.ChunkDataProviderTests" />
-      <option name="METHOD_NAME" value="testReadChunk" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="RealmDataProviderTests.testWrites" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.rpl.infinimapper.data.management.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="ChunkMan" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="org.rpl.infinimapper.data.management" />
-      <option name="MAIN_CLASS_NAME" value="org.rpl.infinimapper.data.management.RealmDataProviderTests" />
-      <option name="METHOD_NAME" value="testWrites" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.TMXMapImporterTests.testImporterTiny">
     <configuration default="false" name="TMXMapImporterTests.testImporterNormal" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -863,6 +1083,62 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TilesetAssignmentTests.testPropertyManagement" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.rpl.infinimapper.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="ChunkMan" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.rpl.infinimapper.data" />
+      <option name="MAIN_CLASS_NAME" value="org.rpl.infinimapper.data.TilesetAssignmentTests" />
+      <option name="METHOD_NAME" value="testPropertyManagement" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TMXMapImporterTests.testImporterTiny" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.rpl.infinimapper.data.inbound.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="ChunkMan" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.rpl.infinimapper.data.inbound" />
+      <option name="MAIN_CLASS_NAME" value="org.rpl.infinimapper.data.inbound.TMXMapImporterTests" />
+      <option name="METHOD_NAME" value="testImporterTiny" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -1174,7 +1450,7 @@
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_ChunkMan" />
       </server-settings>
-      <log_file path="%IDEA_RUN:CATALINA_BASE%/logs/catalina.*" checked="true" skipped="false" show_all="true" alias="catalina" />
+      <log_file path="%IDEA_RUN:CATALINA_BASE%/logs/catalina.*" checked="false" skipped="false" show_all="true" alias="catalina" />
       <predefined_log_file id="Tomcat" enabled="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <RunnerSettings RunnerId="Cover" />
@@ -1238,19 +1514,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7.0" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ChunkDataProviderTests.testReadChunk" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.RealmDataProviderTests.testWrites" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterNormal" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterCore" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterBlank" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterNormal" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterCore" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterBlank" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TilesetAssignmentTests.testPropertyManagement" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterTiny" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterNormal" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterBlank" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterCore" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.RealmDataProviderTests.testWrites" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ChunkDataProviderTests.testReadChunk" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterTiny" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterCore" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TilesetAssignmentTests.testPropertyManagement" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterNormal" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TMXMapImporterTests.testImporterBlank" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1326,7 +1602,11 @@
       <created>1393885857191</created>
       <updated>1393885857191</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Consolidated look and feel by refactoring styles to CSS.&#10;Added toString to ChunkKey for convenience.">
+      <created>1393907465004</created>
+      <updated>1393907465004</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1337,27 +1617,27 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32896763" sideWeight="0.67250437" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37992832" sideWeight="0.4969697" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37907377" sideWeight="0.4969697" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40308747" sideWeight="0.5098485" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32973805" sideWeight="0.67250437" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32767403" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27710843" sideWeight="0.48712122" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25241995" sideWeight="0.64379084" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1219697" sideWeight="0.20989761" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3409091" sideWeight="0.28915662" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270869" sideWeight="0.4939394" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1219697" sideWeight="0.6006826" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993174" sideWeight="0.49015152" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3409091" sideWeight="0.36833048" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34079173" sideWeight="0.49015152" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19210978" sideWeight="0.4878788" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27787307" sideWeight="0.48712122" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1403,7 +1683,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="WebSocket support fully enabled.&#10;Made new classes that support the unique use cases for chunk change relay.&#10;Fixed a bug with realm identifiers not being used correctly.&#10;Fixed a bug caused by chunks arriving from the cache null (which it turns out is by design) that appears to have been from new chunks being created before the cache could properly respond.&#10;Socket connections support chunk updates at this time.&#10;Javascript updated to propagate chunk updates to the dashboard.&#10;Minor logging added.&#10;ChunkKeys given the ability to be generated straight from the legacy protocol.&#10;Better refactoring of Chunk data generation for the legacy protocol." />
+    <option name="LAST_COMMIT_MESSAGE" value="Consolidated look and feel by refactoring styles to CSS.&#10;Added toString to ChunkKey for convenience." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1430,6 +1710,7 @@
     <MESSAGE value="Minor tweaks to the setup for development under Linux. Some hacks in place to deal with lack of Maven right now.&#10;Added a new status indicator of current coordinates. &#10;Tweaked key-based movement.&#10;" />
     <MESSAGE value="Progress made with re-creating the update and socket system.&#10;Made some new classes to allow websockets to listen to each other.&#10;Adjusted existing javascript to properly setup the sockets themselves." />
     <MESSAGE value="WebSocket support fully enabled.&#10;Made new classes that support the unique use cases for chunk change relay.&#10;Fixed a bug with realm identifiers not being used correctly.&#10;Fixed a bug caused by chunks arriving from the cache null (which it turns out is by design) that appears to have been from new chunks being created before the cache could properly respond.&#10;Socket connections support chunk updates at this time.&#10;Javascript updated to propagate chunk updates to the dashboard.&#10;Minor logging added.&#10;ChunkKeys given the ability to be generated straight from the legacy protocol.&#10;Better refactoring of Chunk data generation for the legacy protocol." />
+    <MESSAGE value="Consolidated look and feel by refactoring styles to CSS.&#10;Added toString to ChunkKey for convenience." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1441,109 +1722,118 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/List.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/Properties.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="17" selection-start="3972" selection-end="3981" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/eventing/UpdateCollector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="39" selection-start="1261" selection-end="1261" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1242" column="62" selection-start="47809" selection-end="47809" vertical-scroll-proportion="0.31213874" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="61" selection-start="2991" selection-end="2991" vertical-scroll-proportion="0.0">
+        <state line="94" column="0" selection-start="3484" selection-end="3484" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/ChunkCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="36" selection-start="1490" selection-end="1506" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/Setup/coreMap/stairs.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/ChunkDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="13" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/logging/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="378" column="25" selection-start="16594" selection-end="16594" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/eventing/PeriodicChunkUpdatePusher.java">
+    <entry file="file://$PROJECT_DIR$/Setup/coreMap/TinyIsle.tmx">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/js/toolbar.js">
+    <entry file="file://$PROJECT_DIR$/Setup/CreateDatabase.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="29" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/TiledCanvas.jsp">
+    <entry file="jar://$PROJECT_DIR$/lib/TiledLib.jar!/tiled/core/MapLayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="1420" selection-end="1483" vertical-scroll-proportion="0.0">
+        <state line="56" column="23" selection-start="1440" selection-end="1440" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/index.jsp">
+    <entry file="jar://$PROJECT_DIR$/lib/TiledLib.jar!/tiled/core/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="6" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
+        <state line="117" column="20" selection-start="2829" selection-end="2829" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/corestyle.css">
+    <entry file="file://$PROJECT_DIR$/Setup/h2Init.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="17" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0">
+        <state line="196" column="19" selection-start="10389" selection-end="10389" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/ChunkKey.java">
+    <entry file="file://$PROJECT_DIR$/tst/org/rpl/infinimapper/data/inbound/TMXMapImporterTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="47" selection-start="3395" selection-end="3395" vertical-scroll-proportion="0.0">
+        <state line="60" column="27" selection-start="2000" selection-end="2010" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/TilesetAssignmentProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="35" selection-start="846" selection-end="846" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/Layer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="116" selection-start="3193" selection-end="3193" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/gson-1.7.1-sources.jar!/com/google/gson/JsonObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="30" selection-start="2042" selection-end="2042" vertical-scroll-proportion="0.60714287">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/TilesetAssignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="206" column="0" selection-start="5281" selection-end="5281" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/gson-1.7.1-sources.jar!/com/google/gson/JsonElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="16" selection-start="5956" selection-end="5956" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="377" column="30" selection-start="12765" selection-end="12765" vertical-scroll-proportion="-43.0">
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#15201#15226#0" expanded="true" />
+            <element signature="e#20081#20097#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/BackgroundFlushCache.java">
+    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="13" selection-start="2874" selection-end="2874" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/WorldDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="464" column="18" selection-start="12318" selection-end="12318" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/js/core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="18" selection-start="3389" selection-end="3389" vertical-scroll-proportion="0.09751434">
-          <folding />
+        <state line="181" column="57" selection-start="7674" selection-end="7674" vertical-scroll-proportion="0.47368422">
+          <folding>
+            <element signature="e#5359#5372#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1554,10 +1844,10 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="artifact" />
+              <type id="library" />
               <type id="javaee-facet-resources" />
               <type id="jpa-descriptors" />
-              <type id="library" />
+              <type id="artifact" />
             </show-content>
           </artifact-editor>
           <last-edited>ChunkMan:Web exploded</last-edited>
@@ -1626,6 +1916,7 @@
             <option name="proportions">
               <list>
                 <option value="0.3041958" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

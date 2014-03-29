@@ -193,6 +193,8 @@ CREATE TABLE `realmtilesets` (
   `realmid` int(11) NOT NULL,
   `tilesetid` int(11) NOT NULL,
   `order` int(11) NOT NULL DEFAULT '0',
+  `startGid` int(11),
+  `endGid` int(11),
   PRIMARY KEY (`id`),
   KEY `realm_fk` (`realmid`),
   KEY `tileset_fk` (`tilesetid`),

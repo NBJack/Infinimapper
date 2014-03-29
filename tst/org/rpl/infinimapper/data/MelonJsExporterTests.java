@@ -36,7 +36,8 @@ public class MelonJsExporterTests {
 		// File destination = FileUtils.generateTempDirLocation();
 		// destination.mkdir();
 		File destination = new File("ScratchDir");
-		exporter = new MelonJsExporter(destination);
+        // TODO: Setup the export system correctly. I don't know how to do spring testing yet.
+		exporter = new MelonJsExporter(destination, null);
 		testData1 = new HashMap<String, String>();
 		testData1.put("name", "arg");
 		testData1.put("type", "txt");

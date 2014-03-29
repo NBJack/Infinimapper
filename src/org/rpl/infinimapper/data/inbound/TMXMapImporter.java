@@ -34,6 +34,7 @@ public class TMXMapImporter {
     private ArrayList<Layer> layers;
     private ArrayList<TilesetAssignment> tilesetAssignments;
     private File originPath;
+    private HashMap<Integer,java.util.Map<String,String>> tileInfoMap;
 
     private boolean forceImageImport = false;
 
@@ -45,6 +46,7 @@ public class TMXMapImporter {
         this.mapDataProviders = mapDataProviders;
         this.mapWriteOffset = offset;
         this.name = filename;
+        this.tileInfoMap = new HashMap<>();
     }
 
     /**
@@ -58,6 +60,7 @@ public class TMXMapImporter {
         writeObjectsToLayer(getRealms().get(0), getObjects());
         processTilesets(true);
     }
+
 
     protected void processLayers(boolean makePublic, int owner) {
         // Construct the basic storage structures
@@ -133,6 +136,7 @@ public class TMXMapImporter {
         // Try to cross-reference every tileset against an equivalent
         ArrayList<TilesetData> chosenTilesets = new ArrayList<TilesetData>();
         tilesetAssignments = new ArrayList<TilesetAssignment>();
+        int tilesetOrder = 0;
         for ( TileSet tileset : map.getTilesets() ) {
             String name = tileset.getName();
             String fileName = tileset.getTilebmpFile();
@@ -169,19 +173,40 @@ public class TMXMapImporter {
                 throw new TilesetNotFoundException(tileset.getName());
             }
 
+            // Setup the association of the tileset with this map
+            TilesetAssignment assignment = new TilesetAssignment();
+            assignment.setOrder(tilesetOrder++);
+            assignment.setRealmId(assignToRealm);
+            assignment.setTilesetId(usedTileset.getId());
+            assignment.setGidStart(tileset.getFirstGid());
+            assignment.setGidEnd(tileset.getMaxTileId());
+
+            // Now, process the tiles.
+            for (int i = 0; i < tileset.getMaxTileId(); i++) {
+                Tile t = tileset.getTile(i);
+                if (t != null) {
+                    JsonObject  propMap = new JsonObject();
+                    if (t.getProperties().size() > 0) {
+                        // Build a new map
+                        for (java.util.Map.Entry<Object, Object> entry : t.getProperties().entrySet()) {
+                            // Put every non-null value into our own property listing.
+                            if (entry.getValue() != null) {
+                                propMap.addProperty(entry.getKey().toString(), entry.getValue().toString());
+                            }
+                        }
+                        // Associate this with the tile ID
+                        assignment.setTileProperties(t.getGid(), propMap);
+                    }
+                }
+            }
             chosenTilesets.add(usedTileset);
 
-        }
-
-        // Now, add in the associations
-        for ( int i = 0; i < chosenTilesets.size(); i++ ) {
-            TilesetAssignment assignment = new TilesetAssignment();
-            assignment.setOrder(i);
-            assignment.setRealmId(assignToRealm);
-            assignment.setTilesetId(chosenTilesets.get(i).getId());
+            // Tilesets can have properties; record them now
             mapDataProviders.tilesetAssignments().addValue(assignment);
             tilesetAssignments.add(assignment);
+
         }
+
     }
 
 

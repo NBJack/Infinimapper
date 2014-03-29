@@ -1,7 +1,14 @@
 package org.rpl.infinimapper.data;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import org.apache.commons.lang3.Validate;
+
+import java.util.HashMap;
 
 /**
  * Establishes information about the tileset assigned to a realm.
@@ -16,16 +23,12 @@ public class RealmTileset implements Identable<Integer> {
 
     @DatabaseField( generatedId=true )
     private int id;
-    @DatabaseField
-    private int realmid;
-    @DatabaseField
-    private int tilesetid;
-    @DatabaseField
-    private int order;
-
+    @DatabaseField private int realmid;
+    @DatabaseField private int tilesetid;
+    @DatabaseField private int order;
 
     public RealmTileset () {
-        this.id = UNASSIGNED_ID;
+        this(-1, -1);
     }
 
     public RealmTileset (int realmid, int tilesetid) {
@@ -75,4 +78,6 @@ public class RealmTileset implements Identable<Integer> {
     public boolean hasId() {
         return id != UNASSIGNED_ID;
     }
+
+
 }

@@ -25,6 +25,8 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;
 import org.rpl.infinimapper.ChunkData;
 import org.rpl.infinimapper.DBResourceManager;
@@ -32,18 +34,35 @@ import org.rpl.infinimapper.DataTools;
 import org.rpl.infinimapper.MapDataType;
 import org.rpl.infinimapper.RealmAssimilator;
 import org.rpl.infinimapper.WorldDB.QuickCon;
-import org.rpl.infinimapper.data.Layer;
-import org.rpl.infinimapper.data.ObjectIdentity;
-import org.rpl.infinimapper.data.TilesetData;
-import org.rpl.infinimapper.data.management.SimpleDeserializer;
+import org.rpl.infinimapper.data.*;
+import org.rpl.infinimapper.data.management.*;
 import org.rpl.util.Base64IntWriter;
 
 import com.google.gson.stream.JsonReader;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MapExport {
 
-	private static final int FIXED_TILE_WIDTH = 32;
-	private static final String EXPORT_REALM_INFO_REQUEST = "SELECT rlm.name,rlm.description,rlm.tileset,rlm.defaulttile,tile.name,tile.tilecount,tile.tilewidth,tile.defaulttile,tile.usebackground,tile.description,tile.fullwidth,tile.fullheight FROM realms as rlm, tilelib as tile WHERE rlm.id=? AND tile.id=rlm.tileset";
+
+    @Autowired
+    private ChunkCache chunkCache;
+    @Autowired
+    private RealmCache realmCache;
+    @Autowired
+    private LayerDataProvider layerProvider;
+    @Autowired
+    private ObjectProvider objectDefProvider;
+    @Autowired
+    private ObjectInstanceProvider objectProvider;
+    @Autowired
+    private TilesetProvider tilesetProvider;
+    @Autowired
+    private TilesetAssignmentProvider tilesetAssignmentProvider;
+
+
+
+    private static final int FIXED_TILE_WIDTH = 32;
+//	private static final String EXPORT_REALM_INFO_REQUEST = "SELECT rlm.name,rlm.description,rlm.tileset,rlm.defaulttile,tile.name,tile.tilecount,tile.tilewidth,tile.defaulttile,tile.usebackground,tile.description,tile.fullwidth,tile.fullheight FROM realms as rlm, tilelib as tile WHERE rlm.id=? AND tile.id=rlm.tileset";
 	private static final String EXPORT_GET_TILE_INFO = "SELECT fullwidth, fullheight, border, spacing FROM tilelib WHERE id=?";
 	public static final String EXPORT_CHUNK_REQUEST = "SELECT data, xcoord, ycoord FROM chunks WHERE realmid=? ORDER BY ycoord, xcoord";
 	public static final String EXPORT_GET_REALM_DIMS = "SELECT MIN(xcoord), MIN(ycoord), MAX(xcoord), MAX(ycoord) FROM chunks WHERE realmid=?";
@@ -51,18 +70,20 @@ public class MapExport {
 	public static final String EXPORT_GET_ALL_LAYERS_DETAIL = "SELECT * FROM layerdata WHERE masterrealmid=? ORDER BY ordernum";
 	public static final String EXPORT_GET_LAYER_DATA = "SELECT * FROM layerdata WHERE realmid=?";
 	public static final String EXPORT_GET_REALM_DIMS_ALL_LAYERS = "SELECT MIN(xcoord), MIN(ycoord), MAX(xcoord), MAX(ycoord) FROM chunks WHERE realmid IN (SELECT realmid FROM layerdata WHERE masterrealmid=?)";
-	public static final String EXPORT_GET_ALL_TILESETS = "select tiles.id, tiles.description, tiles.fullwidth, tiles.fullheight, tiles.border, tiles.spacing FROM tilelib tiles, realms r WHERE r.id=? AND (tiles.id IN (select tilesetid FROM realmtilesets WHERE realmid=r.id));";
-	public static final String EXPORT_GET_TILE_METADATA = "select tileindex, name, value FROM tileproperties WHERE realmid=? AND tilesetindex=? ORDER BY tilesetindex, tileindex";
+	//public static final String EXPORT_GET_ALL_TILESETS = "select tiles.id, tiles.description, tiles.fullwidth, tiles.fullheight, tiles.border, tiles.spacing FROM tilelib tiles, realms r WHERE r.id=? AND (tiles.id IN (select tilesetid FROM realmtilesets WHERE realmid=r.id));";
+	//public static final String EXPORT_GET_TILE_METADATA = "select tileindex, name, value FROM tileproperties WHERE realmid=? AND tilesetindex=? ORDER BY tilesetindex, tileindex";
 	public static final String EXPORT_GET_RELEVANT_OBJECT_IDENTITIES = "SELECT * FROM objlib WHERE id IN (SELECT definition FROM objects WHERE tilerealm=? AND deleted=FALSE GROUP BY definition)";
 	public static final String EXPORT_GET_OBJECTS_FOR_REALM = "SELECT tilexcoord, tileycoord, offsetx, offsety, custom, definition, width, height FROM objects WHERE tilerealm=? AND deleted=FALSE";
 
-	/**
+    private Realm masterRealm;
+
+    /**
 	 * Create a TMX file with basic encodings that captures the map data.
 	 * 
 	 * @param realmid
 	 * @throws IOException
 	 */
-	public static void processAndExportMapTMX(int realmid, OutputStream rawOut, String fileName, String imagePrefix,
+	public void processAndExportMapTMX(int realmid, OutputStream rawOut, String fileName, String imagePrefix,
 			MapDataType mapDataFormat) throws IOException {
 		List<ChunkData> chunks; // All of the chunks in the realm
 		PrintWriter out;
@@ -71,17 +92,15 @@ public class MapExport {
 		PreparedStatement st;
 		ChunkData chk;
 		int defaultTile;
-		int tilesetID;
 		RealmAssimilator realmMap;
-		String tilesetName;
-		String realmName;
-		int tilesetWidth, tilesetHeight;
-		Collection<Integer> layers;
+		Collection<TilesetAssignment> layers;
 		Rectangle mapBoundaries;
 
 		c = null;
 		rs = null;
 		st = null;
+
+        masterRealm = realmCache.getValue(realmid);
 
 		try {
 
@@ -90,34 +109,21 @@ public class MapExport {
 			c = DBResourceManager.getConnection();
 
 			// Retrieve all data about the realm
+            Realm realm = realmCache.getValue(realmid);
 
-			st = c.prepareStatement(MapExport.EXPORT_REALM_INFO_REQUEST);
-			st.setInt(1, realmid);
-
-			rs = st.executeQuery();
-
-			if (rs.next()) {
-				// Pull the basics
-
-				defaultTile = rs.getInt(4);
-				realmName = rs.getString(1);
-				tilesetName = rs.getString(5);
-				tilesetWidth = rs.getInt("tile.fullwidth");
-				tilesetHeight = rs.getInt("tile.fullheight");
-
+            if (realm != null) {
+                defaultTile = realm.getDefaulttile();
 			} else {
 				// Realm not found!
 
 				throw new Exception("The realm information for id " + realmid + " was not found.");
 			}
 
-			rs.close();
-			st.close();
 			// Grab layer data
-			layers = MapExport.getAllLayers(realmid);
+            layers = tilesetAssignmentProvider.getAllTilesetsForRealm(realm);
 
 			// Leverage the database to calculate dimensions
-			mapBoundaries = MapExport.findMapBoundariesAllLayers(realmid);
+			mapBoundaries = findMapBoundariesAllLayers(realmid);
 			// Fall-back to single realm queries
 			if (mapBoundaries == null) {
 				mapBoundaries = MapExport.findMapBoundaries(realmid);
@@ -145,10 +151,10 @@ public class MapExport {
 					+ "\" height=\"" + mapBoundaries.height + "\" tilewidth=\"32\" tileheight=\"32\">");
 
 			// TODO: Allow tile width and height to be adjustable.
-			MapExport.writeTilesetData(realmid, imagePrefix, out);
+			writeTilesetData(realmid, imagePrefix, out);
 
 			// For each layer, grab data and write it out.
-            List<Layer> layerData = getAllLayerData(realmid);
+            List<Layer> layerData = layerProvider.getLayersForRealm(realmid);
 
 			for (Layer layer : layerData) {
                 int layerID = layer.getRealmid();
@@ -293,7 +299,7 @@ public class MapExport {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static Rectangle findMapBoundariesAllLayers(int masterrealmid) throws SQLException {
+	public Rectangle findMapBoundariesAllLayers(int masterrealmid) throws SQLException {
 		QuickCon con = new QuickCon(MapExport.EXPORT_GET_REALM_DIMS_ALL_LAYERS);
 
 		try {
@@ -320,7 +326,7 @@ public class MapExport {
 		}
 	}
 
-	public static List<Layer> getAllLayerData(int realmid) throws SQLException, InstantiationException,
+	public static List<Layer> getAllLayerData_old(int realmid) throws SQLException, InstantiationException,
 			IllegalAccessException {
 		QuickCon con = new QuickCon(MapExport.EXPORT_GET_ALL_LAYERS_DETAIL);
 
@@ -333,34 +339,6 @@ public class MapExport {
 
 	}
 
-	/**
-	 * Gets all layers associated with that realm. If no layer data was found,
-	 * returns the original realm ID as a singleton.
-	 * 
-	 * @param realmid The realm to check for.
-	 * @return A list of one or more realm IDs.
-	 * @throws SQLException
-	 */
-	public static List<Integer> getAllLayers(int realmid) throws SQLException {
-		QuickCon con = new QuickCon(MapExport.EXPORT_GET_ALL_LAYERS);
-
-		try {
-			con.getStmt().setInt(1, realmid);
-			ResultSet results = con.query();
-			if (results.next()) {
-				// Add all entries to a new list
-				List<Integer> entries = new LinkedList<Integer>();
-				do {
-					entries.add(results.getInt(1));
-				} while (results.next());
-				return entries;
-			} else {
-				return Collections.singletonList(realmid);
-			}
-		} finally {
-			con.release();
-		}
-	}
 
 	/**
 	 * Prints all of the XML responsible for expressing a complete tileset for a
@@ -371,65 +349,65 @@ public class MapExport {
 	 * @throws FactoryConfigurationError
 	 * @throws XMLStreamException
 	 */
-	public static void writeTilesetData(int rootRealmId, String prefix, Writer out) throws SQLException,
+	public void writeTilesetData(int rootRealmId, String prefix, Writer out) throws SQLException,
 			XMLStreamException, FactoryConfigurationError {
 
 		XMLStreamWriter xmlOut = XMLOutputFactory.newInstance().createXMLStreamWriter(out);
 		// Grab a list of all tiles needed by a realm.
-		QuickCon con = new QuickCon(MapExport.EXPORT_GET_ALL_TILESETS);
 
-		try {
-			// Setup the query and allow the native serialization process to
-			// work.
-			con.getStmt().setInt(1, rootRealmId);
-			final Collection<TilesetData> tilesets = TilesetData.grabFromStream(con.query());
-			con.release();
 
-			// Write out each tileset
-			int runningTileCount = 1;
-			for (TilesetData tileset : tilesets) {
-				xmlOut.writeStartElement("tileset");
-				xmlOut.writeAttribute("name", "tileset" + tileset.getId());
-				xmlOut.writeAttribute("firstgid", "" + runningTileCount);
-				xmlOut.writeAttribute("tilewidth", "" + tileset.getTileWidth());
-				xmlOut.writeAttribute("tileheight", "" + tileset.getTileHeight());
-				xmlOut.writeAttribute("space", "" + tileset.getSpacing());
-				xmlOut.writeAttribute("margin", "" + tileset.getBorder());
+        // Setup the query and allow the native serialization process to
+        // work.
+        List<TilesetAssignment> assignments = tilesetAssignmentProvider.getAllTilesetsForRealm(masterRealm);
 
-				xmlOut.writeStartElement("image");
-				xmlOut.writeAttribute("source", "./" + prefix + tileset.getId() + ".png");
-				xmlOut.writeEndElement();
+        // Write out each tileset
+        int runningTileCount = 1;
 
-				// Write every individual tile setting if available
-				QuickCon tileCon = new QuickCon(MapExport.EXPORT_GET_TILE_METADATA);
-				tileCon.getStmt().setInt(1, rootRealmId);
-				tileCon.getStmt().setInt(2, tileset.getId());
-				ResultSet tileMetadata = tileCon.query();
-				while (tileMetadata.next()) {
-					xmlOut.writeStartElement("tile");
-					xmlOut.writeAttribute("id", Integer.toString(tileMetadata.getInt("tileindex")));
-					xmlOut.writeStartElement("properties");
-					xmlOut.writeStartElement("property");
-					xmlOut.writeAttribute("name", tileMetadata.getString("name"));
-					xmlOut.writeAttribute("value", tileMetadata.getString("value"));
-					xmlOut.writeEndElement();
-					xmlOut.writeEndElement();
-					xmlOut.writeEndElement();
-				}
-				tileCon.release();
+        // Run through every assignment of a tileset.
+        for (TilesetAssignment assignment: assignments) {
+            // Grab that tileset's data
+            TilesetData tileset = tilesetProvider.getValue(assignment.getTilesetId());
+            xmlOut.writeStartElement("tileset");
+            xmlOut.writeAttribute("name", "tileset" + tileset.getId());
+            xmlOut.writeAttribute("firstgid", "" + runningTileCount);
+            xmlOut.writeAttribute("tilewidth", "" + tileset.getTileWidth());
+            xmlOut.writeAttribute("tileheight", "" + tileset.getTileHeight());
+            xmlOut.writeAttribute("space", "" + tileset.getSpacing());
+            xmlOut.writeAttribute("margin", "" + tileset.getBorder());
 
-				// End the tileset entry
-				xmlOut.writeEndElement();
+            xmlOut.writeStartElement("image");
+            xmlOut.writeAttribute("source", "./" + prefix + tileset.getId() + ".png");
+            xmlOut.writeEndElement();
 
-				// Calculate the number of tiles and advance the counter. In the
-				// future, this may be pre-calculated.
-				runningTileCount += tileset.calculateTileCount();
-			}
-			xmlOut.writeComment("No tiles should be greater than " + runningTileCount);
+            // Write every individual tile properties if available
+            for (int tileIndex = assignment.getGidStart(); tileIndex <= assignment.getGidEnd(); tileIndex++) {
+                JsonObject tileProps = assignment.getTileProperties(tileIndex);
+                if (tileProps != null) {
+                    xmlOut.writeStartElement("tile");
+                    xmlOut.writeAttribute("id", Integer.toString(tileIndex));
+                    xmlOut.writeStartElement("properties");
+                    // Now, for each property, write out the property
+                    for (Entry<String, JsonElement> entry: tileProps.entrySet()) {
+                        xmlOut.writeStartElement("property");
+                        xmlOut.writeAttribute("name", entry.getKey());
+                        xmlOut.writeAttribute("value", entry.getValue().getAsString());
+                        xmlOut.writeEndElement();
+                    }
+                    xmlOut.writeEndElement();
+                    xmlOut.writeEndElement();
+                }
+            }
 
-		} finally {
-			con.release();
-		}
+
+            // End the tileset entry
+            xmlOut.writeEndElement();
+
+            // Calculate the number of tiles and advance the counter. In the
+            // future, this may be pre-calculated.
+            runningTileCount += tileset.calculateTileCount();
+        }
+        xmlOut.writeComment("No tiles should be greater than " + runningTileCount);
+
 
 		xmlOut.flush();
 		xmlOut.close();

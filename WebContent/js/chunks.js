@@ -354,22 +354,10 @@ http://www.ryanlayfield.com/
 
 		if ( chunk != null )
 		{
-			/*
-			// Has anything changed since? In other words, is our current sequence equal to the request time's sequence?
-
-			if ( origSeq != null )
-			{
-				if ( chunk.seq > origSeq )
-					return;
-			}
-			*/
-
 			// Great, post the array
-
 			if ( data == null )
 			{
 				// Defaults; it was blank
-
 				chunk.tileset = 0;
 				chunk.lastUpd = 0;
 				chunk.lastData = null;
@@ -449,9 +437,12 @@ http://www.ryanlayfield.com/
 
 		if ( updatesPending == false )
 		{
-			// Setup the delay for 2 seconds from now
+			// Setup the delay for when we send out updates. The shorter this is,
+            // the more the server gets. Ideally, we don't want this to be instantaneous
+            // as the first 'stroke' is likely useless to upload immediately. Instead,
+            // we want to queue-up some of the changes periodically and then send them.
 
-			window.setTimeout(sendAllChunkUpdates, 200);
+			window.setTimeout(sendAllChunkUpdates, 90);
 
 			updateStatus.innerHTML="Updates detected...";			
 
@@ -507,8 +498,11 @@ http://www.ryanlayfield.com/
 	//
 	function sendChunk ( chunk )
 	{
-        liveSocket.send(chunk.coordName);
-		sendMessage(buildTxtUpdateFromChunk(chunk));
+//        if (liveSocket && !liveSocket.isClosed) {
+//            liveSocket.send(chunk.coordName);
+//        }
+        sendMessage(buildTxtUpdateFromChunk(chunk));
+
 	}
 
 	

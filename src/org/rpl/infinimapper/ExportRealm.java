@@ -2,12 +2,15 @@ package org.rpl.infinimapper;
 
 import java.io.IOException;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.rpl.infinimapper.data.export.MapExport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 /**
  * Servlet implementation class ExportRealm
@@ -18,6 +21,9 @@ public class ExportRealm extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+    @Autowired
+    private MapExport mapExporter;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -26,7 +32,19 @@ public class ExportRealm extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
+    /**
+     * Initializes the Spring bean system.
+     * @param config The servlet configuration.
+     * @throws ServletException if something went wrong.
+     */
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
+    }
+
+
+    /**
 	 * Parses the provided string as an integer if not null; otherwise, returns
 	 * defaultValue.
 	 * 
@@ -122,7 +140,7 @@ public class ExportRealm extends HttpServlet {
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
 
 		try {
-			MapExport.processAndExportMapTMX(realmid, response.getOutputStream(), fileName, "image", mapDataFormat);
+            mapExporter.processAndExportMapTMX(realmid, response.getOutputStream(), fileName, "image", mapDataFormat);
 		} catch (IOException ioex) {
 			// Something went wrong. :/ Notify them of the error.
 			System.err.println("Problem exporting map " + fileName + " (" + realmid + ")" + ioex);

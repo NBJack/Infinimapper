@@ -299,14 +299,9 @@ function handleDataResponse ()
 		{
 			// Great; things went well.
 
-			//alert(this.responseText);
-
 			// Do we need to do anything?
-			
 			debugLog(this.responseText);
-
 			metaResponseArr = this.responseText.split("\n");
-
 			for ( i = 0; i < metaResponseArr.length; i++ )
 			{
                 var nextResponse = metaResponseArr[i];
@@ -314,14 +309,10 @@ function handleDataResponse ()
                     responseArr = processResponse(nextResponse);
                 }
             }
-				
 
 			// Clear the request flag
-
 			requestInProgress = false;
-
 			// Try to empty the queue
-
 			sendNextQueuedItem();
 
 		} else {
@@ -1353,7 +1344,9 @@ function handleDataResponse ()
 
 		context.mozImageSmoothingEnabled = false;
 
-		setInterval("renderWin()",16.7);
+		//setInterval("renderWin()",16.7);
+        // Low-power consumption render loop. 10 fps.
+        setInterval("renderWin()",100);
 
 		window.onresize=resizeEvent;
 
@@ -1398,17 +1391,17 @@ function handleDataResponse ()
         if ( liveSocket != null ) {
 
             liveSocket.onopen = function () {
-                //liveSocket.send("I'm ALLIIIVVEE!");
                 updateStatus.innerHTML = "Socket status: active";
+                this.isClosed = false;
             }
 
             liveSocket.onmessage = function(msg) {
-                //updateStatus.innerHTML = msg.data;
                 processResponse(msg.data);
             }
 
             liveSocket.onclose = function () {
                 updateStatus.innerHTML = "Socket status: closed";
+                this.isClosed = true;
             }
 
         }
