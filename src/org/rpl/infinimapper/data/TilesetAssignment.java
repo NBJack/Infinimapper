@@ -134,7 +134,7 @@ public class TilesetAssignment implements Identable<Integer> {
      */
     public JsonObject getTileProperties(int index) {
         JsonElement element = propertySet.get("_" + index);
-        if (element.isJsonObject()) {
+        if (element != null && element.isJsonObject()) {
             return element.getAsJsonObject();
         }
         return null;

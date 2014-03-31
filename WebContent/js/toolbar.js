@@ -174,7 +174,7 @@ http://www.ryanlayfield.com/
 			editorState.draw.paintMode = MODE_MAKE_REGION_OBJECT;
 		} else if ( src.id == "toolPlay" ) {
             // Build and play this map (if supported!)
-            window.open("/BuildAndPlay/?realm="+realmInfo.id);
+            window.open("/BuildAndPlay?realm="+realmInfo.id);
         }
 			
 		

@@ -49,4 +49,18 @@ public class ObjectInstanceProvider extends DaoDataProvider<Integer, ObjectInsta
             .and()
             .eq("tileXCoord", tileYCoord).query();
     }
+
+    /**
+     * Return a list of objects across the specified realm.
+     * @param realmId the realm Id to search for.
+     * @return a list of {@link ObjectInstance}s in their natural order.
+     * @throws SQLException if something goes wrong with the query.
+     */
+    public List<ObjectInstance> getObjectsInRealm(int realmId) throws SQLException {
+        QueryBuilder<ObjectInstance, Integer> query = this.getQueryBuilder();
+
+        return query.where()
+            .eq("tileRealm", realmId)
+            .query();
+    }
 }

@@ -34,7 +34,7 @@ public class FileUtils {
      * @return
      */
     public static File generateTempDir ( File dir ) {
-        return new File(dir, System.nanoTime() + "_" + Math.random());
+        return new File(dir, System.currentTimeMillis() + "_" + Math.random());
     }
 
 	/**

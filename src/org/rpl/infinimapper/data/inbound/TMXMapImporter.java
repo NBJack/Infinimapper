@@ -179,7 +179,7 @@ public class TMXMapImporter {
             assignment.setRealmId(assignToRealm);
             assignment.setTilesetId(usedTileset.getId());
             assignment.setGidStart(tileset.getFirstGid());
-            assignment.setGidEnd(tileset.getMaxTileId());
+            assignment.setGidEnd(tileset.getMaxTileId() + tileset.getFirstGid());
 
             // Now, process the tiles.
             for (int i = 0; i < tileset.getMaxTileId(); i++) {
@@ -272,11 +272,13 @@ public class TMXMapImporter {
             objInstance.setDefinition(0);
             objInstance.setWidth(obj.getWidth());
             objInstance.setHeight(obj.getHeight());
+            objInstance.setName(obj.getType());
             // Setup coordinates adn the chunk
             objInstance.setPositionBasedOnRealm(obj.getX(), obj.getY(), realm);
-            // Extract the properties
-            if ( obj.getName() != null ) {
-                objInstance.addProperty("__name", obj.getName());
+            // Extract the core properties
+            if ( obj.getType() != null ) {
+                objInstance.addProperty("__name", obj.getType());
+
                 //objInstance.getPropertyJsonObj().addProperty("__name", obj.getName());
             }
             // Assign the original ID if present
@@ -286,6 +288,7 @@ public class TMXMapImporter {
                 objInstance.setDefinition(typeId);
 
             }
+            // Extract the child properties
             for (java.util.Map.Entry<Object,Object> entry : obj.getProperties().entrySet()) {
                 if ( entry.getValue() != null ) {
                     //objInstance.getPropertyJsonObj().addProperty(entry.getKey().toString(), entry.getValue().toString());

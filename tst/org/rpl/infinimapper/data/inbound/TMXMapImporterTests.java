@@ -56,7 +56,7 @@ public class TMXMapImporterTests {
     @Test
     public void testImporterTiny() throws Exception, MapProcessingException {
         TMXMapImporter importer = new TMXMapImporter(TINY_FILE_NAME, ROOT_ORIGIN, providers);
-
+        importer.setForceImageImport(true);
         importer.setName("TestImport Tiny - " + new Date());
         importer.processMap(true, -1);
 

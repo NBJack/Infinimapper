@@ -35,6 +35,7 @@ public class ObjectInstance implements Identable<Integer> {
     @DatabaseField private boolean deleted;
     private JsonArray realProperties;
     @DatabaseField(columnName = "custom", useGetSet=true) private String properties;
+    @DatabaseField private String name;
 
 
     public ObjectInstance () {
@@ -248,4 +249,11 @@ public class ObjectInstance implements Identable<Integer> {
         this.setOffsetY(worldY % realm.getChunkHeightInPixels());
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

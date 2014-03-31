@@ -14,7 +14,7 @@ import org.rpl.infinimapper.data.export.MapExport;
 
 public class MapExportTests {
 
-    public static final int MAP_ID = 7;
+    public static final int MAP_ID = 52;
 
     @BeforeClass
 	public static void setup() {
@@ -26,7 +26,8 @@ public class MapExportTests {
 		File testMap = File.createTempFile("out", ".tmx");
 		FileOutputStream fileOut = new FileOutputStream(testMap);
         //TODO: Re-enable these tests
-		//mapExporter.processAndExportMapTMX(MAP_ID, fileOut, testMap.getName(), "image", MapDataType.TMX_BASE64);
+        MapExport mapExporter = new MapExport();
+		mapExporter.processAndExportMapTMX(MAP_ID, fileOut, testMap.getName(), "image", MapDataType.TMX_BASE64);
 		fileOut.flush();
 		fileOut.close();
 		// Verify contents

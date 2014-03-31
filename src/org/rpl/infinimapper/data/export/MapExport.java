@@ -241,7 +241,7 @@ public class MapExport {
 			}
 
 			// EXPERIMENTAL: Add a dedicated layer for just object output.
-			MapExport.writeObjectsFromLayer(realmid, out, mapBoundaries);
+			writeObjectsFromLayer(realmid, out, mapBoundaries);
 
 			// Close up the file
 
@@ -380,11 +380,15 @@ public class MapExport {
             xmlOut.writeEndElement();
 
             // Write every individual tile properties if available
+            System.out.println("Writing tile properties for " + assignment.getGidStart() + " to " + assignment.getGidEnd());
+
             for (int tileIndex = assignment.getGidStart(); tileIndex <= assignment.getGidEnd(); tileIndex++) {
                 JsonObject tileProps = assignment.getTileProperties(tileIndex);
+                System.out.println("  Properties for " + tileIndex + " = " + tileProps);
                 if (tileProps != null) {
                     xmlOut.writeStartElement("tile");
-                    xmlOut.writeAttribute("id", Integer.toString(tileIndex));
+                    // The id should be the LOCAL ID, starting at one instead of zero, for properties.
+                    xmlOut.writeAttribute("id", Integer.toString(tileIndex - assignment.getGidStart() + 1));
                     xmlOut.writeStartElement("properties");
                     // Now, for each property, write out the property
                     for (Entry<String, JsonElement> entry: tileProps.entrySet()) {
@@ -417,23 +421,19 @@ public class MapExport {
 	 * Write-out objects from a specific realm. Includes all tags necessary to
 	 * identify them as from a layer.
 	 * 
-	 * @param realmid
-	 * @throws FactoryConfigurationError
-	 * @throws XMLStreamException
-	 * @throws IllegalAccessException
-	 * @throws InstantiationException
-	 * @throws SQLException
+	 * @param realmid the realm ID we're looking to write the objects from.
+     * @param out the writer we're outputing the XML to.
+     * @param boundaries the boundaries we're keeping the map to. Used in calculating offsets of objects to the map's
+     *                   local coordinates.
+     * @throws IOException if something goes wrong with communication/writing output.
+	 * @throws XMLStreamException if something goes wrong writing out the XML.
+	 * @throws SQLException if something goes wrong retrieving the data.
 	 */
-	public static void writeObjectsFromLayer(int realmid, Writer out, Rectangle boundaries) throws IOException,
-			XMLStreamException, FactoryConfigurationError, SQLException, InstantiationException, IllegalAccessException {
+	public void writeObjectsFromLayer(int realmid, Writer out, Rectangle boundaries) throws IOException,
+			XMLStreamException, SQLException  {
 
+        // Start XML output
 		XMLStreamWriter xmlOut = XMLOutputFactory.newInstance().createXMLStreamWriter(out);
-		// Grab a list of all entities and map them for speedier access.
-		Collection<ObjectIdentity> objectIdentities = getAllIdentitiesForRealm(realmid);
-		HashMap<Integer, ObjectIdentity> identityMap = new HashMap<Integer, ObjectIdentity>(objectIdentities.size());
-		for (ObjectIdentity identity : objectIdentities) {
-			identityMap.put(identity.getId(), identity);
-		}
 		// Start the layer
 		xmlOut.writeStartElement("objectgroup");
 		xmlOut.writeAttribute("name", "entities");
@@ -442,61 +442,64 @@ public class MapExport {
 		xmlOut.writeAttribute("color", "#FF2222");
 
 		// Grab all of the objects in the realm and write them out
-		QuickCon con = new QuickCon(MapExport.EXPORT_GET_OBJECTS_FOR_REALM);
-		con.getStmt().setInt(1, realmid);
-		try {
+        List<ObjectInstance> objects = objectProvider.getObjectsInRealm(realmid);
 
-			ResultSet objectSet = con.query();
-			while (objectSet.next()) {
-				ObjectIdentity identity = identityMap.get(objectSet.getInt("definition"));
+        for (ObjectInstance obj : objects) {
 
-				if (identity != null) {
-					xmlOut.writeStartElement("object");
-					if (identity.getDefaultidentity() != null) {
-						xmlOut.writeAttribute("name", identity.getDefaultidentity());
-					} else if (identity.getName() != null) {
-						xmlOut.writeAttribute("name", identity.getName());
-					}
-					// TODO: Create a map context that can translate object
-					// coordinates into an absolute coordinate relative to the
-					// upper-left corner of the map.
-					int tileCoordX = Integer.parseInt(objectSet.getString("tilexcoord")) - boundaries.x;
-					int tileCoordY = Integer.parseInt(objectSet.getString("tileycoord")) - boundaries.y;
-					int offsetX = Integer.parseInt(objectSet.getString("offsetx")) + tileCoordX * FIXED_TILE_WIDTH;
-					int offsetY = Integer.parseInt(objectSet.getString("offsety")) + tileCoordY * FIXED_TILE_WIDTH;
-					xmlOut.writeAttribute("x", Integer.toString(offsetX));
-					xmlOut.writeAttribute("y", Integer.toString(offsetY));
+            // Grab the identity it may have.
+            ObjectIdentity identity = objectDefProvider.getValue(obj.getDefinition());
 
-					if (identity.getId() == 0) {
-						xmlOut.writeAttribute("width", Integer.toString(objectSet.getInt("width")));
-						xmlOut.writeAttribute("height", Integer.toString(objectSet.getInt("height")));
-					} else {
-						xmlOut.writeAttribute("width", Integer.toString(identity.getImgWidth()));
-						xmlOut.writeAttribute("height", Integer.toString(identity.getImgHeight()));
-					}
-					// Write out the attributes of each object if it isn't
-					// empty.
-					System.out.println(objectSet.getString("custom"));
-					Map<String, String> properties = extractPropertyMapFromJSON(objectSet.getString("custom"));
-					if (!properties.isEmpty()) {
-						xmlOut.writeStartElement("properties");
-						for (Entry<String, String> property : properties.entrySet()) {
-							xmlOut.writeStartElement("property");
-							xmlOut.writeAttribute("name", property.getKey());
-							xmlOut.writeAttribute("value", property.getValue());
-							xmlOut.writeEndElement();
-						}
-						xmlOut.writeEndElement();
-					}
+            xmlOut.writeStartElement("object");
+            if (identity != null) {
+                if (identity.getDefaultidentity() != null) {
+                    xmlOut.writeAttribute("type", identity.getDefaultidentity());
+                } else if (identity.getName() != null) {
+                    xmlOut.writeAttribute("type", identity.getName());
+                }
+            } else {
+                System.out.println("WARNING! Can't find the identity " + obj.getDefinition() + " for object " + obj.getId() + " (" + obj.getName() + ")");
+                xmlOut.writeAttribute("type", obj.getName());
+            }
 
-					xmlOut.writeEndElement();
-					xmlOut.flush();
-				}
-			}
+            // TODO: Create a map context that can translate object
+            // coordinates into an absolute coordinate relative to the
+            // upper-left corner of the map.
+            int tileCoordX = obj.getTileXCoord() - boundaries.x;
+            int tileCoordY = obj.getTileYCoord() - boundaries.y;
+            int offsetX = obj.getOffsetX() + tileCoordX * FIXED_TILE_WIDTH;
+            int offsetY = obj.getOffsetY() + tileCoordY * FIXED_TILE_WIDTH;
+            xmlOut.writeAttribute("x", Integer.toString(offsetX));
+            xmlOut.writeAttribute("y", Integer.toString(offsetY));
 
-		} finally {
-			con.release();
-		}
+            // Use the identity's width and height if available (not sure if we should keep this...)
+            // TODO: Find out if hanging on to the width and height of the identity is a good idea
+            if (identity == null) {
+                xmlOut.writeAttribute("width", Integer.toString(obj.getWidth()));
+                xmlOut.writeAttribute("height", Integer.toString(obj.getHeight()));
+            } else {
+                xmlOut.writeAttribute("width", Integer.toString(identity.getImgWidth()));
+                xmlOut.writeAttribute("height", Integer.toString(identity.getImgHeight()));
+            }
+            // Write out the attributes of each object if it isn't
+            // empty.
+            System.out.println(obj.getProperties());
+            Map<String, String> properties = extractPropertyMapFromJSON(obj.getProperties());
+            if (!properties.isEmpty()) {
+                xmlOut.writeStartElement("properties");
+                for (Entry<String, String> property : properties.entrySet()) {
+                    xmlOut.writeStartElement("property");
+                    xmlOut.writeAttribute("name", property.getKey());
+                    xmlOut.writeAttribute("value", property.getValue());
+                    xmlOut.writeEndElement();
+                }
+                xmlOut.writeEndElement();
+            }
+
+            // Flush and wrap up the output
+            xmlOut.writeEndElement();
+            xmlOut.flush();
+        }
+
 		xmlOut.writeEndElement();
 	}
 

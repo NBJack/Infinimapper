@@ -42,7 +42,7 @@ public class LayerDataProvider extends DaoDataProvider<Integer, Layer>{
      */
     public List<Layer> getLayersForRealm(int realmid) throws SQLException {
         return this.getQueryBuilder()
-                .orderBy("ordernum", false)
+                .orderBy("ordernum", true)
                 .where()
                 .eq("masterrealmid", realmid)
                 .query();
