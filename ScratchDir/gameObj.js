@@ -13,11 +13,13 @@
 	{	
 		init: function(x, y, settings)
 		{
+            me.sys.gravity =
 			// call the constructor
 			this.parent(x, y , settings);
 			
 			// walking & jumping speed
 			this.setVelocity(2, 13);
+            this.accel.x = 0.2;
 			
 			this.setFriction(0.2,0);
 			

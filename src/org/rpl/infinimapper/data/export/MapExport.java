@@ -62,18 +62,12 @@ public class MapExport {
 
 
     private static final int FIXED_TILE_WIDTH = 32;
-//	private static final String EXPORT_REALM_INFO_REQUEST = "SELECT rlm.name,rlm.description,rlm.tileset,rlm.defaulttile,tile.name,tile.tilecount,tile.tilewidth,tile.defaulttile,tile.usebackground,tile.description,tile.fullwidth,tile.fullheight FROM realms as rlm, tilelib as tile WHERE rlm.id=? AND tile.id=rlm.tileset";
-	private static final String EXPORT_GET_TILE_INFO = "SELECT fullwidth, fullheight, border, spacing FROM tilelib WHERE id=?";
 	public static final String EXPORT_CHUNK_REQUEST = "SELECT data, xcoord, ycoord FROM chunks WHERE realmid=? ORDER BY ycoord, xcoord";
 	public static final String EXPORT_GET_REALM_DIMS = "SELECT MIN(xcoord), MIN(ycoord), MAX(xcoord), MAX(ycoord) FROM chunks WHERE realmid=?";
-	public static final String EXPORT_GET_ALL_LAYERS = "SELECT realmid FROM layerdata WHERE masterrealmid=? ORDER BY ordernum";
 	public static final String EXPORT_GET_ALL_LAYERS_DETAIL = "SELECT * FROM layerdata WHERE masterrealmid=? ORDER BY ordernum";
 	public static final String EXPORT_GET_LAYER_DATA = "SELECT * FROM layerdata WHERE realmid=?";
 	public static final String EXPORT_GET_REALM_DIMS_ALL_LAYERS = "SELECT MIN(xcoord), MIN(ycoord), MAX(xcoord), MAX(ycoord) FROM chunks WHERE realmid IN (SELECT realmid FROM layerdata WHERE masterrealmid=?)";
-	//public static final String EXPORT_GET_ALL_TILESETS = "select tiles.id, tiles.description, tiles.fullwidth, tiles.fullheight, tiles.border, tiles.spacing FROM tilelib tiles, realms r WHERE r.id=? AND (tiles.id IN (select tilesetid FROM realmtilesets WHERE realmid=r.id));";
-	//public static final String EXPORT_GET_TILE_METADATA = "select tileindex, name, value FROM tileproperties WHERE realmid=? AND tilesetindex=? ORDER BY tilesetindex, tileindex";
 	public static final String EXPORT_GET_RELEVANT_OBJECT_IDENTITIES = "SELECT * FROM objlib WHERE id IN (SELECT definition FROM objects WHERE tilerealm=? AND deleted=FALSE GROUP BY definition)";
-	public static final String EXPORT_GET_OBJECTS_FOR_REALM = "SELECT tilexcoord, tileycoord, offsetx, offsety, custom, definition, width, height FROM objects WHERE tilerealm=? AND deleted=FALSE";
 
     private Realm masterRealm;
 
@@ -148,8 +142,10 @@ public class MapExport {
 			// themselves (in ALL layers) then calculating tile width.
 			out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			out.println("<map version=\"1.0\" orientation=\"orthogonal\" width=\"" + mapBoundaries.width
-					+ "\" height=\"" + mapBoundaries.height + "\" tilewidth=\"32\" tileheight=\"32\">");
+					+ "\" height=\"" + mapBoundaries.height + "\" tilewidth=\"32\" tileheight=\"32\" "
+                    + "backgroundcolor=\"#000000\">");
 
+            writeMapProperties(realmid, out);
 			// TODO: Allow tile width and height to be adjustable.
 			writeTilesetData(realmid, imagePrefix, out);
 
@@ -262,7 +258,19 @@ public class MapExport {
 
 	}
 
-	/**
+    /**
+     * Write out all map properties.
+     * @param realmid the id of the realm.
+     * @param out the output stream.
+     */
+    private void writeMapProperties(int realmid, PrintWriter out) {
+        // TODO: Add support for map properties.
+        out.println(" <properties>\n" +
+                "  <property name=\"background\" value=\"background parallax horizontal\"/>\n" +
+                " </properties>\n");
+    }
+
+    /**
 	 * Determine the boundaries of the given realm across all layers.
 	 * 
 	 * @param realmid The ID of the realm to check.
@@ -387,8 +395,8 @@ public class MapExport {
                 System.out.println("  Properties for " + tileIndex + " = " + tileProps);
                 if (tileProps != null) {
                     xmlOut.writeStartElement("tile");
-                    // The id should be the LOCAL ID, starting at one instead of zero, for properties.
-                    xmlOut.writeAttribute("id", Integer.toString(tileIndex - assignment.getGidStart() + 1));
+                    // The id should be the LOCAL ID, starting at zero, for properties.
+                    xmlOut.writeAttribute("id", Integer.toString(tileIndex - assignment.getGidStart()));
                     xmlOut.writeStartElement("properties");
                     // Now, for each property, write out the property
                     for (Entry<String, JsonElement> entry: tileProps.entrySet()) {
@@ -452,13 +460,13 @@ public class MapExport {
             xmlOut.writeStartElement("object");
             if (identity != null) {
                 if (identity.getDefaultidentity() != null) {
-                    xmlOut.writeAttribute("type", identity.getDefaultidentity());
+                    xmlOut.writeAttribute("name", identity.getDefaultidentity());
                 } else if (identity.getName() != null) {
-                    xmlOut.writeAttribute("type", identity.getName());
+                    xmlOut.writeAttribute("name", identity.getName());
                 }
             } else {
                 System.out.println("WARNING! Can't find the identity " + obj.getDefinition() + " for object " + obj.getId() + " (" + obj.getName() + ")");
-                xmlOut.writeAttribute("type", obj.getName());
+                xmlOut.writeAttribute("name", obj.getName());
             }
 
             // TODO: Create a map context that can translate object

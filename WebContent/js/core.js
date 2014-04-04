@@ -1344,9 +1344,9 @@ function handleDataResponse ()
 
 		context.mozImageSmoothingEnabled = false;
 
-		//setInterval("renderWin()",16.7);
+		setInterval("renderWin()",16.7);
         // Low-power consumption render loop. 10 fps.
-        setInterval("renderWin()",100);
+        //setInterval("renderWin()",100);
 
 		window.onresize=resizeEvent;
 

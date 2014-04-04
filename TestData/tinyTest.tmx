@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="background" value="background parallax horizontal"/>
+ </properties>
  <tileset firstgid="1" name="tileset9" tilewidth="32" tileheight="32">
   <image source="tileset9.png" width="608" height="544"/>
  </tileset>
@@ -52,5 +55,6 @@
       <property name="__typeId" value="39" />
     </properties>
   </object>
+  <object x="1" y="1" width="1" height="1" />
  </objectgroup>
 </map>

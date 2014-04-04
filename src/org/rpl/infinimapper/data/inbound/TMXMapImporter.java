@@ -56,6 +56,11 @@ public class TMXMapImporter {
      * @throws MapProcessingException
      */
     public void processMap(boolean makePublic, int owner) throws MapProcessingException {
+        // Grab the map properties
+        for (java.util.Map.Entry<Object, Object> entry : map.getProperties().entrySet()) {
+            // Where does this go???
+        }
+        // Take care of the child data
         processLayers(makePublic, owner);
         writeObjectsToLayer(getRealms().get(0), getObjects());
         processTilesets(true);
@@ -182,7 +187,7 @@ public class TMXMapImporter {
             assignment.setGidEnd(tileset.getMaxTileId() + tileset.getFirstGid());
 
             // Now, process the tiles.
-            for (int i = 0; i < tileset.getMaxTileId(); i++) {
+            for (int i = 0; i <= tileset.getMaxTileId(); i++) {
                 Tile t = tileset.getTile(i);
                 if (t != null) {
                     JsonObject  propMap = new JsonObject();

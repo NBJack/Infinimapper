@@ -132,7 +132,8 @@ public class MelonJsExporter {
 		// Add to the resources
 		addImagesFromMap(realmId);
 		HashMap<String, String> resource = new HashMap<String, String>();
-		resource.put("name", mapName);
+		//resource.put("name", mapName);
+        resource.put("name", "map1");
 		resource.put("type", MAP_TYPE);
 		resource.put("src", dataDir.getName() + "/" + mapFile.getName());
 		resources.add(resource);

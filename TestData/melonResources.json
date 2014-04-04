@@ -1,5 +1,11 @@
 [
-  {name: "someImage", type: "image", src: "data/sprites/image.png"},
-  {name: "player", type: "image", src: "data/sprites/arrowguy.png"},
-  {name: "DST-GameForest", type: "audio", src: "data/audio/", channel: 1}
+  {name: "arrowguy", type: "image", src: "data/sprites/arrowguy.png"},
+  {name: "font16px", type:"image", src: "data/sprites/16px_classic_yellowgradient.png"},
+  {name: "DST-GameForest", type: "audio", src: "data/audio/", channel: 1},
+  {name: "alexkidd", type:"image", src: "data/sprites/alexkidd.png"},
+  {name: "jump", type: "audio", src: "data/audio/", channel : 1}  ,
+  {name: "emerald", type:"image", src: "data/sprites/emerald.png"},
+  {name: "cling", type: "audio", src: "data/audio/", channel : 2},
+  {name: "die",  type: "audio", src: "data/audio/", channel : 2},
+  {name: "enemykill",type: "audio", src: "data/audio/", channel : 1}
 ]
