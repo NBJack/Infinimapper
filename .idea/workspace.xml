@@ -7,17 +7,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f021edc0-4879-458a-a35b-4ca5df6d0de7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/exampleTemplate/data/sprites/alexkidd.png" />
-      <change type="DELETED" beforePath="C:\Git\Infinimapper\TestData\exampleTemplate\data\sprites\alex_light.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MelonJsExporter.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MelonJsExporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/js/core.js" afterPath="$PROJECT_DIR$/WebContent/js/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/map/.map1.tmx.swp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/sprites/16px_classic_yellowgradient.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/DST-GameForest.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/DST-GameForest.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/sprites/alexkidd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/sprites/arrowguy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/map/background.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/bullet.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/cling.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/cling.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/sprites/coin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/content.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/die.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/die.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/sprites/emerald.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/enemykill.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/enemykill.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/footer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/graphic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/jump.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/audio/jump.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/link.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/menu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/menu_select.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/map/metatiles32x32.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/map/tileset-platformer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/gameObj.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/data/map/map1.tmx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/ressources.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestData/marioTemplate/style/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/rpl/infinimapper/ObjTypeManager.java" afterPath="$PROJECT_DIR$/src/org/rpl/infinimapper/ObjTypeManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScratchDir/gameObj.js" afterPath="$PROJECT_DIR$/ScratchDir/gameObj.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestData/exampleTemplate/gameObj.js" afterPath="$PROJECT_DIR$/TestData/exampleTemplate/gameObj.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestData/exampleTemplate/index.html" afterPath="$PROJECT_DIR$/TestData/exampleTemplate/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestData/melonResources.json" afterPath="$PROJECT_DIR$/TestData/melonResources.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestData/tinyTest.tmx" afterPath="$PROJECT_DIR$/TestData/tinyTest.tmx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ChunkMan.iws" />
@@ -45,7 +70,7 @@
     <file path="/DeltaCanvas.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359098190979" ignored="false" />
     <file path="/MapDeltaCanvas.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1366944808993" ignored="false" />
     <file path="/a.dummy" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1396320792663" ignored="false" />
-    <file path="/Dummy.txt" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1396504334496" ignored="false" />
+    <file path="/Dummy.txt" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1396985711260" ignored="false" />
     <file path="/MapDeltaCanvastests.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359175004295" ignored="false" />
     <file path="/InternalChunkProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1359180320007" ignored="false" />
     <file path="/MemoryRealmProvider.java" changelist="f021edc0-4879-458a-a35b-4ca5df6d0de7" time="1368981349670" ignored="false" />
@@ -162,6 +187,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -245,7 +271,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -267,57 +292,19 @@
       <file leaf-file-name="melonJS-0.9.4.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://C:/Source/melonJS-0.9.4.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="25" selection-start="3154" selection-end="3161" vertical-scroll-proportion="-27.32">
+            <state line="157" column="25" selection-start="3154" selection-end="3161" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="core.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/js/core.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1346" column="8" selection-start="30404" selection-end="30404" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1396581726071" expanded="true" signature="30404:30532" placeholder="//..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gameObj.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="gameObj.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ScratchDir/gameObj.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="29" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
+            <state line="26" column="20" selection-start="647" selection-end="647" vertical-scroll-proportion="0.030411448">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TMXMapImporter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="36" selection-start="2135" selection-end="2135" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="h2Init.sql" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Setup/h2Init.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="map1.tmx" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/data/map/map1.tmx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="1" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -325,27 +312,25 @@
       <file leaf-file-name="gameObj.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/gameObj.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MelonJsExporter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MelonJsExporter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="74" selection-start="4513" selection-end="4513" vertical-scroll-proportion="0.048158642">
+            <state line="171" column="21" selection-start="3641" selection-end="3654" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tinyTest.tmx" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestData/tinyTest.tmx">
+      <file leaf-file-name="ObjTypeManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/ObjTypeManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="138" selection-end="238" vertical-scroll-proportion="0.0">
+            <state line="473" column="18" selection-start="10756" selection-end="10756" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MelonJsExporter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MelonJsExporter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="156" column="25" selection-start="4791" selection-end="4791" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -374,7 +359,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tst/org/rpl/infinimapper/data/MapExportTests.java" />
         <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/TilesetAssignmentProvider.java" />
         <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/management/LayerDataProvider.java" />
         <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/ObjectInstance.java" />
@@ -389,6 +373,7 @@
         <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java" />
         <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java" />
         <option value="$PROJECT_DIR$/WebContent/js/core.js" />
+        <option value="$PROJECT_DIR$/src/org/rpl/infinimapper/ObjTypeManager.java" />
         <option value="$PROJECT_DIR$/ScratchDir/gameObj.js" />
       </list>
     </option>
@@ -403,7 +388,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -573,7 +558,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -700,6 +684,72 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="marioTemplate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="marioTemplate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="marioTemplate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChunkMan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Infinimapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TestData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="exampleTemplate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -728,46 +778,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Setup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coreMap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ChunkMan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Infinimapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="132" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="149" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="149" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="Repository.Attach.JavaDocs" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="153" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="153" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="last_opened_file_path" value="C:/Source/melonJS-0.9.4.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="156" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="828" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="835" />
@@ -778,15 +811,15 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FullScreen" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="Downloaded.Files.Path" value="C:\Java\workspace\ChunkMan\lib" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
@@ -794,11 +827,12 @@
     <property name="project.structure.side.proportion" value="0.3041958" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Git\Infinimapper\TestData\marioTemplate" />
       <recent name="C:\Git\Infinimapper\TestData\exampleTemplate\data\sprites" />
       <recent name="C:\Java\workspace\ChunkMan\WebContent\WEB-INF\templates\melonJs-alex" />
     </key>
@@ -1214,22 +1248,9 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JettyConfiguration" factoryName="Local">
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="configFiles">
-            <list>
-              <JettyConfigFile>
-                <option name="active" value="true" />
-                <option name="path" value="etc\jetty-jmx.xml" />
-              </JettyConfigFile>
-            </list>
-          </option>
-        </data>
-      </server-settings>
-      <predefined_log_file id="Jetty" enabled="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <configuration default="true" type="RemoteFlashRunConfigurationType" factoryName="Flash Remote Debug">
+      <option name="BCName" value="" />
+      <option name="moduleName" value="" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1247,9 +1268,22 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="RemoteFlashRunConfigurationType" factoryName="Flash Remote Debug">
-      <option name="BCName" value="" />
-      <option name="moduleName" value="" />
+    <configuration default="true" type="JettyConfiguration" factoryName="Local">
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="configFiles">
+            <list>
+              <JettyConfigFile>
+                <option name="active" value="true" />
+                <option name="path" value="etc\jetty-jmx.xml" />
+              </JettyConfigFile>
+            </list>
+          </option>
+        </data>
+      </server-settings>
+      <predefined_log_file id="Jetty" enabled="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
@@ -1453,11 +1487,15 @@
       <created>1396239546153</created>
       <updated>1396239546154</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Got exports that actually can play working.&#10;Changed a few template resources.">
+      <created>1396640879862</created>
+      <updated>1396640879862</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1471,20 +1509,20 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32973805" sideWeight="0.67250437" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3380531" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2761578" sideWeight="0.48712122" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25241995" sideWeight="0.64379084" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23333333" sideWeight="0.30360207" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23328267" sideWeight="0.44444445" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32590052" sideWeight="0.4939394" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23333333" sideWeight="0.380789" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31389365" sideWeight="0.49015152" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23328267" sideWeight="0.5555556" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31389365" sideWeight="0.49015152" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19115044" sideWeight="0.4878788" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2761578" sideWeight="0.48712122" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1530,7 +1568,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed how random filenames are created.&#10;Enhanced MapExport by continuing to replace SQL queries and dependencies with the providers.&#10;Added a new query to LayerDataProvider to facilitate exports.&#10;Added a new query to ObjectInstanceProvider to facilitate getting all objects in a realm.&#10;Changed the name of an ObjectInstance to the type (the 'name' was oftern reported by the TMX library as just 'Object').&#10;Fixed a bug in the importer and the way GID's are used.&#10;Reversed the order in which layers are queried for.&#10;Added a new name filed to ObjectInstance (used as the name type).&#10;Fixed a bug in the tile properties by verifying the element actually present.&#10;Forced image import on the testImporterTiny test.&#10;Fixed the reference to the build system.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Got exports that actually can play working.&#10;Changed a few template resources." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1560,6 +1598,7 @@
     <MESSAGE value="Consolidated look and feel by refactoring styles to CSS.&#10;Added toString to ChunkKey for convenience." />
     <MESSAGE value="Worked on getting properties of tiles as a part of tileset assignments, instead of a separate set. Used JsonObjects to store data due to flexiblity and closeness to native representations needed (but it's a questionable choice).&#10;Several enhacements to remove direct SQL dependencies on SQL in the export system.&#10;Removed SQL dependency from access layers in the LayerDataProvider.&#10;Improved the BuildAndPlay system.&#10;TMXMapExporter no longer a collection of static methods; made more instance-dependent on providers instead.&#10;Continued work on WebSocket support, including better recognition of events such as those in WorldDB.&#10;Tests for TilesetAssignment.&#10;Added a button to the UI to kick-off the BuildAndPlay system.&#10;" />
     <MESSAGE value="Changed how random filenames are created.&#10;Enhanced MapExport by continuing to replace SQL queries and dependencies with the providers.&#10;Added a new query to LayerDataProvider to facilitate exports.&#10;Added a new query to ObjectInstanceProvider to facilitate getting all objects in a realm.&#10;Changed the name of an ObjectInstance to the type (the 'name' was oftern reported by the TMX library as just 'Object').&#10;Fixed a bug in the importer and the way GID's are used.&#10;Reversed the order in which layers are queried for.&#10;Added a new name filed to ObjectInstance (used as the name type).&#10;Fixed a bug in the tile properties by verifying the element actually present.&#10;Forced image import on the testImporterTiny test.&#10;Fixed the reference to the build system.&#10;" />
+    <MESSAGE value="Got exports that actually can play working.&#10;Changed a few template resources." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1571,30 +1610,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tst/org/rpl/infinimapper/data/MelonJsExporterTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="14" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/data/map/background.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/BuildAndPlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="33" selection-start="3161" selection-end="3161" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/ressources.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="56" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="7" column="56" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/data/map/metatiles32x32.png">
@@ -1609,48 +1627,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/inbound/TMXMapImporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="36" selection-start="2135" selection-end="2135" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="60" column="36" selection-start="2135" selection-end="2135" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Setup/h2Init.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/data/map/map1.tmx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="1" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestData/tinyTest.tmx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="138" selection-end="238" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/js/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1346" column="8" selection-start="30404" selection-end="30404" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1396581726071" expanded="true" signature="30404:30532" placeholder="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/gameObj.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="1346" column="8" selection-start="30404" selection-end="30404" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MapExport.java">
@@ -1662,24 +1649,58 @@
     </entry>
     <entry file="file://C:/Source/melonJS-0.9.4.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="25" selection-start="3154" selection-end="3161" vertical-scroll-proportion="-27.32">
+        <state line="157" column="25" selection-start="3154" selection-end="3161" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScratchDir/gameObj.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="29" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/data/export/MelonJsExporter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="74" selection-start="4513" selection-end="4513" vertical-scroll-proportion="0.048158642">
+        <state line="156" column="25" selection-start="4791" selection-end="4791" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/data/map/map1.tmx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="16" selection-start="847" selection-end="847" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tinyTest2.tmx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/tinyTest.tmx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="12" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/exampleTemplate/gameObj.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="21" selection-start="3641" selection-end="3654" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/rpl/infinimapper/ObjTypeManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="473" column="18" selection-start="10756" selection-end="10756" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestData/marioTemplate/data/map/map1.tmx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="29" selection-start="8229" selection-end="8242" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScratchDir/gameObj.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="20" selection-start="647" selection-end="647" vertical-scroll-proportion="0.030411448">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

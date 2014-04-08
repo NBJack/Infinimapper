@@ -14,11 +14,15 @@
 		init: function(x, y, settings)
 		{
 			// call the constructor
-			this.parent(x, y , settings);
+            settings.image = "alexkidd";
+            settings.transparent_color = "#ff00ff";
+            settings.spritewidth = 17;
+            settings.spriteheight = 26;
+
+            this.parent(x, y , settings);
 			
 			// walking & jumping speed
 			this.setVelocity(2, 13);
-            this.accel.x = 0.2;
 			
 			this.setFriction(0.2,0);
 			
@@ -28,7 +32,7 @@
 			this.dying = false;
 		
 			// set the display around our position
-			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.HORIZONTAL);
+			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 					
 			// enable the keyboard
 			// walk
@@ -207,7 +211,7 @@
 		init: function (x, y, settings)
 		{
 			// define this here instead of tiled
-			settings.image = "arrowguy";
+			settings.image = "alex_light";
 			settings.spritewidth = 24;
 			
 			// call the parent constructor
@@ -306,7 +310,7 @@
 	/*																												*/
 	/************************************************************************************/
 	var ScoreObject = me.HUD_Item.extend(
-	{	
+	{
 		init: function(x, y)
 		{
          // call the parent constructor
@@ -317,11 +321,11 @@
 		/* -----
 
 			draw our score
-			
+
 		------			*/
 		draw : function (context, x, y)
 		{
 			this.font.draw (context, this.value, this.pos.x +x, this.pos.y+y);
 		}
-	
+
 	});

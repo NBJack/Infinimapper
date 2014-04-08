@@ -450,7 +450,7 @@ public class ObjTypeManager extends HttpServlet {
 				objYOff		= Integer.parseInt(request.getParameter("objYOff"));
 				objWidth	= Integer.parseInt(request.getParameter("objWidth"));
 				objHeight	= Integer.parseInt(request.getParameter("objHeight"));
-				objAuth 	= (Integer) request.getSession().getAttribute("userid");
+				//objAuth 	= (Integer) request.getSession().getAttribute("userid");
 				//TODO: Get the public flag
 				
 				System.out.println("Object name: '" + objName + "'" );
